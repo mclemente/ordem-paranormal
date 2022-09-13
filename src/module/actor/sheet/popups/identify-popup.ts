@@ -10,7 +10,7 @@ export class IdentifyItemPopup extends FormApplication<PhysicalItemPF2e> {
             ...super.defaultOptions,
             id: "identify-item",
             title: game.i18n.localize("PF2E.identification.Identify"),
-            template: "systems/pf2e/templates/actors/identify-item.html",
+            template: "systems/ordem-paranormal/templates/actors/identify-item.html",
             width: "auto",
             classes: ["identify-popup"],
         };
@@ -63,12 +63,15 @@ export class IdentifyItemPopup extends FormApplication<PhysicalItemPF2e> {
                     return { shortForm, name, dc };
                 });
 
-            const content = await renderTemplate("systems/pf2e/templates/actors/identify-item-chat-skill-checks.html", {
-                itemImg,
-                itemName,
-                identifiedName,
-                skills,
-            });
+            const content = await renderTemplate(
+                "systems/ordem-paranormal/templates/actors/identify-item-chat-skill-checks.html",
+                {
+                    itemImg,
+                    itemName,
+                    identifiedName,
+                    skills,
+                }
+            );
 
             await ChatMessagePF2e.create({ user: game.user.id, content });
         });

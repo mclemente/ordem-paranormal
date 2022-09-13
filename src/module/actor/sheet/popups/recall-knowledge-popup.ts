@@ -7,7 +7,7 @@ export class RecallKnowledgePopup extends Application {
         options.id = "recall-knowledge-breakdown";
         options.classes = [];
         options.title = game.i18n.localize("PF2E.RecallKnowledge.BreakdownTitle");
-        options.template = "systems/pf2e/templates/actors/recall-knowledge.html";
+        options.template = "systems/ordem-paranormal/templates/actors/recall-knowledge.html";
         options.width = 630;
         return options;
     }

@@ -17,11 +17,11 @@ export const RenderSettings = {
             systemInfo.classList.add("system-info");
             const links = [
                 {
-                    url: "https://github.com/foundryvtt/pf2e/blob/release/CHANGELOG.md",
+                    url: "https://github.com/foundryvtt/ordem-paranormal/blob/release/CHANGELOG.md",
                     label: "PF2E.SETTINGS.Sidebar.Changelog",
                 },
                 {
-                    url: "https://github.com/foundryvtt/pf2e/wiki",
+                    url: "https://github.com/foundryvtt/ordem-paranormal/wiki",
                     label: "PF2E.SETTINGS.Sidebar.Wiki",
                 },
                 {

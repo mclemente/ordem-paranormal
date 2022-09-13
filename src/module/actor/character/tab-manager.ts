@@ -2,7 +2,7 @@ import { CharacterPF2e } from ".";
 
 export class PCSheetTabManager {
     constructor(public actor: CharacterPF2e, public link: HTMLAnchorElement) {
-        renderTemplate("systems/pf2e/templates/actors/character/manage-tabs.html").then((template) => {
+        renderTemplate("systems/ordem-paranormal/templates/actors/character/manage-tabs.html").then((template) => {
             $(this.link).tooltipster({
                 content: template,
                 contentAsHTML: true,

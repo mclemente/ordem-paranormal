@@ -47,7 +47,7 @@
                     <a class="item-control item-toggle-invest {{#if item.isInvested}}active{{/if}}" title="{{localize "PF2E.ui.equipmentInvested"}}"><i class="fas fa-gem fa-1x fa-fw"></i></a>
                 {{/if}}
                 {{#if (or (eq @root.actor.type "character") (eq @root.actor.type "npc"))}}
-                    {{> "systems/pf2e/templates/actors/partials/carry-type.html" item=item}}
+                    {{> "systems/ordem-paranormal/templates/actors/partials/carry-type.html" item=item}}
                 {{/if}}
                 {{#if item.isDamaged}}
                     <a class="item-control item-repair" title="{{localize "PF2E.RepairItemTitle"}}"><i class="fas fa-hammer fa-1x fa-fw"></i></a>
@@ -86,7 +86,7 @@
             {{#unless item.isCollapsed}}
                 <ol class="container-held-items inventory-items" data-container-id="{{item.id}}"">
                     {{#each heldItems}}
-                        {{> "systems/pf2e/templates/actors/partials/item-line.html" editable=@root.editable user=@root.user owner=@root.owner}}
+                        {{> "systems/ordem-paranormal/templates/actors/partials/item-line.html" editable=@root.editable user=@root.user owner=@root.owner}}
                     {{/each}}
                 </ol>
             {{/unless}}

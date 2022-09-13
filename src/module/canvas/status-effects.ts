@@ -12,8 +12,8 @@ export class StatusEffects {
     static #lastCombatantToken: string | null = null;
 
     static readonly #ICON_THEME_DIRS: Record<StatusEffectIconTheme, string> = {
-        default: "systems/pf2e/icons/conditions/",
-        blackWhite: "systems/pf2e/icons/conditions-2/",
+        default: "systems/ordem-paranormal/icons/conditions/",
+        blackWhite: "systems/ordem-paranormal/icons/conditions-2/",
     };
 
     /** Set the theme for condition icons on tokens */
@@ -104,7 +104,7 @@ export class StatusEffects {
         CONFIG.statusEffects = Object.entries(CONFIG.PF2E.statusEffects.conditions).map(([id, label]) => ({
             id,
             label,
-            icon: `systems/pf2e/icons/${directory}/${id}.webp` as const,
+            icon: `systems/ordem-paranormal/icons/${directory}/${id}.webp` as const,
         }));
         CONFIG.statusEffects.push({
             id: "dead",

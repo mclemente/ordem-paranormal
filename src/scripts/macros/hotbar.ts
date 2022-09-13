@@ -82,7 +82,10 @@ export async function rollActionMacro(actorId: string, actionIndex: number, acti
                     }),
                 };
 
-                const content = await renderTemplate("systems/pf2e/templates/chat/strike-card.html", templateData);
+                const content = await renderTemplate(
+                    "systems/ordem-paranormal/templates/chat/strike-card.html",
+                    templateData
+                );
                 const token = actor.token ?? actor.getActiveTokens(true, true).shift() ?? null;
                 const chatData: Partial<foundry.data.ChatMessageSource> = {
                     speaker: ChatMessagePF2e.getSpeaker({ actor, token }),

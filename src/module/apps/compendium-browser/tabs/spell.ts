@@ -5,7 +5,7 @@ import { SpellFilters } from "./data";
 
 export class CompendiumBrowserSpellTab extends CompendiumBrowserTab {
     override filterData!: SpellFilters;
-    override templatePath = "systems/pf2e/templates/compendium-browser/partials/spell.html";
+    override templatePath = "systems/ordem-paranormal/templates/compendium-browser/partials/spell.html";
 
     constructor(browser: CompendiumBrowser) {
         super(browser, "spell");
@@ -66,8 +66,8 @@ export class CompendiumBrowserSpellTab extends CompendiumBrowserTab {
                         spellData.system.time.img = getActionIcon(spellData.system.time.value);
                     }
                     // replace mystery man with one action icon
-                    if (spellData.system.time.img === "systems/pf2e/icons/default-icons/mystery-man.svg") {
-                        spellData.system.time.img = "systems/pf2e/icons/actions/OneAction.webp";
+                    if (spellData.system.time.img === "systems/ordem-paranormal/icons/default-icons/mystery-man.svg") {
+                        spellData.system.time.img = "systems/ordem-paranormal/icons/actions/OneAction.webp";
                     }
 
                     // Prepare source

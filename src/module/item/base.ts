@@ -116,7 +116,7 @@ class ItemPF2e extends Item<ActorPF2e> {
         if (!this.actor) throw ErrorPF2e(`Cannot create message for unowned item ${this.name}`);
 
         // Basic template rendering data
-        const template = `systems/pf2e/templates/chat/${this.type}-card.html`;
+        const template = `systems/ordem-paranormal/templates/chat/${this.type}-card.html`;
         const token = this.actor.token;
         const nearestItem = event ? event.currentTarget.closest(".item") : {};
         const contextualData = Object.keys(data).length > 0 ? data : nearestItem.dataset || {};
@@ -455,7 +455,7 @@ class ItemPF2e extends Item<ActorPF2e> {
     ): Promise<void> {
         // Set default icon
         if (this._source.img === ItemPF2e.DEFAULT_ICON) {
-            this._source.img = data.img = `systems/pf2e/icons/default-icons/${data.type}.svg`;
+            this._source.img = data.img = `systems/ordem-paranormal/icons/default-icons/${data.type}.svg`;
         }
 
         // If this item is of a certain type and is being added to a PC, change current HP along with any change to max

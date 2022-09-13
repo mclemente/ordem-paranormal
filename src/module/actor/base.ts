@@ -981,12 +981,12 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
         else if (actionType === "free") actionImg = "free";
         else if (actionType === "passive") actionImg = "passive";
         const graphics: Record<string, { imageUrl: ImagePath; actionGlyph: string }> = {
-            1: { imageUrl: "systems/pf2e/icons/actions/OneAction.webp", actionGlyph: "A" },
-            2: { imageUrl: "systems/pf2e/icons/actions/TwoActions.webp", actionGlyph: "D" },
-            3: { imageUrl: "systems/pf2e/icons/actions/ThreeActions.webp", actionGlyph: "T" },
-            free: { imageUrl: "systems/pf2e/icons/actions/FreeAction.webp", actionGlyph: "F" },
-            reaction: { imageUrl: "systems/pf2e/icons/actions/Reaction.webp", actionGlyph: "R" },
-            passive: { imageUrl: "systems/pf2e/icons/actions/Passive.webp", actionGlyph: "" },
+            1: { imageUrl: "systems/ordem-paranormal/icons/actions/OneAction.webp", actionGlyph: "A" },
+            2: { imageUrl: "systems/ordem-paranormal/icons/actions/TwoActions.webp", actionGlyph: "D" },
+            3: { imageUrl: "systems/ordem-paranormal/icons/actions/ThreeActions.webp", actionGlyph: "T" },
+            free: { imageUrl: "systems/ordem-paranormal/icons/actions/FreeAction.webp", actionGlyph: "F" },
+            reaction: { imageUrl: "systems/ordem-paranormal/icons/actions/Reaction.webp", actionGlyph: "R" },
+            passive: { imageUrl: "systems/ordem-paranormal/icons/actions/Passive.webp", actionGlyph: "" },
         };
         if (objectHasKey(graphics, actionImg)) {
             return {
@@ -995,7 +995,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
             };
         } else {
             return {
-                imageUrl: "systems/pf2e/icons/actions/Empty.webp",
+                imageUrl: "systems/ordem-paranormal/icons/actions/Empty.webp",
                 actionGlyph: "",
             };
         }
@@ -1143,7 +1143,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
         this._source.prototypeToken = mergeObject(this._source.prototypeToken ?? {}, { texture: {} });
         if (this._source.img === ActorPF2e.DEFAULT_ICON) {
             this._source.img =
-                this._source.prototypeToken.texture.src = `systems/pf2e/icons/default-icons/${data.type}.svg`;
+                this._source.prototypeToken.texture.src = `systems/ordem-paranormal/icons/default-icons/${data.type}.svg`;
         }
 
         await super._preCreate(data, options, user);

@@ -5,7 +5,7 @@ import { LocalizePF2e } from "@module/system/localize";
 export const DamageButtons = {
     append: async (message: ChatMessagePF2e, html: JQuery): Promise<void> => {
         const $buttons = $(
-            await renderTemplate("systems/pf2e/templates/chat/damage/buttons.html", {
+            await renderTemplate("systems/ordem-paranormal/templates/chat/damage/buttons.html", {
                 showTripleDamage: game.settings.get("ordem-paranormal", "critFumbleButtons"),
             })
         );

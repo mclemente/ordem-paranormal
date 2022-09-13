@@ -121,7 +121,7 @@ class DicePF2e {
             if (parts.indexOf("@statusBonus") === -1) parts = parts.concat(["@statusBonus"]);
 
             // Render modal dialog
-            template = template || "systems/pf2e/templates/chat/roll-dialog.html";
+            template = template || "systems/ordem-paranormal/templates/chat/roll-dialog.html";
             const dialogData = {
                 data,
                 rollMode,
@@ -296,7 +296,7 @@ class DicePF2e {
         if (!parts.includes("@statusBonus")) parts.push("@statusBonus");
 
         // Construct dialog data
-        template = template || "systems/pf2e/templates/chat/roll-dialog.html";
+        template = template || "systems/ordem-paranormal/templates/chat/roll-dialog.html";
         const dialogData = {
             data,
             rollMode: defaultRollMode,

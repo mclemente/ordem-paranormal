@@ -6,11 +6,14 @@
         <h2 class="sidebar_label">{{localize "PF2E.SavesFortitude"}}</h2>
         <div class="save-roll">
             {{#if options.editable}}
-                <a class="roll-icon save-name">
-                    {{> systems/pf2e/templates/actors/character/icons/d20.html}}
-                </a>
+            <a class="roll-icon save-name">{{> systems/ordem-paranormal/templates/actors/character/icons/d20.html}}</a>
             {{/if}}
-            <input name="system.saves.fortitude.value" type="number" value="{{data.saves.fortitude.value}}" placeholder="0" />
+            <input
+                name="system.saves.fortitude.value"
+                type="number"
+                value="{{data.saves.fortitude.value}}"
+                placeholder="0"
+            />
         </div>
     </li>
 </ul>

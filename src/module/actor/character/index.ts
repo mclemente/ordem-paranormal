@@ -1275,8 +1275,8 @@ class CharacterPF2e extends CreaturePF2e {
                 if (!game.combat) return; // Only send out messages if in encounter mode
 
                 const templates = {
-                    flavor: "./systems/pf2e/templates/chat/action/flavor.html",
-                    content: "./systems/pf2e/templates/chat/action/content.html",
+                    flavor: "./systems/ordem-paranormal/templates/chat/action/flavor.html",
+                    content: "./systems/ordem-paranormal/templates/chat/action/content.html",
                 };
 
                 const flavorAction = {
@@ -1344,7 +1344,7 @@ class CharacterPF2e extends CreaturePF2e {
                       _id: "xxPF2ExUNARMEDxx",
                       name: game.i18n.localize("PF2E.WeaponTypeUnarmed"),
                       type: "weapon",
-                      img: "systems/pf2e/icons/features/classes/powerful-fist.webp",
+                      img: "systems/ordem-paranormal/icons/features/classes/powerful-fist.webp",
                       system: {
                           slug: "basic-unarmed",
                           category: "unarmed",

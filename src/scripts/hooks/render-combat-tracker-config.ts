@@ -8,9 +8,12 @@ export const RenderCombatTrackerConfig = {
             const $iconFormGroup = $formGroups.last().clone();
             $iconFormGroup.find("label").text(game.i18n.localize("PF2E.SETTINGS.DeathIcon.Name"));
             $iconFormGroup.find("p.notes").text(game.i18n.localize("PF2E.SETTINGS.DeathIcon.Hint"));
-            const replacement = await renderTemplate("systems/pf2e/templates/sidebar/encounter-tracker/config.html", {
-                value: game.settings.get("ordem-paranormal", "deathIcon"),
-            });
+            const replacement = await renderTemplate(
+                "systems/ordem-paranormal/templates/sidebar/encounter-tracker/config.html",
+                {
+                    value: game.settings.get("ordem-paranormal", "deathIcon"),
+                }
+            );
             $iconFormGroup.find("input").replaceWith(replacement);
 
             // Add an "Actors dead at zero hit points" setting

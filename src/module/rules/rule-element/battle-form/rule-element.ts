@@ -76,7 +76,7 @@ export class BattleFormRuleElement extends RuleElementPF2e {
         "wave",
         "wing",
     ].reduce((accumulated: Record<string, ImagePath | undefined>, strike) => {
-        const path = `systems/pf2e/icons/unarmed-attacks/${strike}.webp` as const;
+        const path = `systems/ordem-paranormal/icons/unarmed-attacks/${strike}.webp` as const;
         return { ...accumulated, [strike]: path };
     }, {});
 

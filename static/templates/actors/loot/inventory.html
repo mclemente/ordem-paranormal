@@ -1,5 +1,5 @@
 <section class="sheet-body content sheet-content-loot inventory">
-    {{> "systems/pf2e/templates/actors/partials/coinage.html" owner=owner}}
+    {{> "systems/ordem-paranormal/templates/actors/partials/coinage.html" owner=owner}}
     <ol class="inventory-list directory-list inventory-pane item-container item-list" data-container-type="actorInventory">
         {{#each inventory.sections as |section|}}
             <li class="inventory-header">
@@ -16,7 +16,7 @@
             </li>
             <ol class="item-list">
                 {{#each section.items}}
-                    {{> "systems/pf2e/templates/actors/partials/item-line.html" this=this editable=@root.editable owner=@root.owner user=@root.user}}
+                    {{> "systems/ordem-paranormal/templates/actors/partials/item-line.html" this=this editable=@root.editable owner=@root.owner user=@root.user}}
                 {{/each}}
             </ol>
         {{/each}}

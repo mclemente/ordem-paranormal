@@ -35,7 +35,7 @@ export class MoveLootPopup extends FormApplication<{}, MoveLootOptions> {
             id: "MoveLootPopup",
             classes: [],
             title: game.i18n.localize("PF2E.loot.MoveLootPopupTitle"),
-            template: "systems/pf2e/templates/popups/loot/move-loot-popup.html",
+            template: "systems/ordem-paranormal/templates/popups/loot/move-loot-popup.html",
             width: "auto",
             maxQuantity: 1,
             newStack: false,

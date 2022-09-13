@@ -26,7 +26,7 @@
                         {{#if deity}}
                             <a class="item-edit"><i class="fas fa-fw fa-edit"></i></a>
                         {{else}}
-                            <a class="open-compendium" data-compendium="pf2e.deities"><i class="fas fa-fw fa-plus-circle"></i></a>
+                            <a class="open-compendium" data-compendium="ordem-paranormal.deities"><i class="fas fa-fw fa-plus-circle"></i></a>
                         {{/if}}
                     {{/if}}
                 </h3>
@@ -34,7 +34,7 @@
             {{#if deity}}
                 <img class="symbol" src="{{deity.img}}" alt="{{deity.name}}" />
             {{else}}
-                <img class="symbol" src="systems/pf2e/icons/default-icons/deity.svg" alt="{{localize "PF2E.Deity"}}" />
+                <img class="symbol" src="systems/ordem-paranormal/icons/default-icons/deity.svg" alt="{{localize "PF2E.Deity"}}" />
             {{/if}}
         </div>
         <div class="detail-sheet">
@@ -47,7 +47,7 @@
                             {{#if ancestry}}
                                 <a class="item-edit"><i class="fas fa-fw fa-edit"></i></a>
                             {{else}}
-                                <a class="open-compendium" data-compendium="pf2e.ancestries"><i class="fas fa-fw fa-plus-circle"></i></a>
+                                <a class="open-compendium" data-compendium="ordem-paranormal.ancestries"><i class="fas fa-fw fa-plus-circle"></i></a>
                             {{/if}}
                         {{/if}}
                     </h3>
@@ -62,7 +62,7 @@
                             {{#if heritage}}
                                 <a class="item-edit"><i class="fas fa-fw fa-edit"></i></a>
                             {{else}}
-                                <a class="open-compendium" data-compendium="pf2e.heritages"><i class="fas fa-fw fa-plus-circle"></i></a>
+                                <a class="open-compendium" data-compendium="ordem-paranormal.heritages"><i class="fas fa-fw fa-plus-circle"></i></a>
                             {{/if}}
                         {{/if}}
                     </h3>
@@ -77,7 +77,7 @@
                             {{#if class}}
                                 <a class="item-edit"><i class="fas fa-fw fa-edit"></i></a>
                             {{else}}
-                                <a class="open-compendium" data-compendium="pf2e.classes"><i class="fas fa-fw fa-plus-circle"></i></a>
+                                <a class="open-compendium" data-compendium="ordem-paranormal.classes"><i class="fas fa-fw fa-plus-circle"></i></a>
                             {{/if}}
                         {{/if}}
                     </h3>
@@ -94,7 +94,7 @@
                             {{#if background}}
                                 <a class="item-edit"><i class="fas fa-fw fa-edit"></i></a>
                             {{else}}
-                                <a class="open-compendium" data-compendium="pf2e.backgrounds"><i class="fas fa-fw fa-plus-circle"></i></a>
+                                <a class="open-compendium" data-compendium="ordem-paranormal.backgrounds"><i class="fas fa-fw fa-plus-circle"></i></a>
                             {{/if}}
                         {{/if}}
                     </h3>
@@ -105,16 +105,16 @@
 
     <hr />
     <section class="character-background">
-        {{> "systems/pf2e/templates/actors/character/partials/background.html"}}
+        {{> "systems/ordem-paranormal/templates/actors/character/partials/background.html"}}
     </section>
 
     <hr />
     <section class="character-traits">
-        {{> "systems/pf2e/templates/actors/character/partials/traits.html"}}
+        {{> "systems/ordem-paranormal/templates/actors/character/partials/traits.html"}}
     </section>
 
     <h3 class="header">{{localize "PF2E.AbilityScoresHeader"}} <button type="button" data-action="edit-ability-scores"><i class="fas fa-fw fa-edit"></i>{{localize "PF2E.Edit"}}</button></h3>
     <section class="character-abilities">
-        {{> "systems/pf2e/templates/actors/character/partials/abilities.html"}}
+        {{> "systems/ordem-paranormal/templates/actors/character/partials/abilities.html"}}
     </section>
 </div>

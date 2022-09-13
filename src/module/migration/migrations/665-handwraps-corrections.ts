@@ -13,7 +13,7 @@ export class Migration665HandwrapsCorrections extends MigrationBase {
             usage.value = "worn-gloves";
         }
 
-        const dirPath = "systems/pf2e/icons/equipment/worn-items/other-worn-items";
+        const dirPath = "systems/ordem-paranormal/icons/equipment/worn-items/other-worn-items";
         if (itemSource.img === `${dirPath}/handwraps-of-nighty-blows.webp`) {
             itemSource.img = `${dirPath}/handwraps-of-mighty-blows.webp`;
         }

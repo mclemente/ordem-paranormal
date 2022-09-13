@@ -135,7 +135,7 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
         // Synchronize the token image with the actor image, if the token does not currently have an image
         const tokenImgIsDefault = [
             ActorPF2e.DEFAULT_ICON,
-            `systems/pf2e/icons/default-icons/${this.actor.type}.svg`,
+            `systems/ordem-paranormal/icons/default-icons/${this.actor.type}.svg`,
         ].includes(this.texture.src);
         if (tokenImgIsDefault) {
             this.texture.src = this.actor._source.img;
@@ -167,14 +167,17 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
         this.flags.pf2e = mergeObject(this.flags.pf2e ?? {}, { linkToActorSize, autoscale });
 
         // Nath mode
-        const defaultIcons = [ActorPF2e.DEFAULT_ICON, `systems/pf2e/icons/default-icons/${this.actor.type}.svg`];
+        const defaultIcons = [
+            ActorPF2e.DEFAULT_ICON,
+            `systems/ordem-paranormal/icons/default-icons/${this.actor.type}.svg`,
+        ];
         if (game.settings.get("ordem-paranormal", "nathMode") && defaultIcons.includes(this.texture.src)) {
             this.texture.src = ((): VideoPath => {
                 switch (this.actor.alliance) {
                     case "party":
-                        return "systems/pf2e/icons/default-icons/alternatives/nath/ally.webp";
+                        return "systems/ordem-paranormal/icons/default-icons/alternatives/nath/ally.webp";
                     case "opposition":
-                        return "systems/pf2e/icons/default-icons/alternatives/nath/enemy.webp";
+                        return "systems/ordem-paranormal/icons/default-icons/alternatives/nath/enemy.webp";
                     default:
                         return this.texture.src;
                 }

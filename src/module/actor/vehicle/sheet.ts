@@ -15,7 +15,7 @@ export class VehicleSheetPF2e extends ActorSheetPF2e<VehiclePF2e> {
     }
 
     override get template(): string {
-        return "systems/pf2e/templates/actors/vehicle/vehicle-sheet.html";
+        return "systems/ordem-paranormal/templates/actors/vehicle/vehicle-sheet.html";
     }
 
     override async getData() {

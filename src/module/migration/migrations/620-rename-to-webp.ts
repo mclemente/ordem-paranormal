@@ -17,7 +17,10 @@ export class Migration620RenameToWebp extends MigrationBase {
         if (typeof imgPath === "string" && this.regexp.test(imgPath)) {
             return imgPath.replace(this.regexp, "$1.webp") as T;
         }
-        return imgPath?.replace("icons/svg/mystery-man.svg", "systems/pf2e/icons/default-icons/mystery-man.svg") as T;
+        return imgPath?.replace(
+            "icons/svg/mystery-man.svg",
+            "systems/ordem-paranormal/icons/default-icons/mystery-man.svg"
+        ) as T;
     }
 
     private isABCK(itemData: ItemSourcePF2e): itemData is AncestrySource | BackgroundSource | ClassSource | KitSource {

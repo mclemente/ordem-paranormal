@@ -138,5 +138,5 @@ export function getUnidentifiedPlaceholderImage(item: PhysicalItemPF2e): string 
         return "adventuring_gear";
     })();
 
-    return `systems/pf2e/icons/unidentified_item_icons/${iconName}.webp`;
+    return `systems/ordem-paranormal/icons/unidentified_item_icons/${iconName}.webp`;
 }

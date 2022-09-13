@@ -296,7 +296,7 @@ export abstract class CreaturePF2e extends ActorPF2e {
                 raised: false,
                 broken: false,
                 destroyed: false,
-                icon: "systems/pf2e/icons/actions/raise-a-shield.webp",
+                icon: "systems/ordem-paranormal/icons/actions/raise-a-shield.webp",
             };
         }
 

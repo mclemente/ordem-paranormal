@@ -8,11 +8,14 @@ async function add(actor: CharacterPF2e, event: MouseEvent): Promise<void> {
     const translations = LocalizePF2e.translations.PF2E;
     const weaponGroups = CONFIG.PF2E.weaponGroups;
     const baseWeapons = translations.Weapon.Base;
-    const template = await renderTemplate("systems/pf2e/templates/actors/add-combat-proficiency-dialog.html", {
-        message: translations.AddCombatProficiency.Message,
-        weaponGroups,
-        baseWeapons,
-    });
+    const template = await renderTemplate(
+        "systems/ordem-paranormal/templates/actors/add-combat-proficiency-dialog.html",
+        {
+            message: translations.AddCombatProficiency.Message,
+            weaponGroups,
+            baseWeapons,
+        }
+    );
 
     const dialog = new Dialog({
         title: LocalizePF2e.translations.PF2E.AddCombatProficiency.Title,

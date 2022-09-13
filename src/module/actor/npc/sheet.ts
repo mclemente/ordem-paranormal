@@ -44,11 +44,11 @@ export class NPCSheetPF2e<TActor extends NPCPF2e> extends CreatureSheetPF2e<TAct
     /** Show either the actual NPC sheet or a briefened lootable version if the NPC is dead */
     override get template(): string {
         if (this.isLootSheet) {
-            return "systems/pf2e/templates/actors/npc/loot-sheet.html";
+            return "systems/ordem-paranormal/templates/actors/npc/loot-sheet.html";
         } else if (this.actor.limited) {
-            return "systems/pf2e/templates/actors/limited/npc-sheet.html";
+            return "systems/ordem-paranormal/templates/actors/limited/npc-sheet.html";
         }
-        return "systems/pf2e/templates/actors/npc/sheet.html";
+        return "systems/ordem-paranormal/templates/actors/npc/sheet.html";
     }
 
     /** Use the token name as the title if showing a lootable NPC sheet */

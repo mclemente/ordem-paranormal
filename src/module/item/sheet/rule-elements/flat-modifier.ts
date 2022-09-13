@@ -6,7 +6,7 @@ import { coerceNumber, RuleElementForm } from "./base";
 
 /** Form handler for the flat modifier rule element */
 class FlatModifierForm extends RuleElementForm<FlatModifierSource> {
-    override template = "systems/pf2e/templates/items/rules/flat-modifier.html";
+    override template = "systems/ordem-paranormal/templates/items/rules/flat-modifier.html";
     override activateListeners(html: HTMLElement): void {
         // Tagify the selector list
         const selectorElement = htmlQuery<HTMLInputElement>(html, ".selector-list");

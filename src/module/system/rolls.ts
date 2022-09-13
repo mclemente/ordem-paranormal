@@ -735,7 +735,7 @@ class CheckPF2e {
         })();
 
         // Render the template and replace quasi-XML nodes with visibility-data-containing HTML elements
-        const rendered = await renderTemplate("systems/pf2e/templates/chat/check/target-dc-result.html", {
+        const rendered = await renderTemplate("systems/ordem-paranormal/templates/chat/check/target-dc-result.html", {
             target: targetData,
             dc: dcData,
             result: resultData,

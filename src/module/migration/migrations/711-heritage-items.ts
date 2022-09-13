@@ -179,7 +179,9 @@ export class Migration711HeritageItems extends MigrationBase {
         return {
             _id: randomID(),
             type: "heritage",
-            img: feature.img.endsWith("/feat.svg") ? "systems/pf2e/icons/default-icons/heritage.svg" : feature.img,
+            img: feature.img.endsWith("/feat.svg")
+                ? "systems/ordem-paranormal/icons/default-icons/heritage.svg"
+                : feature.img,
             name: feature.name,
             effects: [],
             folder: feature.folder,
@@ -231,8 +233,8 @@ export class Migration711HeritageItems extends MigrationBase {
 
         const newSource: { type: string; img: ImagePath; system: object } = itemSource;
         newSource.type = "heritage";
-        if (itemSource.img === "systems/pf2e/icons/default-icons/feat.svg") {
-            itemSource.img = "systems/pf2e/icons/default-icons/heritage.svg";
+        if (itemSource.img === "systems/ordem-paranormal/icons/default-icons/feat.svg") {
+            itemSource.img = "systems/ordem-paranormal/icons/default-icons/heritage.svg";
         }
         const newSystemData: HeritageSystemSource & FeatPropertyDeletions = this.heritageFromFeat(itemSource).system;
         const toDelete = ["featType", "actionCategory", "actions", "actionType", "level", "location"] as const;

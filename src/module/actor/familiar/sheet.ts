@@ -23,7 +23,7 @@ export class FamiliarSheetPF2e extends CreatureSheetPF2e<FamiliarPF2e> {
     }
 
     override get template() {
-        return "systems/pf2e/templates/actors/familiar-sheet.html";
+        return "systems/ordem-paranormal/templates/actors/familiar-sheet.html";
     }
 
     override async getData(options?: ActorSheetOptions): Promise<FamiliarSheetData> {

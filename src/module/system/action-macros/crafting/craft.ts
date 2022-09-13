@@ -99,7 +99,7 @@ class SelectItemDialog extends Application {
     private constructor(private resolve: (value: PhysicalItemPF2e | null) => void) {
         super({
             classes: ["select-craft-item-dialog"],
-            template: "systems/pf2e/templates/system/actions/craft-target-item.html",
+            template: "systems/ordem-paranormal/templates/system/actions/craft-target-item.html",
             title: "PF2E.Actions.Craft.SelectItemDialog.Title",
             width: 270,
         });

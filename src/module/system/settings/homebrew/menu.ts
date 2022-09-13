@@ -50,7 +50,9 @@ class HomebrewElements extends SettingsMenuPF2e {
     } as const;
 
     static override get defaultOptions() {
-        return mergeObject(super.defaultOptions, { template: "systems/pf2e/templates/system/settings/homebrew.html" });
+        return mergeObject(super.defaultOptions, {
+            template: "systems/ordem-paranormal/templates/system/settings/homebrew.html",
+        });
     }
 
     protected static override get settings(): Record<ConfigPF2eHomebrewRecord, PartialSettingsData> {

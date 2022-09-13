@@ -183,15 +183,15 @@ function parseHTML(unparsed: string): HTMLElement {
 }
 
 const actionImgMap: Record<string, ImagePath> = {
-    1: "systems/pf2e/icons/actions/OneAction.webp",
-    2: "systems/pf2e/icons/actions/TwoActions.webp",
-    3: "systems/pf2e/icons/actions/ThreeActions.webp",
-    "1 or 2": "systems/pf2e/icons/actions/OneTwoActions.webp",
-    "1 to 3": "systems/pf2e/icons/actions/OneThreeActions.webp",
-    "2 or 3": "systems/pf2e/icons/actions/TwoThreeActions.webp",
-    free: "systems/pf2e/icons/actions/FreeAction.webp",
-    reaction: "systems/pf2e/icons/actions/Reaction.webp",
-    passive: "systems/pf2e/icons/actions/Passive.webp",
+    1: "systems/ordem-paranormal/icons/actions/OneAction.webp",
+    2: "systems/ordem-paranormal/icons/actions/TwoActions.webp",
+    3: "systems/ordem-paranormal/icons/actions/ThreeActions.webp",
+    "1 or 2": "systems/ordem-paranormal/icons/actions/OneTwoActions.webp",
+    "1 to 3": "systems/ordem-paranormal/icons/actions/OneThreeActions.webp",
+    "2 or 3": "systems/ordem-paranormal/icons/actions/TwoThreeActions.webp",
+    free: "systems/ordem-paranormal/icons/actions/FreeAction.webp",
+    reaction: "systems/ordem-paranormal/icons/actions/Reaction.webp",
+    passive: "systems/ordem-paranormal/icons/actions/Passive.webp",
 };
 
 function getActionIcon(actionType: string | ActionCost | null, fallback: ImagePath): ImagePath;
@@ -199,7 +199,7 @@ function getActionIcon(actionType: string | ActionCost | null, fallback: ImagePa
 function getActionIcon(actionType: string | ActionCost | null): ImagePath;
 function getActionIcon(
     action: string | ActionCost | null,
-    fallback: ImagePath | null = "systems/pf2e/icons/default-icons/mystery-man.svg"
+    fallback: ImagePath | null = "systems/ordem-paranormal/icons/default-icons/mystery-man.svg"
 ): ImagePath | null {
     if (action === null) return actionImgMap["passive"];
     const value = typeof action !== "object" ? action : action.type === "action" ? action.value : action.type;

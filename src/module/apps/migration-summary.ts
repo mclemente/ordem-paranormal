@@ -23,7 +23,7 @@ export class MigrationSummary extends Application<MigrationSummaryOptions> {
     }
 
     override get template(): string {
-        return "systems/pf2e/templates/system/migration-summary.html";
+        return "systems/ordem-paranormal/templates/system/migration-summary.html";
     }
 
     static override get defaultOptions() {

@@ -1,12 +1,13 @@
-<div class="tab inventory item-container" data-container-type="actorInventory" data-group="primary" data-tab="inventory">
+<div
+    class="tab inventory item-container"
+    data-container-type="actorInventory"
+    data-group="primary"
+    data-tab="inventory"
+>
     <div class="items inventory-section">
-        {{#if @root.owner}}
-            {{> "systems/pf2e/templates/actors/partials/coinage.html" owner=@root.owner}}
+        {{#if @root.owner}} {{> "systems/ordem-paranormal/templates/actors/partials/coinage.html" owner=@root.owner}}
         {{/if}}
-        <div class="body">
-            {{> "systems/pf2e/templates/actors/partials/inventory.html"}}
-        </div>
-        <div class="footer">
-        </div>
+        <div class="body">{{> "systems/ordem-paranormal/templates/actors/partials/inventory.html"}}</div>
+        <div class="footer"></div>
     </div>
 </div>

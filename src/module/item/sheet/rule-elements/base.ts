@@ -12,7 +12,7 @@ function coerceNumber<T extends string | unknown>(value: T): T | number {
 
 /** Base Rule Element form handler. Form handlers intercept sheet events to support new UI */
 class RuleElementForm<TSource extends RuleElementSource = RuleElementSource> {
-    template = "systems/pf2e/templates/items/rules/default.html";
+    template = "systems/ordem-paranormal/templates/items/rules/default.html";
     constructor(protected item: ItemPF2e, protected index: number, protected rule: TSource) {}
     async getData(): Promise<{ index: number; rule: TSource }> {
         return {

@@ -142,8 +142,8 @@ function pruneTree(docSource: PackEntry, topLevel: PackEntry): void {
             delete docSource.folder;
 
             docSource.img &&= docSource.img.replace(
-                "https://assets.forge-vtt.com/bazaar/systems/pf2e/assets/",
-                "systems/pf2e/"
+                "https://assets.forge-vtt.com/bazaar/systems/ordem-paranormal/assets/",
+                "systems/ordem-paranormal/"
             ) as ImagePath;
 
             if (isObject(docSource.flags?.pf2e) && Object.keys(docSource.flags.pf2e).length === 0) {
@@ -168,8 +168,8 @@ function pruneTree(docSource: PackEntry, topLevel: PackEntry): void {
                     (docSource.prototypeToken as DeepPartial<foundry.data.PrototypeTokenSource>) = {
                         texture: {
                             src: docSource.prototypeToken.texture.src.replace(
-                                "https://assets.forge-vtt.com/bazaar/systems/pf2e/assets/",
-                                "systems/pf2e/"
+                                "https://assets.forge-vtt.com/bazaar/systems/ordem-paranormal/assets/",
+                                "systems/ordem-paranormal/"
                             ) as ImagePath | VideoPath,
                         },
                         name: docSource.prototypeToken.name,
@@ -202,8 +202,8 @@ function pruneTree(docSource: PackEntry, topLevel: PackEntry): void {
                         delete (docSource.system as { deathNote?: boolean }).deathNote;
                     } else if (docSource.type === "feat") {
                         const isFeat = !["ancestryfeature", "classfeature"].includes(docSource.system.featType.value);
-                        if (isFeat && docSource.img === "systems/pf2e/icons/default-icons/feat.svg") {
-                            docSource.img = "systems/pf2e/icons/features/feats/feats.webp";
+                        if (isFeat && docSource.img === "systems/ordem-paranormal/icons/default-icons/feat.svg") {
+                            docSource.img = "systems/ordem-paranormal/icons/features/feats/feats.webp";
                         }
 
                         if (docSource.system.maxTakable === 1) {

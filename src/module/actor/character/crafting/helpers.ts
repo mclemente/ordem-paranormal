@@ -131,9 +131,12 @@ export async function craftSpellConsumable(
             result[spell.baseLevel] = [...(result[spell.baseLevel] || []), spell];
             return result;
         }, <Record<number, Embedded<SpellPF2e>[]>>{});
-    const content = await renderTemplate("systems/pf2e/templates/actors/crafting-select-spell-dialog.html", {
-        spells: validSpells,
-    });
+    const content = await renderTemplate(
+        "systems/ordem-paranormal/templates/actors/crafting-select-spell-dialog.html",
+        {
+            spells: validSpells,
+        }
+    );
 
     new Dialog({
         title: game.i18n.localize("PF2E.Actions.Craft.SelectSpellDialog.Title"),
@@ -175,7 +178,7 @@ export async function renderCraftingInline(
 
     const daysForZeroCost = degreeOfSuccess > 1 ? calculateDaysToNoCost(costs) : 0;
 
-    return await renderTemplate("systems/pf2e/templates/chat/crafting-result.html", {
+    return await renderTemplate("systems/ordem-paranormal/templates/chat/crafting-result.html", {
         daysForZeroCost: daysForZeroCost,
         strings: await prepStrings(costs, item),
         item,

@@ -504,10 +504,13 @@ export abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorShee
                 return;
             }
 
-            const content = await renderTemplate("systems/pf2e/templates/actors/delete-condition-dialog.html", {
-                question: game.i18n.format("PF2E.DeleteConditionQuestion", { condition: item.name }),
-                ref: references.html(),
-            });
+            const content = await renderTemplate(
+                "systems/ordem-paranormal/templates/actors/delete-condition-dialog.html",
+                {
+                    question: game.i18n.format("PF2E.DeleteConditionQuestion", { condition: item.name }),
+                    ref: references.html(),
+                }
+            );
             new Dialog({
                 title: game.i18n.localize("PF2E.DeleteConditionTitle"),
                 content,
@@ -534,7 +537,7 @@ export abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorShee
                 return;
             }
 
-            const content = await renderTemplate("systems/pf2e/templates/actors/delete-item-dialog.html", {
+            const content = await renderTemplate("systems/ordem-paranormal/templates/actors/delete-item-dialog.html", {
                 name: item.name,
             });
             new Dialog({
@@ -1010,7 +1013,7 @@ export abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorShee
         event.preventDefault();
         const header = event.currentTarget;
         const data: any = duplicate(header.dataset);
-        data.img = `systems/pf2e/icons/default-icons/${data.type}.svg`;
+        data.img = `systems/ordem-paranormal/icons/default-icons/${data.type}.svg`;
 
         if (data.type === "action") {
             const newLabel = game.i18n.localize("PF2E.NewLabel");
@@ -1068,7 +1071,7 @@ export abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorShee
         }
 
         // Render confirmation modal dialog
-        renderTemplate("systems/pf2e/templates/actors/delete-spellcasting-dialog.html").then((html) => {
+        renderTemplate("systems/ordem-paranormal/templates/actors/delete-spellcasting-dialog.html").then((html) => {
             new Dialog({
                 title: "Delete Confirmation",
                 content: html,
@@ -1115,7 +1118,7 @@ export abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorShee
     private onSellAllTreasure(event: JQuery.ClickEvent) {
         event.preventDefault();
         // Render confirmation modal dialog
-        renderTemplate("systems/pf2e/templates/actors/sell-all-treasure-dialog.html").then((html) => {
+        renderTemplate("systems/ordem-paranormal/templates/actors/sell-all-treasure-dialog.html").then((html) => {
             new Dialog({
                 title: game.i18n.localize("PF2E.SellAllTreasureTitle"),
                 content: html,

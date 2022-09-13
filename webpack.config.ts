@@ -30,7 +30,7 @@ interface Configuration extends Omit<webpack.Configuration, "devServer"> {
 const allTemplates = (): string => {
     return glob
         .sync("**/*.html", { cwd: path.join(__dirname, "static/templates") })
-        .map((file: string) => `"systems/pf2e/templates/${file}"`)
+        .map((file: string) => `"systems/ordem-paranormal/templates/${file}"`)
         .join(", ");
 };
 

@@ -7,7 +7,7 @@ import { FlatModifierForm } from "./flat-modifier";
 /** Form handler for the RollNote rule element */
 class RollNoteForm extends RuleElementForm {
     private html: HTMLElement | null = null;
-    override template = "systems/pf2e/templates/items/rules/note.html";
+    override template = "systems/ordem-paranormal/templates/items/rules/note.html";
     override activateListeners(html: HTMLElement) {
         this.html = html;
         const optionsEl = html.querySelector<HTMLInputElement>(".outcomes");
@@ -45,7 +45,7 @@ class RollNoteForm extends RuleElementForm {
 
 /** Form handler for the GrantItem rule element */
 class GrantItemForm extends RuleElementForm<GrantItemSource> {
-    override template = "systems/pf2e/templates/items/rules/grant-item.html";
+    override template = "systems/ordem-paranormal/templates/items/rules/grant-item.html";
     override async getData() {
         const data = await super.getData();
         const uuid = this.rule.uuid ? String(this.rule.uuid) : null;

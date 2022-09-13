@@ -111,7 +111,7 @@ export class CompendiumPack {
                     const repoImgPath = path.resolve(
                         process.cwd(),
                         "static",
-                        decodeURIComponent(imgPath).replace("systems/pf2e/", "")
+                        decodeURIComponent(imgPath).replace("systems/ordem-paranormal/", "")
                     );
                     if (!imgPath.match(/^\/?icons\/svg/) && !fs.existsSync(repoImgPath)) {
                         throw PackError(`${documentName} (${this.name}) has a broken image link: ${imgPath}`);

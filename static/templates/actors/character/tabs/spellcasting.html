@@ -57,14 +57,14 @@
                             <span class="spell-tradition">{{localize (lookup @root.magicTraditions entry.tradition)}}</span>
                             <div class="spellcasting-prof button-group skill-container">
                                 <select class="skill-proficiency pf-rank adjust-item-stat-select" data-item-property="system.proficiency.value" value="{{entry.system.proficiency.value}}">
-                                    {{> "systems/pf2e/templates/actors/character/partials/proficiencylevels-dropdown.html" excludeUntrained=true proflevel=entry.system.proficiency.value}}
+                                    {{> "systems/ordem-paranormal/templates/actors/character/partials/proficiencylevels-dropdown.html" excludeUntrained=true proflevel=entry.system.proficiency.value}}
                                 </select>
                             </div>
                         </li>
                     </ol>
                 {{/unless}}
 
-                {{> "systems/pf2e/templates/actors/spellcasting-spell-list.html" entry=entry}}
+                {{> "systems/ordem-paranormal/templates/actors/spellcasting-spell-list.html" entry=entry}}
             </li>
         {{/each}}
 
