@@ -13,7 +13,7 @@ class ScenePF2e extends Scene<
 
     /** Is the rules-based vision setting enabled? */
     get rulesBasedVision(): boolean {
-        const settingEnabled = game.settings.get("pf2e", "automation.rulesBasedVision");
+        const settingEnabled = game.settings.get("ordem-paranormal", "automation.rulesBasedVision");
         return this.tokenVision && settingEnabled;
     }
 
@@ -21,7 +21,8 @@ class ScenePF2e extends Scene<
     get darknessSyncedToTime(): boolean {
         return (
             this.flags.pf2e.syncDarkness === "enabled" ||
-            (this.flags.pf2e.syncDarkness === "default" && game.settings.get("pf2e", "worldClock.syncDarkness"))
+            (this.flags.pf2e.syncDarkness === "default" &&
+                game.settings.get("ordem-paranormal", "worldClock.syncDarkness"))
         );
     }
 

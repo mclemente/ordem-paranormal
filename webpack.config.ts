@@ -39,7 +39,7 @@ const [outDir, foundryUri] = ((): [string, string] => {
     const config = fs.readJSONSync(configPath, { throws: false });
     const outDir =
         config instanceof Object
-            ? path.join(config.dataPath, "Data", "systems", config.systemName ?? "pf2e")
+            ? path.join(config.dataPath, "Data", "systems", config.systemName ?? "ordem-paranormal")
             : path.join(__dirname, "dist/");
     const foundryUri = (config instanceof Object ? String(config.foundryUri) : "") ?? "http://localhost:30000";
     return [outDir, foundryUri];

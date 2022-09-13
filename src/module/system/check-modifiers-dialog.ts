@@ -133,7 +133,7 @@ export class CheckModifiersDialog extends Application {
         });
         $html.find<HTMLInputElement>(".settings-list input.quick-rolls-submit").on("change", async (event) => {
             const $checkbox = $(event.delegateTarget);
-            await game.user.setFlag("pf2e", "settings.showRollDialogs", $checkbox[0].checked);
+            await game.user.setFlag("ordem-paranormal", "settings.showRollDialogs", $checkbox[0].checked);
             $tooltip.tooltipster("close");
         });
     }

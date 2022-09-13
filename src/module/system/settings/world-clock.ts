@@ -43,7 +43,7 @@ export class WorldClockSettings extends FormApplication {
     }
 
     override async getData(): Promise<TemplateData> {
-        const worldDefault = game.settings.get("pf2e", "worldClock.syncDarkness")
+        const worldDefault = game.settings.get("ordem-paranormal", "worldClock.syncDarkness")
             ? game.i18n.localize(CONFIG.PF2E.SETTINGS.worldClock.syncDarknessScene.enabled)
             : game.i18n.localize(CONFIG.PF2E.SETTINGS.worldClock.syncDarknessScene.disabled);
         const sceneSetting: [string, SettingRegistration] = [
@@ -71,7 +71,7 @@ export class WorldClockSettings extends FormApplication {
         const settings: FormInputData[] = visibleSettings.map(([key, setting]) => {
             const value = ((): unknown => {
                 if (key === "syncDarknessScene") return canvas.scene?.flags.pf2e.syncDarkness;
-                const rawValue = game.settings.get("pf2e", `worldClock.${key}`);
+                const rawValue = game.settings.get("ordem-paranormal", `worldClock.${key}`);
 
                 // Present the world-creation timestamp as an HTML datetime-locale input
                 if (key === "worldCreatedOn" && typeof rawValue === "string") {
@@ -94,12 +94,12 @@ export class WorldClockSettings extends FormApplication {
 
     /** Register World Clock settings */
     static registerSettings(): void {
-        game.settings.register("pf2e", "worldClock.dateTheme", this.settings.dateTheme);
-        game.settings.register("pf2e", "worldClock.timeConvention", this.settings.timeConvention);
-        game.settings.register("pf2e", "worldClock.playersCanView", this.settings.playersCanView);
-        game.settings.register("pf2e", "worldClock.syncDarkness", this.settings.syncDarkness);
-        game.settings.register("pf2e", "worldClock.worldCreatedOn", this.settings.worldCreatedOn);
-        game.settings.register("pf2e", "worldClock.showClockButton", this.settings.showClockButton);
+        game.settings.register("ordem-paranormal", "worldClock.dateTheme", this.settings.dateTheme);
+        game.settings.register("ordem-paranormal", "worldClock.timeConvention", this.settings.timeConvention);
+        game.settings.register("ordem-paranormal", "worldClock.playersCanView", this.settings.playersCanView);
+        game.settings.register("ordem-paranormal", "worldClock.syncDarkness", this.settings.syncDarkness);
+        game.settings.register("ordem-paranormal", "worldClock.worldCreatedOn", this.settings.worldCreatedOn);
+        game.settings.register("ordem-paranormal", "worldClock.showClockButton", this.settings.showClockButton);
     }
 
     override activateListeners($html: JQuery): void {
@@ -142,10 +142,10 @@ export class WorldClockSettings extends FormApplication {
         for await (const key of keys) {
             const settingKey = `worldClock.${key}`;
             const newValue = key === "worldCreatedOn" ? DateTime.fromISO(data[key]).toUTC() : data[key];
-            await game.settings.set("pf2e", settingKey, newValue);
+            await game.settings.set("ordem-paranormal", settingKey, newValue);
         }
 
-        await canvas.scene?.setFlag("pf2e", "syncDarkness", data.syncDarknessScene ?? "default");
+        await canvas.scene?.setFlag("ordem-paranormal", "syncDarkness", data.syncDarknessScene ?? "default");
         delete (data as { syncDarknessScene?: unknown }).syncDarknessScene;
 
         game.pf2e.worldClock.render(false);
@@ -191,9 +191,9 @@ export class WorldClockSettings extends FormApplication {
                 type: Boolean,
                 onChange: () => {
                     game.settings.set(
-                        "pf2e",
+                        "ordem-paranormal",
                         "worldClock.playersCanView",
-                        game.settings.get("pf2e", "worldClock.showClockButton")
+                        game.settings.get("ordem-paranormal", "worldClock.showClockButton")
                     );
                 },
             },

@@ -9,7 +9,7 @@ export const RenderCombatTrackerConfig = {
             $iconFormGroup.find("label").text(game.i18n.localize("PF2E.SETTINGS.DeathIcon.Name"));
             $iconFormGroup.find("p.notes").text(game.i18n.localize("PF2E.SETTINGS.DeathIcon.Hint"));
             const replacement = await renderTemplate("systems/pf2e/templates/sidebar/encounter-tracker/config.html", {
-                value: game.settings.get("pf2e", "deathIcon"),
+                value: game.settings.get("ordem-paranormal", "deathIcon"),
             });
             $iconFormGroup.find("input").replaceWith(replacement);
 
@@ -33,7 +33,7 @@ export const RenderCombatTrackerConfig = {
             $select
                 .attr({ name: "actorsDeadAtZero" })
                 .html(options)
-                .val(game.settings.get("pf2e", "automation.actorsDeadAtZero"));
+                .val(game.settings.get("ordem-paranormal", "automation.actorsDeadAtZero"));
             $formGroups.last().after($iconFormGroup, $deadAtZeroFormGroup);
 
             // Reactivate listeners to make the file picker work

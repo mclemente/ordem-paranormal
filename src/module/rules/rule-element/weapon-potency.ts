@@ -28,7 +28,7 @@ export class WeaponPotencyRuleElement extends RuleElementPF2e {
         const value = this.resolveValue(potencyValue);
         if (selector && typeof value === "number") {
             const bonusType =
-                game.settings.get("pf2e", "automaticBonusVariant") === "noABP"
+                game.settings.get("ordem-paranormal", "automaticBonusVariant") === "noABP"
                     ? MODIFIER_TYPE.ITEM
                     : MODIFIER_TYPE.POTENCY;
 

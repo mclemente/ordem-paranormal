@@ -263,7 +263,7 @@ class CharacterPF2e extends CreaturePF2e {
         flags.pf2e.showBasicUnarmed ??= true;
 
         // Build selections: boosts and skill trainings
-        const isGradual = game.settings.get("pf2e", "gradualBoostsVariant");
+        const isGradual = game.settings.get("ordem-paranormal", "gradualBoostsVariant");
         const boostLevels = [1, 5, 10, 15, 20] as const;
         const allowedBoosts = boostLevels.reduce((result, level) => {
             const allowed = (() => {
@@ -396,7 +396,9 @@ class CharacterPF2e extends CreaturePF2e {
             martial[category] = proficiency;
         }
 
-        const homebrewCategories = game.settings.get("pf2e", "homebrew.weaponCategories").map((tag) => tag.id);
+        const homebrewCategories = game.settings
+            .get("ordem-paranormal", "homebrew.weaponCategories")
+            .map((tag) => tag.id);
         for (const category of homebrewCategories) {
             martial[category] ??= {
                 rank: 0,
@@ -473,7 +475,7 @@ class CharacterPF2e extends CreaturePF2e {
             const hitPoints = systemData.attributes.hp;
             const modifiers = [new ModifierPF2e("PF2E.AncestryHP", ancestryHP, MODIFIER_TYPE.UNTYPED)];
 
-            if (game.settings.get("pf2e", "staminaVariant")) {
+            if (game.settings.get("ordem-paranormal", "staminaVariant")) {
                 const halfClassHp = Math.floor(classHP / 2);
                 systemData.attributes.sp.max = (halfClassHp + systemData.abilities.con.mod) * this.level;
                 systemData.attributes.resolve.max = systemData.abilities[systemData.details.keyability.value].mod;
@@ -1223,7 +1225,7 @@ class CharacterPF2e extends CreaturePF2e {
         this.deityBoonsCurses = [];
         this.feats = new CharacterFeats(this);
 
-        const campaignFeatSections = game.settings.get("pf2e", "campaignFeatSections");
+        const campaignFeatSections = game.settings.get("ordem-paranormal", "campaignFeatSections");
         for (const section of campaignFeatSections) {
             this.feats.createCategory(section);
         }
@@ -1380,7 +1382,7 @@ class CharacterPF2e extends CreaturePF2e {
         }
 
         const ammos = itemTypes.consumable.filter((i) => i.consumableType === "ammo" && !i.isStowed);
-        const homebrewCategoryTags = game.settings.get("pf2e", "homebrew.weaponCategories");
+        const homebrewCategoryTags = game.settings.get("ordem-paranormal", "homebrew.weaponCategories");
         const offensiveCategories = [...WEAPON_CATEGORIES, ...homebrewCategoryTags.map((tag) => tag.id)];
 
         // Exclude handwraps as a strike
@@ -2043,7 +2045,7 @@ class CharacterPF2e extends CreaturePF2e {
         }
 
         // Clamp Stamina and Resolve
-        if (game.settings.get("pf2e", "staminaVariant")) {
+        if (game.settings.get("ordem-paranormal", "staminaVariant")) {
             // Do not allow stamina to go over max
             if (changed.system?.attributes?.sp) {
                 changed.system.attributes.sp.value = Math.clamped(

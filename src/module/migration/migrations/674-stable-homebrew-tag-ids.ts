@@ -11,7 +11,7 @@ export class Migration674StableHomebrewTagIDs extends MigrationBase {
     private homebrewKeys = deepClone(HomebrewElements.SETTINGS);
 
     private homebrewTags = this.homebrewKeys.reduce(
-        (settings, key) => mergeObject(settings, { [key]: game.settings.get("pf2e", `homebrew.${key}`) }),
+        (settings, key) => mergeObject(settings, { [key]: game.settings.get("ordem-paranormal", `homebrew.${key}`) }),
         {} as Record<typeof this.homebrewKeys[number], HomebrewTag[]>
     );
 
@@ -49,7 +49,7 @@ export class Migration674StableHomebrewTagIDs extends MigrationBase {
                 tagMap[tag.id] = tag.value;
                 delete tagMap[key];
             }
-            if (tags.length > 0) await game.settings.set("pf2e", `homebrew.${key}`, tags);
+            if (tags.length > 0) await game.settings.set("ordem-paranormal", `homebrew.${key}`, tags);
         }
     }
 }

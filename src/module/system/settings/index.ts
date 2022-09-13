@@ -11,7 +11,7 @@ export function registerSettings() {
         registerWorldSchemaVersion();
     }
 
-    game.settings.register("pf2e", "tokens.autoscale", {
+    game.settings.register("ordem-paranormal", "tokens.autoscale", {
         name: "PF2E.SETTINGS.Tokens.Autoscale.Name",
         hint: "PF2E.SETTINGS.Tokens.Autoscale.Hint",
         scope: "world",
@@ -20,7 +20,7 @@ export function registerSettings() {
         type: Boolean,
     });
 
-    game.settings.register("pf2e", "identifyMagicNotMatchingTraditionModifier", {
+    game.settings.register("ordem-paranormal", "identifyMagicNotMatchingTraditionModifier", {
         name: "PF2E.SETTINGS.IdentifyMagicNotMatchingTraditionModifier.Name",
         hint: "PF2E.SETTINGS.IdentifyMagicNotMatchingTraditionModifier.Hint",
         choices: {
@@ -35,7 +35,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register("pf2e", "critRule", {
+    game.settings.register("ordem-paranormal", "critRule", {
         name: "PF2E.SETTINGS.CritRule.Name",
         hint: "PF2E.SETTINGS.CritRule.Hint",
         scope: "world",
@@ -48,7 +48,7 @@ export function registerSettings() {
         },
     });
 
-    game.settings.register("pf2e", "compendiumBrowserPacks", {
+    game.settings.register("ordem-paranormal", "compendiumBrowserPacks", {
         name: "PF2E.SETTINGS.CompendiumBrowserPacks.Name",
         hint: "PF2E.SETTINGS.CompendiumBrowserPacks.Hint",
         default: {},
@@ -59,7 +59,7 @@ export function registerSettings() {
         },
     });
 
-    game.settings.register("pf2e", "enabledRulesUI", {
+    game.settings.register("ordem-paranormal", "enabledRulesUI", {
         name: "PF2E.SETTINGS.EnabledRulesUI.Name",
         hint: "PF2E.SETTINGS.EnabledRulesUI.Hint",
         scope: "world",
@@ -68,7 +68,7 @@ export function registerSettings() {
         type: Boolean,
     });
 
-    game.settings.register("pf2e", "critFumbleButtons", {
+    game.settings.register("ordem-paranormal", "critFumbleButtons", {
         name: game.i18n.localize("PF2E.SETTINGS.critFumbleCardButtons.name"),
         hint: game.i18n.localize("PF2E.SETTINGS.critFumbleCardButtons.hint"),
         scope: "world",
@@ -80,7 +80,7 @@ export function registerSettings() {
         },
     });
 
-    game.settings.register("pf2e", "drawCritFumble", {
+    game.settings.register("ordem-paranormal", "drawCritFumble", {
         name: game.i18n.localize("PF2E.SETTINGS.critFumbleCards.name"),
         hint: game.i18n.localize("PF2E.SETTINGS.critFumbleCards.hint"),
         scope: "world",
@@ -96,7 +96,7 @@ export function registerSettings() {
         blackWhite: "PF2E.SETTINGS.statusEffectType.blackWhite",
         default: "PF2E.SETTINGS.statusEffectType.default",
     };
-    game.settings.register("pf2e", "statusEffectType", {
+    game.settings.register("ordem-paranormal", "statusEffectType", {
         name: "PF2E.SETTINGS.statusEffectType.name",
         hint: "PF2E.SETTINGS.statusEffectType.hint",
         scope: "world",
@@ -109,7 +109,7 @@ export function registerSettings() {
         },
     });
 
-    game.settings.register("pf2e", "deathIcon", {
+    game.settings.register("ordem-paranormal", "deathIcon", {
         name: "PF2E.Settings.DeathIcon.Name",
         hint: "PF2E.Settings.DeathIcon.Hint",
         scope: "world",
@@ -122,7 +122,7 @@ export function registerSettings() {
     });
 
     // Don't tell Nath
-    game.settings.register("pf2e", "nathMode", {
+    game.settings.register("ordem-paranormal", "nathMode", {
         name: "PF2E.SETTINGS.NathMode.Name",
         hint: "PF2E.SETTINGS.NathMode.Hint",
         scope: "world",
@@ -131,7 +131,7 @@ export function registerSettings() {
         type: Boolean,
     });
 
-    game.settings.register("pf2e", "statusEffectShowCombatMessage", {
+    game.settings.register("ordem-paranormal", "statusEffectShowCombatMessage", {
         name: "PF2E.SETTINGS.statusEffectShowCombatMessage.name",
         hint: "PF2E.SETTINGS.statusEffectShowCombatMessage.hint",
         scope: "world",
@@ -140,7 +140,7 @@ export function registerSettings() {
         type: Boolean,
     });
 
-    game.settings.register("pf2e", "worldSystemVersion", {
+    game.settings.register("ordem-paranormal", "worldSystemVersion", {
         name: "World System Version",
         scope: "world",
         config: false,
@@ -148,7 +148,7 @@ export function registerSettings() {
         type: String,
     });
 
-    game.settings.registerMenu("pf2e", "automation", {
+    game.settings.registerMenu("ordem-paranormal", "automation", {
         name: "PF2E.SETTINGS.Automation.Name",
         label: "PF2E.SETTINGS.Automation.Label",
         hint: "PF2E.SETTINGS.Automation.Hint",
@@ -156,7 +156,7 @@ export function registerSettings() {
         type: AutomationSettings,
         restricted: true,
     });
-    game.settings.register("pf2e", "automation.actorsDeadAtZero", {
+    game.settings.register("ordem-paranormal", "automation.actorsDeadAtZero", {
         name: CONFIG.PF2E.SETTINGS.automation.actorsDeadAtZero.name,
         scope: "world",
         config: false,
@@ -165,7 +165,7 @@ export function registerSettings() {
     });
     AutomationSettings.registerSettings();
 
-    game.settings.registerMenu("pf2e", "metagame", {
+    game.settings.registerMenu("ordem-paranormal", "metagame", {
         name: "PF2E.SETTINGS.Metagame.Name",
         label: "PF2E.SETTINGS.Metagame.Label",
         hint: "PF2E.SETTINGS.Metagame.Hint",
@@ -175,7 +175,7 @@ export function registerSettings() {
     });
     MetagameSettings.registerSettings();
 
-    game.settings.registerMenu("pf2e", "variantRules", {
+    game.settings.registerMenu("ordem-paranormal", "variantRules", {
         name: "PF2E.SETTINGS.Variant.Name",
         label: "PF2E.SETTINGS.Variant.Label",
         hint: "PF2E.SETTINGS.Variant.Hint",
@@ -185,7 +185,7 @@ export function registerSettings() {
     });
     VariantRulesSettings.registerSettings();
 
-    game.settings.registerMenu("pf2e", "homebrew", {
+    game.settings.registerMenu("ordem-paranormal", "homebrew", {
         name: "PF2E.SETTINGS.Homebrew.Name",
         label: "PF2E.SETTINGS.Homebrew.Label",
         hint: "PF2E.SETTINGS.Homebrew.Hint",
@@ -195,7 +195,7 @@ export function registerSettings() {
     });
     HomebrewElements.registerSettings();
 
-    game.settings.registerMenu("pf2e", "worldClock", {
+    game.settings.registerMenu("ordem-paranormal", "worldClock", {
         name: game.i18n.localize(CONFIG.PF2E.SETTINGS.worldClock.name),
         label: game.i18n.localize(CONFIG.PF2E.SETTINGS.worldClock.label),
         hint: game.i18n.localize(CONFIG.PF2E.SETTINGS.worldClock.hint),
@@ -205,7 +205,7 @@ export function registerSettings() {
     });
     WorldClockSettings.registerSettings();
 
-    game.settings.register("pf2e", "campaignFeats", {
+    game.settings.register("ordem-paranormal", "campaignFeats", {
         name: CONFIG.PF2E.SETTINGS.CampaignFeats.name,
         hint: CONFIG.PF2E.SETTINGS.CampaignFeats.hint,
         scope: "world",
@@ -215,7 +215,7 @@ export function registerSettings() {
     });
 
     // Secret for now until the user side is complete and a UI is built
-    game.settings.register("pf2e", "campaignFeatSections", {
+    game.settings.register("ordem-paranormal", "campaignFeatSections", {
         name: "Campaign Feat Sections",
         scope: "world",
         config: false,
@@ -224,7 +224,7 @@ export function registerSettings() {
     });
 
     // This only exists to not break existing macros (yet). We'll keep it for a few versions
-    game.settings.register("pf2e", "RAI.TreatWoundsAltSkills", {
+    game.settings.register("ordem-paranormal", "RAI.TreatWoundsAltSkills", {
         name: "Treat Wounds Macro Compat",
         scope: "world",
         config: false,
@@ -238,7 +238,7 @@ export function registerSettings() {
 }
 
 function registerWorldSchemaVersion(): void {
-    game.settings.register("pf2e", "worldSchemaVersion", {
+    game.settings.register("ordem-paranormal", "worldSchemaVersion", {
         name: "PF2E.SETTINGS.WorldSchemaVersion.Name",
         hint: "PF2E.SETTINGS.WorldSchemaVersion.Hint",
         scope: "world",

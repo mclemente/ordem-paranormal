@@ -23,7 +23,7 @@ export class ItemSheetPF2e<TItem extends ItemPF2e> extends ItemSheet<TItem> {
         const options = super.defaultOptions;
         options.width = 650;
         options.height = 460;
-        options.classes = options.classes.concat(["pf2e", "item"]);
+        options.classes = options.classes.concat(["ordem-paranormal", "item"]);
         options.template = "systems/pf2e/templates/items/item-sheet.html";
         options.scrollY = [".tab.active"];
         options.tabs = [
@@ -114,7 +114,7 @@ export class ItemSheetPF2e<TItem extends ItemPF2e> extends ItemSheet<TItem> {
             rarities: CONFIG.PF2E.rarityTraits,
             traits,
             traitSlugs: Object.keys(traits ?? {}),
-            enabledRulesUI: game.settings.get("pf2e", "enabledRulesUI"),
+            enabledRulesUI: game.settings.get("ordem-paranormal", "enabledRulesUI"),
             ruleEditing: !!this.editingRuleElement,
             rules: {
                 labels: rules.map((ruleData: RuleElementSource) => {

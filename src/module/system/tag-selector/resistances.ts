@@ -10,7 +10,7 @@ export class ResistanceSelector<TActor extends ActorPF2e> extends BaseTagSelecto
         return {
             ...super.defaultOptions,
             id: "tag-selector",
-            classes: ["pf2e"],
+            classes: ["ordem-paranormal"],
             template: "systems/pf2e/templates/system/tag-selector/resistances.html",
             title: "PF2E.ResistancesLabel",
             width: "auto",

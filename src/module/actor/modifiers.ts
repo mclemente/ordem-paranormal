@@ -279,15 +279,15 @@ interface CreateAbilityModifierParams {
 // proficiency ranks
 const UNTRAINED = {
     atLevel: (_level: number) => {
-        const modifier = (game.settings.get("pf2e", "proficiencyUntrainedModifier") as number | null) ?? 0;
+        const modifier = (game.settings.get("ordem-paranormal", "proficiencyUntrainedModifier") as number | null) ?? 0;
         return new ModifierPF2e("PF2E.ProficiencyLevel0", modifier, MODIFIER_TYPE.PROFICIENCY);
     },
 };
 
 const TRAINED = {
     atLevel: (level: number) => {
-        const rule = game.settings.get("pf2e", "proficiencyVariant") ?? "ProficiencyWithLevel";
-        let modifier = game.settings.get("pf2e", "proficiencyTrainedModifier") ?? 2;
+        const rule = game.settings.get("ordem-paranormal", "proficiencyVariant") ?? "ProficiencyWithLevel";
+        let modifier = game.settings.get("ordem-paranormal", "proficiencyTrainedModifier") ?? 2;
         if (rule === "ProficiencyWithLevel") {
             modifier += level;
         }
@@ -297,8 +297,8 @@ const TRAINED = {
 
 const EXPERT = {
     atLevel: (level: number) => {
-        const rule = game.settings.get("pf2e", "proficiencyVariant") ?? "ProficiencyWithLevel";
-        let modifier = game.settings.get("pf2e", "proficiencyExpertModifier") ?? 4;
+        const rule = game.settings.get("ordem-paranormal", "proficiencyVariant") ?? "ProficiencyWithLevel";
+        let modifier = game.settings.get("ordem-paranormal", "proficiencyExpertModifier") ?? 4;
         if (rule === "ProficiencyWithLevel") {
             modifier += level;
         }
@@ -308,8 +308,8 @@ const EXPERT = {
 
 const MASTER = {
     atLevel: (level: number) => {
-        const rule = game.settings.get("pf2e", "proficiencyVariant") ?? "ProficiencyWithLevel";
-        let modifier = game.settings.get("pf2e", "proficiencyMasterModifier") ?? 6;
+        const rule = game.settings.get("ordem-paranormal", "proficiencyVariant") ?? "ProficiencyWithLevel";
+        let modifier = game.settings.get("ordem-paranormal", "proficiencyMasterModifier") ?? 6;
         if (rule === "ProficiencyWithLevel") {
             modifier += level;
         }
@@ -319,8 +319,8 @@ const MASTER = {
 
 const LEGENDARY = {
     atLevel: (level: number) => {
-        const rule = game.settings.get("pf2e", "proficiencyVariant") ?? "ProficiencyWithLevel";
-        let modifier = game.settings.get("pf2e", "proficiencyLegendaryModifier") ?? 8;
+        const rule = game.settings.get("ordem-paranormal", "proficiencyVariant") ?? "ProficiencyWithLevel";
+        let modifier = game.settings.get("ordem-paranormal", "proficiencyLegendaryModifier") ?? 8;
         if (rule === "ProficiencyWithLevel") {
             modifier += level;
         }

@@ -108,7 +108,7 @@ export class EffectTracker {
             }
         }
 
-        if (game.settings.get("pf2e", "automation.removeExpiredEffects")) {
+        if (game.settings.get("ordem-paranormal", "automation.removeExpiredEffects")) {
             for (const actor of updatedActors) {
                 await this.removeExpired(actor);
             }
@@ -141,8 +141,9 @@ export class EffectTracker {
 
     /** Expire or remove on-encounter-end effects */
     async onEncounterEnd(encounter: EncounterPF2e): Promise<void> {
-        const autoRemoveExpired = game.settings.get("pf2e", "automation.removeExpiredEffects");
-        const autoExpireEffects = !autoRemoveExpired && game.settings.get("pf2e", "automation.effectExpiration");
+        const autoRemoveExpired = game.settings.get("ordem-paranormal", "automation.removeExpiredEffects");
+        const autoExpireEffects =
+            !autoRemoveExpired && game.settings.get("ordem-paranormal", "automation.effectExpiration");
         if (!(autoExpireEffects || autoRemoveExpired)) return;
 
         const actors = encounter.combatants.contents

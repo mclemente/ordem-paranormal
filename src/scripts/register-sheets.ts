@@ -37,7 +37,7 @@ export function registerSheets() {
     const sheetLabel = translations.SheetLabel;
 
     DocumentSheetConfig.unregisterSheet(JournalEntry, "core", JournalSheet);
-    DocumentSheetConfig.registerSheet(JournalEntry, "pf2e", JournalSheetPF2e, {
+    DocumentSheetConfig.registerSheet(JournalEntry, "ordem-paranormal", JournalSheetPF2e, {
         label: () =>
             game.i18n.format("SHEETS.DefaultDocumentSheet", { document: game.i18n.localize("DOCUMENT.JournalEntry") }),
         makeDefault: true,
@@ -45,13 +45,13 @@ export function registerSheets() {
 
     // Replace the TinyMCE sheet with the version that'll let us inject themes
     DocumentSheetConfig.unregisterSheet(JournalEntryPage, "core", JournalTextTinyMCESheet);
-    DocumentSheetConfig.registerSheet(JournalEntryPage, "pf2e", JournalTextTinyMCESheetPF2e, {
+    DocumentSheetConfig.registerSheet(JournalEntryPage, "ordem-paranormal", JournalTextTinyMCESheetPF2e, {
         types: ["text"],
         label: game.i18n.localize("EDITOR.TinyMCE"),
     });
 
-    DocumentSheetConfig.registerSheet(Scene, "pf2e", SceneConfigPF2e, { makeDefault: true });
-    DocumentSheetConfig.registerSheet(TokenDocumentPF2e, "pf2e", TokenConfigPF2e, { makeDefault: true });
+    DocumentSheetConfig.registerSheet(Scene, "ordem-paranormal", SceneConfigPF2e, { makeDefault: true });
+    DocumentSheetConfig.registerSheet(TokenDocumentPF2e, "ordem-paranormal", TokenConfigPF2e, { makeDefault: true });
 
     // ACTORS
     Actors.unregisterSheet("core", ActorSheet);
@@ -62,41 +62,41 @@ export function registerSheets() {
         return game.i18n.localize(`${entityType}.Type${camelized}`);
     };
 
-    Actors.registerSheet("pf2e", CharacterSheetPF2e, {
+    Actors.registerSheet("ordem-paranormal", CharacterSheetPF2e, {
         types: ["character"],
         label: game.i18n.format(sheetLabel, { type: localizeType("character") }),
         makeDefault: true,
     });
 
     // Regiser NPC Sheet
-    Actors.registerSheet("pf2e", NPCSheetPF2e, {
+    Actors.registerSheet("ordem-paranormal", NPCSheetPF2e, {
         types: ["npc"],
         label: game.i18n.format(sheetLabel, { type: localizeType("npc") }),
         makeDefault: true,
     });
 
     // Register Hazard Sheet
-    Actors.registerSheet("pf2e", HazardSheetPF2e, {
+    Actors.registerSheet("ordem-paranormal", HazardSheetPF2e, {
         types: ["hazard"],
         label: game.i18n.format(sheetLabel, { type: localizeType("hazard") }),
     });
 
     // Register Loot Sheet
-    Actors.registerSheet("pf2e", LootSheetPF2e, {
+    Actors.registerSheet("ordem-paranormal", LootSheetPF2e, {
         types: ["loot"],
         label: game.i18n.format(sheetLabel, { type: localizeType("loot") }),
         makeDefault: true,
     });
 
     // Register Familiar Sheet
-    Actors.registerSheet("pf2e", FamiliarSheetPF2e, {
+    Actors.registerSheet("ordem-paranormal", FamiliarSheetPF2e, {
         types: ["familiar"],
         label: game.i18n.format(sheetLabel, { type: localizeType("familiar") }),
         makeDefault: true,
     });
 
     // Register Vehicle Sheet
-    Actors.registerSheet("pf2e", VehicleSheetPF2e, {
+    Actors.registerSheet("ordem-paranormal", VehicleSheetPF2e, {
         types: ["vehicle"],
         label: game.i18n.format(sheetLabel, { type: localizeType("vehicle") }),
         makeDefault: true,
@@ -107,7 +107,7 @@ export function registerSheets() {
 
     const itemTypes = ["condition", "lore", "spellcastingEntry"];
     for (const itemType of itemTypes) {
-        Items.registerSheet("pf2e", ItemSheetPF2e, {
+        Items.registerSheet("ordem-paranormal", ItemSheetPF2e, {
             types: [itemType],
             label: game.i18n.format(sheetLabel, { type: localizeType(itemType) }),
             makeDefault: true,
@@ -135,7 +135,7 @@ export function registerSheets() {
         ["weapon", WeaponSheetPF2e],
     ] as const;
     for (const [type, Sheet] of sheetEntries) {
-        Items.registerSheet("pf2e", Sheet, {
+        Items.registerSheet("ordem-paranormal", Sheet, {
             types: [type],
             label: game.i18n.format(sheetLabel, { type: localizeType(type) }),
             makeDefault: true,
@@ -145,7 +145,7 @@ export function registerSheets() {
     // Add any missing physical item sheets
     for (const itemType of PHYSICAL_ITEM_TYPES) {
         if (sheetEntries.some(([type, _sheet]) => itemType === type)) continue;
-        Items.registerSheet("pf2e", PhysicalItemSheetPF2e, {
+        Items.registerSheet("ordem-paranormal", PhysicalItemSheetPF2e, {
             types: [itemType],
             label: game.i18n.format(sheetLabel, { type: localizeType(itemType) }),
             makeDefault: true,
@@ -155,7 +155,7 @@ export function registerSheets() {
     // User
 
     DocumentSheetConfig.unregisterSheet(User, "core", UserConfig);
-    DocumentSheetConfig.registerSheet(UserPF2e, "pf2e", UserConfigPF2e, {
+    DocumentSheetConfig.registerSheet(UserPF2e, "ordem-paranormal", UserConfigPF2e, {
         makeDefault: true,
         label: () => game.i18n.format("SHEETS.DefaultDocumentSheet", { document: game.i18n.localize("DOCUMENT.User") }),
     });

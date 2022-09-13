@@ -86,7 +86,7 @@ export class TokenConfigPF2e<TDocument extends TokenDocumentPF2e> extends TokenC
     /** Disable the range input for token scale and style to indicate as much */
     #disableScale(html: HTMLElement): void {
         // If autoscaling is disabled, keep form input enabled
-        if (!game.settings.get("pf2e", "tokens.autoscale")) return;
+        if (!game.settings.get("ordem-paranormal", "tokens.autoscale")) return;
 
         const scale = html.querySelector(".form-group.scale");
         if (!scale) throw ErrorPF2e("Scale form group missing");
@@ -120,7 +120,7 @@ export class TokenConfigPF2e<TDocument extends TokenDocumentPF2e> extends TokenC
         const rulesBasedVision =
             actorIsPCOrFamiliar &&
             (this.token.rulesBasedVision ||
-                (this.isPrototype && game.settings.get("pf2e", "automation.rulesBasedVision")));
+                (this.isPrototype && game.settings.get("ordem-paranormal", "automation.rulesBasedVision")));
         if (!rulesBasedVision) return;
 
         const sightInputNames = ["angle", "brightness", "range", "saturation", "visionMode"].map((n) => `sight.${n}`);

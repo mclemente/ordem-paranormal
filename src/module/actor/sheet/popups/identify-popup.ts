@@ -22,8 +22,12 @@ export class IdentifyItemPopup extends FormApplication<PhysicalItemPF2e> {
 
     override async getData(): Promise<IdentifyPopupData> {
         const item = this.object;
-        const notMatchingTraditionModifier = game.settings.get("pf2e", "identifyMagicNotMatchingTraditionModifier");
-        const proficiencyWithoutLevel = game.settings.get("pf2e", "proficiencyVariant") === "ProficiencyWithoutLevel";
+        const notMatchingTraditionModifier = game.settings.get(
+            "ordem-paranormal",
+            "identifyMagicNotMatchingTraditionModifier"
+        );
+        const proficiencyWithoutLevel =
+            game.settings.get("ordem-paranormal", "proficiencyVariant") === "ProficiencyWithoutLevel";
         const dcs = identifyItem(item, { proficiencyWithoutLevel, notMatchingTraditionModifier });
 
         return {

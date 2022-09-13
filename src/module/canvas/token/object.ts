@@ -55,7 +55,7 @@ class TokenPF2e extends Token<TokenDocumentPF2e> {
      * @param flankee       The potentially flanked token
      * @param context.reach An optional reach distance specific to this measurement */
     canFlank(flankee: TokenPF2e, context: { reach?: number } = {}): boolean {
-        if (this === flankee || !game.settings.get("pf2e", "automation.flankingDetection")) {
+        if (this === flankee || !game.settings.get("ordem-paranormal", "automation.flankingDetection")) {
             return false;
         }
 
@@ -200,7 +200,9 @@ class TokenPF2e extends Token<TokenDocumentPF2e> {
     /** If Party Vision is enabled, make all player-owned actors count as vision sources for non-GM users */
     protected override _isVisionSource(): boolean {
         const partyVisionEnabled =
-            !!this.actor?.hasPlayerOwner && !game.user.isGM && game.settings.get("pf2e", "metagame.partyVision");
+            !!this.actor?.hasPlayerOwner &&
+            !game.user.isGM &&
+            game.settings.get("ordem-paranormal", "metagame.partyVision");
         return partyVisionEnabled || super._isVisionSource();
     }
 

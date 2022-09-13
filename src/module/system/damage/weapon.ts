@@ -680,7 +680,7 @@ class WeaponDamagePF2e {
 
     /** Double a textual formula based on the current crit rules. */
     static doubleFormula(formula: string): string {
-        const rule = game.settings.get("pf2e", "critRule");
+        const rule = game.settings.get("ordem-paranormal", "critRule");
         if (rule === "doubledamage") {
             return /^\d+$/.test(formula) ? `2 * ${formula}` : `2 * (${formula})`;
         } else {

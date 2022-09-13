@@ -38,7 +38,7 @@ class ClassPF2e extends ABCItemPF2e {
         const system = this.system;
 
         const ancestryLevels: FeatSlotLevel[] = system.ancestryFeatLevels.value;
-        if (game.settings.get("pf2e", "ancestryParagonVariant")) {
+        if (game.settings.get("ordem-paranormal", "ancestryParagonVariant")) {
             ancestryLevels.unshift({ id: "ancestry-bonus", label: "1" });
             for (let level = 3; level <= actorLevel; level += 4) {
                 const index = (level + 1) / 2;

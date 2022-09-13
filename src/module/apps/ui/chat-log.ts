@@ -40,7 +40,7 @@ export class ChatLogPF2e extends ChatLog<ChatMessagePF2e> {
 
         const canShowRollDetails: ContextOptionCondition = ($li): boolean => {
             const message = game.messages.get($li.data("messageId"), { strict: true });
-            const rulesEnabled = game.settings.get("pf2e", "enabledRulesUI");
+            const rulesEnabled = game.settings.get("ordem-paranormal", "enabledRulesUI");
             return game.user.isGM && rulesEnabled && !!message.flags.pf2e.context;
         };
 

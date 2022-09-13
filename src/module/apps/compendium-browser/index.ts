@@ -100,7 +100,7 @@ class CompendiumBrowser extends Application {
             spell: new browserTabs.Spells(this),
         };
 
-        this.settings = game.settings.get("pf2e", "compendiumBrowserPacks");
+        this.settings = game.settings.get("ordem-paranormal", "compendiumBrowserPacks");
 
         this.initCompendiumList();
         this.injectActorDirectory();
@@ -482,7 +482,7 @@ class CompendiumBrowser extends Application {
                             pack.load = formData.has(`${t}-${key}`);
                         }
                     }
-                    await game.settings.set("pf2e", "compendiumBrowserPacks", this.settings);
+                    await game.settings.set("ordem-paranormal", "compendiumBrowserPacks", this.settings);
                     for (const tab of Object.values(this.tabs)) {
                         if (tab.isInitialized) {
                             await tab.init();

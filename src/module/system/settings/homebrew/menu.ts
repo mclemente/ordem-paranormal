@@ -134,7 +134,7 @@ class HomebrewElements extends SettingsMenuPF2e {
 
     /** Prepare and run a migration for each set of tag deletions from a tag map */
     private processDeletions(listKey: ConfigPF2eHomebrewRecord, newTagList: HomebrewTag[]): MigrationBase | null {
-        const oldTagList = game.settings.get("pf2e", `homebrew.${listKey}`);
+        const oldTagList = game.settings.get("ordem-paranormal", `homebrew.${listKey}`);
         const newIDList = newTagList.map((tag) => tag.id);
         const deletions: string[] = oldTagList.flatMap((oldTag) => (newIDList.includes(oldTag.id) ? [] : oldTag.id));
 
@@ -158,7 +158,7 @@ class HomebrewElements extends SettingsMenuPF2e {
     refreshTags(): void {
         for (const listKey of HomebrewElements.SETTINGS) {
             const settingsKey: HomebrewSettingsKey = `homebrew.${listKey}` as const;
-            const elements = game.settings.get("pf2e", settingsKey);
+            const elements = game.settings.get("ordem-paranormal", settingsKey);
             this.updateConfigRecords(elements, listKey);
         }
 

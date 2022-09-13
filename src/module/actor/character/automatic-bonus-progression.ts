@@ -5,7 +5,7 @@ import { PotencySynthetic, RuleElementSynthetics, StrikingSynthetic } from "@mod
 
 export class AutomaticBonusProgression {
     static get isEnabled(): boolean {
-        return game.settings.get("pf2e", "automaticBonusVariant") !== "noABP";
+        return game.settings.get("ordem-paranormal", "automaticBonusVariant") !== "noABP";
     }
 
     /**
@@ -19,7 +19,7 @@ export class AutomaticBonusProgression {
         const ac = values.ac;
         const perception = values.perception;
         const save = values.save;
-        const setting = game.settings.get("pf2e", "automaticBonusVariant");
+        const setting = game.settings.get("ordem-paranormal", "automaticBonusVariant");
 
         if (save > 0) {
             const modifiers = (synthetics.statisticsModifiers["saving-throw"] ??= []);
@@ -116,7 +116,7 @@ export class AutomaticBonusProgression {
 
     /** Remove stored runes from specific magic weapons or otherwise set prior to enabling ABP */
     static cleanupRunes(item: ArmorPF2e | WeaponPF2e): void {
-        const setting = game.settings.get("pf2e", "automaticBonusVariant");
+        const setting = game.settings.get("ordem-paranormal", "automaticBonusVariant");
         if (setting === "noABP") return;
 
         item.system.potencyRune.value = null;
@@ -132,7 +132,7 @@ export class AutomaticBonusProgression {
     }
 
     static applyPropertyRunes(potency: PotencySynthetic[], weapon: Embedded<WeaponPF2e>): void {
-        if (game.settings.get("pf2e", "automaticBonusVariant") !== "ABPFundamentalPotency") return;
+        if (game.settings.get("ordem-paranormal", "automaticBonusVariant") !== "ABPFundamentalPotency") return;
         const potencyBonuses = potency.filter((p) => p.type === "potency");
         for (const bonus of potencyBonuses) {
             bonus.property = deepClone(weapon.system.runes.property);

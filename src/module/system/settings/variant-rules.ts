@@ -103,7 +103,7 @@ export class VariantRulesSettings extends FormApplication {
         return Object.entries(SETTINGS).reduce(
             (data: Record<string, { value: unknown; setting: SettingRegistration }>, [key, setting]) => ({
                 ...data,
-                [key]: { value: game.settings.get("pf2e", key), setting },
+                [key]: { value: game.settings.get("ordem-paranormal", key), setting },
             }),
             {}
         );
@@ -113,7 +113,7 @@ export class VariantRulesSettings extends FormApplication {
         for (const [k, v] of Object.entries(SETTINGS)) {
             v.config = false;
             v.scope = "world";
-            game.settings.register("pf2e", k, v);
+            game.settings.register("ordem-paranormal", k, v);
         }
     }
 
@@ -133,7 +133,7 @@ export class VariantRulesSettings extends FormApplication {
     private async onResetDefaults(event: JQuery.ClickEvent): Promise<this> {
         event.preventDefault();
         for await (const [k, v] of Object.entries(SETTINGS)) {
-            await game.settings.set("pf2e", k, v?.default);
+            await game.settings.set("ordem-paranormal", k, v?.default);
         }
         return this.render();
     }
@@ -148,7 +148,7 @@ export class VariantRulesSettings extends FormApplication {
 
     protected override async _updateObject(_event: Event, data: Record<string, unknown>): Promise<void> {
         for await (const key of Object.keys(SETTINGS)) {
-            game.settings.set("pf2e", key, data[key]);
+            game.settings.set("ordem-paranormal", key, data[key]);
         }
     }
 }

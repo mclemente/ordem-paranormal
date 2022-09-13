@@ -33,7 +33,7 @@ abstract class BaseTagSelector<
     static override get defaultOptions(): TagSelectorOptions {
         return mergeObject(super.defaultOptions, {
             id: "tag-selector",
-            classes: ["pf2e"],
+            classes: ["ordem-paranormal"],
             width: "auto",
             height: 700,
         });

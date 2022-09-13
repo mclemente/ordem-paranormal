@@ -224,7 +224,7 @@ class ChatMessagePF2e extends ChatMessage<ActorPF2e> {
         super._onCreate(data, options, userId);
 
         // Handle critical hit and fumble card drawing
-        if (this.isRoll && game.settings.get("pf2e", "drawCritFumble")) {
+        if (this.isRoll && game.settings.get("ordem-paranormal", "drawCritFumble")) {
             CriticalHitAndFumbleCards.handleDraw(this);
         }
     }

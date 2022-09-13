@@ -12,8 +12,8 @@ export const GetSceneControlButtons = {
                 icon: "fas fa-clock",
                 button: true,
                 visible:
-                    game.settings.get("pf2e", "worldClock.showClockButton") &&
-                    (game.user.isGM || game.settings.get("pf2e", "worldClock.playersCanView")),
+                    game.settings.get("ordem-paranormal", "worldClock.showClockButton") &&
+                    (game.user.isGM || game.settings.get("ordem-paranormal", "worldClock.playersCanView")),
                 onClick: () => {
                     if (game.pf2e.worldClock.rendered) {
                         game.pf2e.worldClock.close({ force: true });
@@ -38,7 +38,7 @@ export const GetSceneControlButtons = {
                 name: "darkness-adjuster",
                 title: "CONTROLS.AdjustSceneDarkness",
                 icon: "fas fa-adjust",
-                visible: game.user.isGM && game.settings.get("pf2e", "automation.rulesBasedVision"),
+                visible: game.user.isGM && game.settings.get("ordem-paranormal", "automation.rulesBasedVision"),
                 toggle: true,
                 onClick: (): void => {
                     const adjuster = SceneDarknessAdjuster.instance;

@@ -249,7 +249,7 @@ class DicePF2e {
                 }
             }
 
-            const rule = game.settings.get("pf2e", "critRule");
+            const rule = game.settings.get("ordem-paranormal", "critRule");
             const formula = Roll.replaceFormulaData(rollParts.join("+"), data);
             const baseRoll = simplify ? combineTerms(formula) : new Roll(formula);
             if (crit) {

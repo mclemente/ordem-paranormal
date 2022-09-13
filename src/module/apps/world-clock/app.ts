@@ -25,23 +25,23 @@ export class WorldClock extends Application {
         super();
 
         /* Save world creation date/time if equal to default (i.e., server time at first retrieval of the setting) */
-        const settingValue = game.settings.get("pf2e", "worldClock.worldCreatedOn");
+        const settingValue = game.settings.get("ordem-paranormal", "worldClock.worldCreatedOn");
         const defaultValue = game.settings.settings.get("pf2e.worldClock.worldCreatedOn")?.default;
         if (typeof settingValue === "string" && settingValue === defaultValue) {
-            game.settings.set("pf2e", "worldClock.worldCreatedOn", settingValue);
+            game.settings.set("ordem-paranormal", "worldClock.worldCreatedOn", settingValue);
         } else if (!DateTime.fromISO(settingValue).isValid) {
-            game.settings.set("pf2e", "worldClock.worldCreatedOn", defaultValue);
+            game.settings.set("ordem-paranormal", "worldClock.worldCreatedOn", defaultValue);
         }
     }
 
     /** Setting: the date theme (Imperial Calendar not yet supported) */
     get dateTheme(): "AR" | "IC" | "AD" | "CE" {
-        return game.settings.get("pf2e", "worldClock.dateTheme");
+        return game.settings.get("ordem-paranormal", "worldClock.dateTheme");
     }
 
     /** Setting: display either a 24-hour or 12-hour clock */
     get timeConvention(): 24 | 12 {
-        const setting = game.settings.get("pf2e", "worldClock.timeConvention");
+        const setting = game.settings.get("ordem-paranormal", "worldClock.timeConvention");
         if (setting !== 24 && setting !== 12) {
             throw Error("PF2e System | Unrecognized time convention");
         }
@@ -54,13 +54,13 @@ export class WorldClock extends Application {
         return {
             enabled: true,
             disabled: false,
-            default: game.settings.get("pf2e", "worldClock.syncDarkness"),
+            default: game.settings.get("ordem-paranormal", "worldClock.syncDarkness"),
         }[sceneSetting];
     }
 
     /** Setting: Date and time of the Foundry world's creation date */
     get worldCreatedOn(): DateTime {
-        const value = game.settings.get("pf2e", "worldClock.worldCreatedOn");
+        const value = game.settings.get("ordem-paranormal", "worldClock.worldCreatedOn");
         return DateTime.fromISO(value).toUTC();
     }
 

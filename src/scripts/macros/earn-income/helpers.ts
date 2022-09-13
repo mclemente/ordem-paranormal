@@ -82,7 +82,7 @@ function postToChat(skillName: string, earnIncomeResult: EarnIncomeResult): Prom
 }
 
 function isProficiencyWithoutLevel() {
-    return game.settings.get("pf2e", "proficiencyVariant") === "ProficiencyWithoutLevel";
+    return game.settings.get("ordem-paranormal", "proficiencyVariant") === "ProficiencyWithoutLevel";
 }
 
 function calculateIncome({ actor, skill, rollBrief, level, days, dc }: CalculateIncomeParams): void {

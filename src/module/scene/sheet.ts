@@ -8,7 +8,7 @@ export class SceneConfigPF2e<TScene extends ScenePF2e> extends SceneConfig<TScen
         super.activateListeners($html);
 
         // Check the setting directly in case the user is viewing the scene config of an inactive scene
-        if (game.settings.get("pf2e", "automation.rulesBasedVision") && this.document.tokenVision) {
+        if (game.settings.get("ordem-paranormal", "automation.rulesBasedVision") && this.document.tokenVision) {
             // Disable all global light settings
             const html = $html[0]!;
             const globalLight = html.querySelector<HTMLInputElement>("input[name^=globalLight]");

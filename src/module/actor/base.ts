@@ -744,7 +744,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
             await this.update(hpUpdate.updates);
         }
         if (this.hitPoints?.value === 0) {
-            const deadAtZero = game.settings.get("pf2e", "automation.actorsDeadAtZero");
+            const deadAtZero = game.settings.get("ordem-paranormal", "automation.actorsDeadAtZero");
             if (this.type === "npc" && ["npcsOnly", "both"].includes(deadAtZero)) {
                 await game.combat?.combatants.find((c) => c.actor === this && !c.defeated)?.toggleDefeated();
             }
@@ -785,7 +785,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
             content: `<p>${statements}</p>`,
             type: CONST.CHAT_MESSAGE_TYPES.EMOTE,
             whisper:
-                game.settings.get("pf2e", "metagame.secretDamage") && !token.actor?.hasPlayerOwner
+                game.settings.get("ordem-paranormal", "metagame.secretDamage") && !token.actor?.hasPlayerOwner
                     ? ChatMessagePF2e.getWhisperRecipients("GM").map((u) => u.id)
                     : [],
         });
@@ -953,7 +953,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
         })();
 
         const appliedToSP = ((): number => {
-            const staminaEnabled = !!sp && game.settings.get("pf2e", "staminaVariant");
+            const staminaEnabled = !!sp && game.settings.get("ordem-paranormal", "staminaVariant");
             if (!staminaEnabled || delta <= 0) return 0;
             const remaining = delta - appliedToTemp;
             const applied = Math.min(sp.value, remaining);
@@ -1189,7 +1189,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
     ): void {
         super._onUpdate(changed, options, userId);
         const hideFromUser =
-            !this.hasPlayerOwner && !game.user.isGM && game.settings.get("pf2e", "metagame.secretDamage");
+            !this.hasPlayerOwner && !game.user.isGM && game.settings.get("ordem-paranormal", "metagame.secretDamage");
         if (options.damageTaken && !hideFromUser) {
             const tokens = super.getActiveTokens();
             for (const token of tokens) {

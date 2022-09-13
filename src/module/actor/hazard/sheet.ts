@@ -34,7 +34,7 @@ export class HazardSheetPF2e extends ActorSheetPF2e<HazardPF2e> {
     }
 
     get editing() {
-        return this.options.editable && !!this.actor.getFlag("pf2e", "editHazard.value");
+        return this.options.editable && !!this.actor.getFlag("ordem-paranormal", "editHazard.value");
     }
 
     override async getData(): Promise<HazardSheetData> {
@@ -179,7 +179,7 @@ export class HazardSheetPF2e extends ActorSheetPF2e<HazardPF2e> {
 
         // Toggle Edit mode
         $html.find(".edit-mode-button").on("click", () => {
-            this.actor.setFlag("pf2e", "editHazard.value", !this.editing);
+            this.actor.setFlag("ordem-paranormal", "editHazard.value", !this.editing);
         });
 
         // Handlers for number inputs of properties subject to modification by AE-like rules elements
@@ -241,7 +241,7 @@ export class HazardSheetPF2e extends ActorSheetPF2e<HazardPF2e> {
         if (!this.options.editable) return;
 
         $html.find<HTMLInputElement>(".isHazardEditable").on("change", (event) => {
-            this.actor.setFlag("pf2e", "editHazard", { value: event.target.checked });
+            this.actor.setFlag("ordem-paranormal", "editHazard", { value: event.target.checked });
         });
     }
 

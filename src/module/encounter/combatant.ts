@@ -46,7 +46,7 @@ class CombatantPF2e<
     async toggleDefeated(): Promise<void> {
         const isDead = !this.defeated;
         await this.update({ defeated: isDead });
-        await this.token?.object.toggleEffect(game.settings.get("pf2e", "deathIcon"), { overlay: true });
+        await this.token?.object.toggleEffect(game.settings.get("ordem-paranormal", "deathIcon"), { overlay: true });
 
         /** Remove this combatant's token as a target if it died */
         if (isDead && this.token?.object?.isTargeted) {

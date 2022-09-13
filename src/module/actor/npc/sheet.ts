@@ -87,7 +87,8 @@ export class NPCSheetPF2e<TActor extends NPCPF2e> extends CreatureSheetPF2e<TAct
     }
 
     private getIdentifyCreatureData(): IdentifyCreatureData {
-        const proficiencyWithoutLevel = game.settings.get("pf2e", "proficiencyVariant") === "ProficiencyWithoutLevel";
+        const proficiencyWithoutLevel =
+            game.settings.get("ordem-paranormal", "proficiencyVariant") === "ProficiencyWithoutLevel";
         return identifyCreature(this.actor, { proficiencyWithoutLevel });
     }
 
@@ -164,7 +165,7 @@ export class NPCSheetPF2e<TActor extends NPCPF2e> extends CreatureSheetPF2e<TAct
 
         sheetData.hasHardness = this.actor.traits.has("construct") || (Number(hardness?.value) || 0) > 0;
 
-        sheetData.configLootableNpc = game.settings.get("pf2e", "automation.lootableNPCs");
+        sheetData.configLootableNpc = game.settings.get("ordem-paranormal", "automation.lootableNPCs");
 
         // Enrich content
         const rollData = this.actor.getRollData();

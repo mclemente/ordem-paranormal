@@ -72,7 +72,7 @@ class CharacterFeats extends Collection<FeatCategory> {
             .filter((idx) => idx % 2 === 0);
 
         // Add dual class if active
-        if (game.settings.get("pf2e", "dualClassVariant")) {
+        if (game.settings.get("ordem-paranormal", "dualClassVariant")) {
             this.createCategory({
                 id: "dualclass",
                 label: "PF2E.FeatDualClassHeader",
@@ -82,7 +82,7 @@ class CharacterFeats extends Collection<FeatCategory> {
         }
 
         // Add free archetype (if active)
-        if (game.settings.get("pf2e", "freeArchetypeVariant")) {
+        if (game.settings.get("ordem-paranormal", "freeArchetypeVariant")) {
             this.createCategory({
                 id: "archetype",
                 label: "PF2E.FeatArchetypeHeader",
@@ -105,7 +105,7 @@ class CharacterFeats extends Collection<FeatCategory> {
         });
 
         // Add campaign feats if enabled
-        if (game.settings.get("pf2e", "campaignFeats")) {
+        if (game.settings.get("ordem-paranormal", "campaignFeats")) {
             this.createCategory({ id: "campaign", label: "PF2E.FeatCampaignHeader" });
         }
     }

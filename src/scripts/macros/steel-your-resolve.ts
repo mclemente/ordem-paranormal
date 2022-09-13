@@ -23,7 +23,7 @@ export function steelYourResolve(options: ActionDefaultOptions): void {
     const title = translations.Title;
     const content = translations.Content;
 
-    if (!game.settings.get("pf2e", "staminaVariant")) {
+    if (!game.settings.get("ordem-paranormal", "staminaVariant")) {
         ui.notifications.error(translations.StaminaNotEnabled);
         return;
     }

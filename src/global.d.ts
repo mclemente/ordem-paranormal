@@ -109,59 +109,68 @@ declare global {
     }
 
     interface ClientSettings {
-        get(module: "pf2e", setting: "automation.actorsDeadAtZero"): "neither" | "npcsOnly" | "pcsOnly" | "both";
-        get(module: "pf2e", setting: "automation.effectExpiration"): boolean;
-        get(module: "pf2e", setting: "automation.flankingDetection"): boolean;
-        get(module: "pf2e", setting: "automation.lootableNPCs"): boolean;
-        get(module: "pf2e", setting: "automation.removeExpiredEffects"): boolean;
-        get(module: "pf2e", setting: "automation.rulesBasedVision"): boolean;
+        get(
+            module: "ordem-paranormal",
+            setting: "automation.actorsDeadAtZero"
+        ): "neither" | "npcsOnly" | "pcsOnly" | "both";
+        get(module: "ordem-paranormal", setting: "automation.effectExpiration"): boolean;
+        get(module: "ordem-paranormal", setting: "automation.flankingDetection"): boolean;
+        get(module: "ordem-paranormal", setting: "automation.lootableNPCs"): boolean;
+        get(module: "ordem-paranormal", setting: "automation.removeExpiredEffects"): boolean;
+        get(module: "ordem-paranormal", setting: "automation.rulesBasedVision"): boolean;
 
-        get(module: "pf2e", setting: "gradualBoostsVariant"): boolean;
-        get(module: "pf2e", setting: "ancestryParagonVariant"): boolean;
-        get(module: "pf2e", setting: "automaticBonusVariant"): "noABP" | "ABPFundamentalPotency" | "ABPRulesAsWritten";
-        get(module: "pf2e", setting: "dualClassVariant"): boolean;
-        get(module: "pf2e", setting: "freeArchetypeVariant"): boolean;
-        get(module: "pf2e", setting: "proficiencyVariant"): "ProficiencyWithLevel" | "ProficiencyWithoutLevel";
-        get(module: "pf2e", setting: "staminaVariant"): 0 | 1;
+        get(module: "ordem-paranormal", setting: "gradualBoostsVariant"): boolean;
+        get(module: "ordem-paranormal", setting: "ancestryParagonVariant"): boolean;
+        get(
+            module: "ordem-paranormal",
+            setting: "automaticBonusVariant"
+        ): "noABP" | "ABPFundamentalPotency" | "ABPRulesAsWritten";
+        get(module: "ordem-paranormal", setting: "dualClassVariant"): boolean;
+        get(module: "ordem-paranormal", setting: "freeArchetypeVariant"): boolean;
+        get(
+            module: "ordem-paranormal",
+            setting: "proficiencyVariant"
+        ): "ProficiencyWithLevel" | "ProficiencyWithoutLevel";
+        get(module: "ordem-paranormal", setting: "staminaVariant"): 0 | 1;
 
-        get(module: "pf2e", setting: "proficiencyUntrainedModifier"): number;
-        get(module: "pf2e", setting: "proficiencyTrainedModifier"): number;
-        get(module: "pf2e", setting: "proficiencyExpertModifier"): number;
-        get(module: "pf2e", setting: "proficiencyMasterModifier"): number;
-        get(module: "pf2e", setting: "proficiencyLegendaryModifier"): number;
+        get(module: "ordem-paranormal", setting: "proficiencyUntrainedModifier"): number;
+        get(module: "ordem-paranormal", setting: "proficiencyTrainedModifier"): number;
+        get(module: "ordem-paranormal", setting: "proficiencyExpertModifier"): number;
+        get(module: "ordem-paranormal", setting: "proficiencyMasterModifier"): number;
+        get(module: "ordem-paranormal", setting: "proficiencyLegendaryModifier"): number;
 
-        get(module: "pf2e", setting: "metagame.partyVision"): boolean;
-        get(module: "pf2e", setting: "metagame.secretCondition"): boolean;
-        get(module: "pf2e", setting: "metagame.secretDamage"): boolean;
-        get(module: "pf2e", setting: "metagame.showDC"): UserVisibility;
-        get(module: "pf2e", setting: "metagame.showResults"): UserVisibility;
-        get(module: "pf2e", setting: "metagame.tokenSetsNameVisibility"): boolean;
+        get(module: "ordem-paranormal", setting: "metagame.partyVision"): boolean;
+        get(module: "ordem-paranormal", setting: "metagame.secretCondition"): boolean;
+        get(module: "ordem-paranormal", setting: "metagame.secretDamage"): boolean;
+        get(module: "ordem-paranormal", setting: "metagame.showDC"): UserVisibility;
+        get(module: "ordem-paranormal", setting: "metagame.showResults"): UserVisibility;
+        get(module: "ordem-paranormal", setting: "metagame.tokenSetsNameVisibility"): boolean;
 
-        get(module: "pf2e", setting: "tokens.autoscale"): boolean;
+        get(module: "ordem-paranormal", setting: "tokens.autoscale"): boolean;
 
-        get(module: "pf2e", setting: "worldClock.dateTheme"): "AR" | "IC" | "AD" | "CE";
-        get(module: "pf2e", setting: "worldClock.playersCanView"): boolean;
-        get(module: "pf2e", setting: "worldClock.showClockButton"): boolean;
-        get(module: "pf2e", setting: "worldClock.syncDarkness"): boolean;
-        get(module: "pf2e", setting: "worldClock.timeConvention"): 24 | 12;
-        get(module: "pf2e", setting: "worldClock.worldCreatedOn"): string;
+        get(module: "ordem-paranormal", setting: "worldClock.dateTheme"): "AR" | "IC" | "AD" | "CE";
+        get(module: "ordem-paranormal", setting: "worldClock.playersCanView"): boolean;
+        get(module: "ordem-paranormal", setting: "worldClock.showClockButton"): boolean;
+        get(module: "ordem-paranormal", setting: "worldClock.syncDarkness"): boolean;
+        get(module: "ordem-paranormal", setting: "worldClock.timeConvention"): 24 | 12;
+        get(module: "ordem-paranormal", setting: "worldClock.worldCreatedOn"): string;
 
-        get(module: "pf2e", setting: "campaignFeats"): boolean;
-        get(module: "pf2e", setting: "campaignFeatSections"): FeatCategoryOptions[];
+        get(module: "ordem-paranormal", setting: "campaignFeats"): boolean;
+        get(module: "ordem-paranormal", setting: "campaignFeatSections"): FeatCategoryOptions[];
 
-        get(module: "pf2e", setting: "homebrew.weaponCategories"): HomebrewTag<"weaponCategories">[];
-        get(module: "pf2e", setting: HomebrewSettingsKey): HomebrewTag[];
+        get(module: "ordem-paranormal", setting: "homebrew.weaponCategories"): HomebrewTag<"weaponCategories">[];
+        get(module: "ordem-paranormal", setting: HomebrewSettingsKey): HomebrewTag[];
 
-        get(module: "pf2e", setting: "compendiumBrowserPacks"): CompendiumBrowserSettings;
-        get(module: "pf2e", setting: "critFumbleButtons"): boolean;
-        get(module: "pf2e", setting: "deathIcon"): ImagePath;
-        get(module: "pf2e", setting: "drawCritFumble"): boolean;
-        get(module: "pf2e", setting: "enabledRulesUI"): boolean;
-        get(module: "pf2e", setting: "identifyMagicNotMatchingTraditionModifier"): 0 | 2 | 5 | 10;
-        get(module: "pf2e", setting: "nathMode"): boolean;
-        get(module: "pf2e", setting: "statusEffectType"): StatusEffectIconTheme;
-        get(module: "pf2e", setting: "worldSchemaVersion"): number;
-        get(module: "pf2e", setting: "worldSystemVersion"): string;
+        get(module: "ordem-paranormal", setting: "compendiumBrowserPacks"): CompendiumBrowserSettings;
+        get(module: "ordem-paranormal", setting: "critFumbleButtons"): boolean;
+        get(module: "ordem-paranormal", setting: "deathIcon"): ImagePath;
+        get(module: "ordem-paranormal", setting: "drawCritFumble"): boolean;
+        get(module: "ordem-paranormal", setting: "enabledRulesUI"): boolean;
+        get(module: "ordem-paranormal", setting: "identifyMagicNotMatchingTraditionModifier"): 0 | 2 | 5 | 10;
+        get(module: "ordem-paranormal", setting: "nathMode"): boolean;
+        get(module: "ordem-paranormal", setting: "statusEffectType"): StatusEffectIconTheme;
+        get(module: "ordem-paranormal", setting: "worldSchemaVersion"): number;
+        get(module: "ordem-paranormal", setting: "worldSystemVersion"): string;
     }
 
     interface ClientSettingsMap {

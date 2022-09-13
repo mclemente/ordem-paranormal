@@ -40,7 +40,7 @@ abstract class SettingsMenuPF2e extends FormApplication {
     static registerSettings(): void {
         const settings = this.settings;
         for (const setting of this.SETTINGS) {
-            game.settings.register("pf2e", `${this.namespace}.${setting}`, {
+            game.settings.register("ordem-paranormal", `${this.namespace}.${setting}`, {
                 ...settings[setting],
                 scope: "world",
                 config: false,
@@ -51,7 +51,7 @@ abstract class SettingsMenuPF2e extends FormApplication {
     override async getData(): Promise<MenuTemplateData> {
         const settings = (this.constructor as typeof SettingsMenuPF2e).settings;
         const templateData: SettingsTemplateData[] = Object.entries(settings).map(([key, setting]) => {
-            const value = game.settings.get("pf2e", `${this.namespace}.${key}`);
+            const value = game.settings.get("ordem-paranormal", `${this.namespace}.${key}`);
             return {
                 ...setting,
                 key,
@@ -69,7 +69,7 @@ abstract class SettingsMenuPF2e extends FormApplication {
     protected override async _updateObject(_event: Event, data: Record<string, unknown>): Promise<void> {
         for await (const key of (this.constructor as typeof SettingsMenuPF2e).SETTINGS) {
             const settingKey = `${this.namespace}.${key}`;
-            await game.settings.set("pf2e", settingKey, data[key]);
+            await game.settings.set("ordem-paranormal", settingKey, data[key]);
         }
     }
 }

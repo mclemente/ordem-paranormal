@@ -203,7 +203,7 @@ export class AbilityBuilderPopup extends Application {
 
     private calculatedLeveledBoosts() {
         const build = this.actor.system.build.abilities;
-        const isGradual = game.settings.get("pf2e", "gradualBoostsVariant");
+        const isGradual = game.settings.get("ordem-paranormal", "gradualBoostsVariant");
         return ([1, 5, 10, 15, 20] as const).reduce(
             (ret: Record<number, LevelBoostData>, level) => ({
                 ...ret,

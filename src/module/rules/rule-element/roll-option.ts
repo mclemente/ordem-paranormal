@@ -232,9 +232,9 @@ class RollOptionRuleElement extends RuleElementPF2e {
             domains.includes(this.domain) &&
             rollOptions.has(this.option)
         ) {
-            if (game.settings.get("pf2e", "automation.removeExpiredEffects")) {
+            if (game.settings.get("ordem-paranormal", "automation.removeExpiredEffects")) {
                 await this.item.delete();
-            } else if (game.settings.get("pf2e", "automation.effectExpiration")) {
+            } else if (game.settings.get("ordem-paranormal", "automation.effectExpiration")) {
                 await this.item.update({ "system.duration.value": -1, "system.expired": true });
             }
         }

@@ -19,8 +19,8 @@ export class RollTwiceRuleElement extends RuleElementPF2e {
             this.selector = data.selector;
             this.keep = data.keep;
 
-            const expireEffects = game.settings.get("pf2e", "automation.effectExpiration");
-            const removeExpired = game.settings.get("pf2e", "automation.removeExpiredEffects");
+            const expireEffects = game.settings.get("ordem-paranormal", "automation.effectExpiration");
+            const removeExpired = game.settings.get("ordem-paranormal", "automation.removeExpiredEffects");
 
             this.removeAfterRoll =
                 (expireEffects || removeExpired) && item.isOfType("effect")
@@ -67,9 +67,9 @@ export class RollTwiceRuleElement extends RuleElementPF2e {
             rule.ignored = true;
         }
 
-        if (game.settings.get("pf2e", "automation.removeExpiredEffects")) {
+        if (game.settings.get("ordem-paranormal", "automation.removeExpiredEffects")) {
             await this.item.delete();
-        } else if (game.settings.get("pf2e", "automation.effectExpiration")) {
+        } else if (game.settings.get("ordem-paranormal", "automation.effectExpiration")) {
             await this.item.update({ "system.duration.value": -1, "system.expired": true });
         }
     }

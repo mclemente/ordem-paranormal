@@ -18,7 +18,7 @@ export class StatusEffects {
 
     /** Set the theme for condition icons on tokens */
     static setIconTheme(): void {
-        const iconTheme = game.settings.get("pf2e", "statusEffectType");
+        const iconTheme = game.settings.get("ordem-paranormal", "statusEffectType");
         CONFIG.PF2E.statusEffects.lastIconTheme = iconTheme;
         CONFIG.PF2E.statusEffects.iconDir = this.#ICON_THEME_DIRS[iconTheme];
         this.#updateStatusIcons();
@@ -27,7 +27,7 @@ export class StatusEffects {
     /** Link status effect icons to conditions */
     static initialize(): void {
         console.debug("PF2e System | Initializing Status Effects handler");
-        const iconTheme = game.settings.get("pf2e", "statusEffectType");
+        const iconTheme = game.settings.get("ordem-paranormal", "statusEffectType");
         CONFIG.PF2E.statusEffects.lastIconTheme = iconTheme;
         CONFIG.PF2E.statusEffects.iconDir = this.#ICON_THEME_DIRS[iconTheme];
         this.#updateStatusIcons();
@@ -99,7 +99,7 @@ export class StatusEffects {
 
     /** Updates the core CONFIG.statusEffects with the new icons */
     static #updateStatusIcons(): void {
-        const iconTheme = game.settings.get("pf2e", "statusEffectType");
+        const iconTheme = game.settings.get("ordem-paranormal", "statusEffectType");
         const directory = iconTheme === "default" ? "conditions" : "conditions-2";
         CONFIG.statusEffects = Object.entries(CONFIG.PF2E.statusEffects.conditions).map(([id, label]) => ({
             id,
@@ -179,7 +179,7 @@ export class StatusEffects {
 
     /** Called by `EncounterPF2e#_onUpdate` */
     static onUpdateEncounter(encounter: EncounterPF2e): void {
-        if (!(game.user.isGM && game.settings.get("pf2e", "statusEffectShowCombatMessage"))) return;
+        if (!(game.user.isGM && game.settings.get("ordem-paranormal", "statusEffectShowCombatMessage"))) return;
 
         if (!encounter.started) {
             this.#lastCombatantToken = null;
@@ -321,7 +321,7 @@ export class StatusEffects {
             type: CONST.CHAT_MESSAGE_TYPES.OTHER,
         };
         const isNPCEvent = !token.actor?.hasPlayerOwner;
-        const hideNPCEvent = isNPCEvent && game.settings.get("pf2e", "metagame.secretCondition");
+        const hideNPCEvent = isNPCEvent && game.settings.get("ordem-paranormal", "metagame.secretCondition");
         if (hideNPCEvent || whisper) {
             messageSource.whisper = ChatMessage.getWhisperRecipients("GM").map((u) => u.id);
         }

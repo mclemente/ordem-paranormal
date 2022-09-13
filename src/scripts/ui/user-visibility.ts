@@ -32,7 +32,7 @@ class UserVisibilityPF2e {
 
         const hasOwnership = document?.isOwner ?? game.user.isGM;
         // Hide DC for explicit save buttons (such as in spell cards)
-        const dcSetting = game.settings.get("pf2e", "metagame.showDC");
+        const dcSetting = game.settings.get("ordem-paranormal", "metagame.showDC");
         const $saveButtons = $html.find("button[data-action=save]");
         const hideDC =
             !document?.hasPlayerOwner &&
@@ -72,7 +72,7 @@ class UserVisibilityPF2e {
 
     static processMessageSender(message: ChatMessagePF2e, html: HTMLElement): void {
         // Hide the sender name from the card if it can't be seen from the canvas
-        const tokenSetsNameVisibility = game.settings.get("pf2e", "metagame.tokenSetsNameVisibility");
+        const tokenSetsNameVisibility = game.settings.get("ordem-paranormal", "metagame.tokenSetsNameVisibility");
         const token = message?.token;
         if (token && tokenSetsNameVisibility) {
             const sender = html.querySelector<HTMLElement>("h4.message-sender");

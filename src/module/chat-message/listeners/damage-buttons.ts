@@ -6,7 +6,7 @@ export const DamageButtons = {
     append: async (message: ChatMessagePF2e, html: JQuery): Promise<void> => {
         const $buttons = $(
             await renderTemplate("systems/pf2e/templates/chat/damage/buttons.html", {
-                showTripleDamage: game.settings.get("pf2e", "critFumbleButtons"),
+                showTripleDamage: game.settings.get("ordem-paranormal", "critFumbleButtons"),
             })
         );
         html.find(".message-content").append($buttons);

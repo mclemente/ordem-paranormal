@@ -102,7 +102,11 @@ abstract class RuleElementPF2e {
         if (this.data.ignored) return true;
 
         const { item } = this;
-        if (game.settings.get("pf2e", "automation.effectExpiration") && item instanceof EffectPF2e && item.isExpired) {
+        if (
+            game.settings.get("ordem-paranormal", "automation.effectExpiration") &&
+            item instanceof EffectPF2e &&
+            item.isExpired
+        ) {
             return (this.data.ignored = true);
         }
         if (!(item instanceof PhysicalItemPF2e)) return (this.data.ignored = false);

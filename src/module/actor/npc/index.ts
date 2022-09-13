@@ -64,7 +64,7 @@ class NPCPF2e extends CreaturePF2e {
     }
 
     get isLootable(): boolean {
-        const npcsAreLootable = game.settings.get("pf2e", "automation.lootableNPCs");
+        const npcsAreLootable = game.settings.get("ordem-paranormal", "automation.lootableNPCs");
         return this.isDead && (npcsAreLootable || this.flags.pf2e.lootable);
     }
 

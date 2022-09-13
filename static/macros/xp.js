@@ -42,7 +42,7 @@ function dialogTemplate(xp) {
     </tr>
     <tr>
         <th>${game.i18n.localize("PF2E.Encounter.Budget.Threat")}</th>
-        <td>${game.i18n.localize("PF2E.Encounter.Budget.Threats."+xp.rating)} (${xp.totalXP} XP)</td>
+        <td>${game.i18n.localize("PF2E.Encounter.Budget.Threats." + xp.rating)} (${xp.totalXP} XP)</td>
     </tr>
     <tr>
         <th>${game.i18n.localize("PF2E.Encounter.Budget.Reward")}</th>
@@ -168,7 +168,8 @@ const askLevelPopupTemplate = () => {
  */
 function showXP(partyLevel, partySize, npcLevels, hazardLevels) {
     const xp = game.pf2e.gm.calculateXP(partyLevel, partySize, npcLevels, hazardLevels, {
-        proficiencyWithoutLevel: game.settings.get("pf2e", "proficiencyVariant") === "ProficiencyWithoutLevel",
+        proficiencyWithoutLevel:
+            game.settings.get("ordem-paranormal", "proficiencyVariant") === "ProficiencyWithoutLevel",
     });
     new Dialog({
         title: "XP",

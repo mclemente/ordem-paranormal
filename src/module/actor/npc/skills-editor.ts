@@ -15,7 +15,7 @@ export class NPCSkillsEditor extends FormApplication<NPCPF2e> {
         const options = super.defaultOptions;
 
         options.id = "npc-skills-selector";
-        options.classes = ["pf2e", "npc"];
+        options.classes = ["ordem-paranormal", "npc"];
         options.title = game.i18n.localize("PF2E.NPC.SkillsEditor.TitleLabel");
         options.template = "systems/pf2e/templates/actors/npc/forms/npc-skills-editor.html";
         options.width = "auto";

@@ -167,7 +167,10 @@ export const InlineRollLinks = {
                             const dcValue =
                                 pf2Dc === "@self.level"
                                     ? ((): number => {
-                                          const pwlSetting = game.settings.get("pf2e", "proficiencyVariant");
+                                          const pwlSetting = game.settings.get(
+                                              "ordem-paranormal",
+                                              "proficiencyVariant"
+                                          );
                                           const proficiencyWithoutLevel = pwlSetting === "ProficiencyWithoutLevel";
                                           const level = actor.level;
                                           const adjustment = Number(pf2Adjustment) || 0;

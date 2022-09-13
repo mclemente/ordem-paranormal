@@ -100,7 +100,9 @@ export class FamiliarPF2e extends CreaturePF2e {
         details.alliance = master.system.details.alliance;
 
         const masterLevel =
-            game.settings.get("pf2e", "proficiencyVariant") === "ProficiencyWithoutLevel" ? 0 : master.level;
+            game.settings.get("ordem-paranormal", "proficiencyVariant") === "ProficiencyWithoutLevel"
+                ? 0
+                : master.level;
 
         systemData.master.ability ||= "cha";
         const spellcastingAbilityModifier = master.system.abilities[systemData.master.ability].mod;

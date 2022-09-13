@@ -1,5 +1,5 @@
 {
-    "id": "pf2e",
+    "id": "ordem-paranormal",
     "title": "Pathfinder 2nd Edition",
     "description": "A community contributed game system for Pathfinder Second Edition",
     "license": "./LICENSE",
@@ -16,15 +16,13 @@
         }
     ],
     "esmodules": ["vendor.bundle.js", "main.bundle.js"],
-    "scripts": [
-        "./lib/tooltipster.bundle.min.js"
-    ],
+    "scripts": ["./lib/tooltipster.bundle.min.js"],
     "styles": ["./styles/main.css"],
     "packs": [
         {
             "name": "abomination-vaults-bestiary",
             "label": "Abomination Vaults",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/abomination-vaults-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -33,7 +31,7 @@
         {
             "name": "age-of-ashes-bestiary",
             "label": "Age of Ashes",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/age-of-ashes-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -42,7 +40,7 @@
         {
             "name": "agents-of-edgewatch-bestiary",
             "label": "Agents of Edgewatch",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/agents-of-edgewatch-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -51,7 +49,7 @@
         {
             "name": "april-fools-bestiary",
             "label": "April Fool's Bestiary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/april-fools-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -60,7 +58,7 @@
         {
             "name": "book-of-the-dead-bestiary",
             "label": "Book of the Dead Bestiary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/book-of-the-dead-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -69,7 +67,7 @@
         {
             "name": "blood-lords-bestiary",
             "label": "Blood Lords Bestiary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/blood-lords-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -78,7 +76,7 @@
         {
             "name": "blog-bestiary",
             "label": "Paizo Blog Bestiary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/blog-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -87,7 +85,7 @@
         {
             "name": "extinction-curse-bestiary",
             "label": "Extinction Curse",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/extinction-curse-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -96,7 +94,7 @@
         {
             "name": "fall-of-plaguestone-bestiary",
             "label": "Fall of Plaguestone",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/fall-of-plaguestone.db",
             "type": "Actor",
             "private": true,
@@ -105,7 +103,7 @@
         {
             "name": "fists-of-the-ruby-phoenix-bestiary",
             "label": "Fists of the Ruby Phoenix",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/fists-of-the-ruby-phoenix-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -114,7 +112,7 @@
         {
             "name": "hazards",
             "label": "Hazards (Rulebooks)",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/hazards.db",
             "type": "Actor",
             "private": true,
@@ -123,7 +121,7 @@
         {
             "name": "lost-omens-impossible-lands-bestiary",
             "label": "Lost Omens: Impossible Lands",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/impossible-lands-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -132,7 +130,7 @@
         {
             "name": "lost-omens-mwangi-expanse-bestiary",
             "label": "Lost Omens: Mwangi Expanse",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/mwangi-expanse-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -141,7 +139,7 @@
         {
             "name": "lost-omens-monsters-of-myth-bestiary",
             "label": "Lost Omens: Monsters of Myth",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/monsters-of-myth-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -150,7 +148,7 @@
         {
             "name": "lost-omens-travel-guide-bestiary",
             "label": "Lost Omens: Travel Guide",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/travel-guide-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -159,7 +157,7 @@
         {
             "name": "malevolence-bestiary",
             "label": "Malevolence",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/malevolence-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -168,7 +166,7 @@
         {
             "name": "menace-under-otari-bestiary",
             "label": "Beginner Box Bestiary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/menace-under-otari-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -177,7 +175,7 @@
         {
             "name": "npc-gallery",
             "label": "NPC Gallery",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/npc-gallery.db",
             "type": "Actor",
             "private": true,
@@ -186,7 +184,7 @@
         {
             "name": "one-shot-bestiary",
             "label": "One Shot Unique Bestiary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/one-shot-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -195,7 +193,7 @@
         {
             "name": "outlaws-of-alkenstar-bestiary",
             "label": "Outlaws of Alkenstar Bestiary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/outlaws-of-alkenstar-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -204,7 +202,7 @@
         {
             "name": "pathfinder-bestiary",
             "label": "Bestiary 1",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pathfinder-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -213,7 +211,7 @@
         {
             "name": "pathfinder-bestiary-2",
             "label": "Bestiary 2",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pathfinder-bestiary-2.db",
             "type": "Actor",
             "private": true,
@@ -222,7 +220,7 @@
         {
             "name": "pathfinder-bestiary-3",
             "label": "Bestiary 3",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pathfinder-bestiary-3.db",
             "type": "Actor",
             "private": true,
@@ -231,7 +229,7 @@
         {
             "name": "pathfinder-dark-archive",
             "label": "Dark Archive Bestiary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pathfinder-dark-archive.db",
             "type": "Actor",
             "private": true,
@@ -240,7 +238,7 @@
         {
             "name": "pfs-introductions-bestiary",
             "label": "PFS Introductions",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pfs-introductions-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -249,7 +247,7 @@
         {
             "name": "pfs-season-1-bestiary",
             "label": "Season 1",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pfs-season-1-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -258,7 +256,7 @@
         {
             "name": "pfs-season-2-bestiary",
             "label": "Season 2",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pfs-season-2-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -267,7 +265,7 @@
         {
             "name": "pfs-season-3-bestiary",
             "label": "Season 3",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pfs-season-3-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -276,7 +274,7 @@
         {
             "name": "pfs-season-4-bestiary",
             "label": "Season 4",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pfs-season-4-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -285,7 +283,7 @@
         {
             "name": "quest-for-the-frozen-flame-bestiary",
             "label": "Quest for the Frozen Flame",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/quest-for-the-frozen-flame-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -294,7 +292,7 @@
         {
             "name": "shadows-at-sundown-bestiary",
             "label": "Shadows at Sundown",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/shadows-at-sundown-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -303,7 +301,7 @@
         {
             "name": "strength-of-thousands-bestiary",
             "label": "Strength of Thousands",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/strength-of-thousands-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -312,7 +310,7 @@
         {
             "name": "the-slithering-bestiary",
             "label": "The Slithering",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/the-slithering-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -321,7 +319,7 @@
         {
             "name": "troubles-in-otari-bestiary",
             "label": "Troubles in Otari",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/troubles-in-otari-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -330,7 +328,7 @@
         {
             "name": "night-of-the-gray-death-bestiary",
             "label": "Night of the Gray Death",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/night-of-the-gray-death-bestiary.db",
             "type": "Actor",
             "private": true,
@@ -339,7 +337,7 @@
         {
             "name": "vehicles",
             "label": "Vehicles",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/vehicles.db",
             "type": "Actor",
             "folder": "bestiaries/rulebook"
@@ -347,7 +345,7 @@
         {
             "name": "actionspf2e",
             "label": "Actions",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/actions.db",
             "type": "Item",
             "folder": "character-building"
@@ -355,7 +353,7 @@
         {
             "name": "ancestries",
             "label": "Ancestries",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/ancestries.db",
             "type": "Item",
             "folder": "character-building"
@@ -365,7 +363,7 @@
             "label": "Ancestry Features",
             "path": "packs/ancestryfeatures.db",
             "type": "Item",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "folder": "character-building"
         },
         {
@@ -373,13 +371,13 @@
             "label": "Backgrounds",
             "path": "packs/backgrounds.db",
             "type": "Item",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "folder": "character-building"
         },
         {
             "name": "classes",
             "label": "Classes",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/classes.db",
             "type": "Item",
             "folder": "character-building"
@@ -389,13 +387,13 @@
             "label": "Class Features",
             "path": "packs/classfeatures.db",
             "type": "Item",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "folder": "character-building"
         },
         {
             "name": "familiar-abilities",
             "label": "Familiar Abilities",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/familiar-abilities.db",
             "type": "Item",
             "folder": "character-building"
@@ -403,7 +401,7 @@
         {
             "name": "feats-srd",
             "label": "Feats",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/feats.db",
             "type": "Item",
             "folder": "character-building"
@@ -411,7 +409,7 @@
         {
             "name": "heritages",
             "label": "Heritages",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/heritages.db",
             "type": "Item",
             "folder": "character-building"
@@ -419,7 +417,7 @@
         {
             "name": "spells-srd",
             "label": "Spells",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/spells.db",
             "type": "Item",
             "folder": "character-building"
@@ -427,7 +425,7 @@
         {
             "name": "bestiary-effects",
             "label": "Bestiary Effects",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/bestiary-effects.db",
             "type": "Item",
             "private": true,
@@ -436,15 +434,15 @@
         {
             "name": "domains",
             "label": "Domains",
-            "system": "pf2e",
-            "module": "pf2e",
+            "system": "ordem-paranormal",
+            "module": "ordem-paranormal",
             "path": "packs/domains.db",
             "type": "JournalEntry"
         },
         {
             "name": "boons-and-curses",
             "label": "Deity Boons and Curses",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/boons-and-curses.db",
             "type": "Item",
             "private": true,
@@ -453,7 +451,7 @@
         {
             "name": "conditionitems",
             "label": "Conditions",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/conditionitems.db",
             "type": "Item",
             "folder": "effects"
@@ -461,7 +459,7 @@
         {
             "name": "campaign-effects",
             "label": "Campaign Effects",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/campaign-effects.db",
             "type": "Item",
             "private": true,
@@ -470,7 +468,7 @@
         {
             "name": "equipment-effects",
             "label": "Equipment Effects",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/equipment-effects.db",
             "type": "Item",
             "folder": "effects"
@@ -478,7 +476,7 @@
         {
             "name": "other-effects",
             "label": "Other Effects",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/other-effects.db",
             "type": "Item",
             "folder": "effects"
@@ -486,7 +484,7 @@
         {
             "name": "feat-effects",
             "label": "Feat/Feature Effects",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/feat-effects.db",
             "type": "Item",
             "folder": "effects"
@@ -494,7 +492,7 @@
         {
             "name": "pathfinder-society-boons",
             "label": "Pathfinder Society Boons",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/pathfinder-society-boons.db",
             "type": "Item",
             "folder": "effects"
@@ -502,7 +500,7 @@
         {
             "name": "spell-effects",
             "label": "Spell Effects",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/spell-effects.db",
             "type": "Item",
             "folder": "effects"
@@ -510,21 +508,21 @@
         {
             "name": "equipment-srd",
             "label": "Equipment",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "./packs/equipment.db",
             "type": "Item"
         },
         {
             "name": "deities",
             "label": "Deities",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/deities.db",
             "type": "Item"
         },
         {
             "name": "iconics",
             "label": "Iconics",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/iconics.db",
             "type": "Actor",
             "folder": "pregenerated"
@@ -532,7 +530,7 @@
         {
             "name": "paizo-pregens",
             "label": "Non-Iconic Pregens",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/paizo-pregens.db",
             "type": "Actor",
             "folder": "pregenerated"
@@ -542,62 +540,62 @@
             "label": "Rollable Tables",
             "path": "packs/rollable-tables.db",
             "type": "RollTable",
-            "system": "pf2e",
-            "module": "pf2e"
+            "system": "ordem-paranormal",
+            "module": "ordem-paranormal"
         },
         {
             "name": "archetypes",
             "label": "Archetypes",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/archetypes.db",
             "type": "JournalEntry"
         },
         {
             "name": "criticaldeck",
             "label": "Critical Hit/Fumble Deck",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/criticaldeck.db",
             "type": "JournalEntry"
         },
         {
             "name": "hero-point-deck",
             "label": "Hero Point Deck",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/hero-point-deck.db",
             "type": "JournalEntry"
         },
         {
             "name": "journals",
             "label": "PF2e Journals",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/journals.db",
             "type": "JournalEntry"
         },
         {
             "name": "gmg-srd",
             "label": "Game Mastery Guide",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/gmg-srd.db",
             "type": "JournalEntry"
         },
         {
             "name": "action-macros",
             "label": "Action Macros",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/action-macros.db",
             "type": "Macro"
         },
         {
             "name": "pf2e-macros",
             "label": "PF2e Macros",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/macros.db",
             "type": "Macro"
         },
         {
             "name": "bestiary-ability-glossary-srd",
             "label": "Bestiary Ability Glossary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/bestiary-ability-glossary-srd.db",
             "type": "Item",
             "private": true
@@ -605,7 +603,7 @@
         {
             "name": "bestiary-family-ability-glossary",
             "label": "Creature Family Ability Glossary",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/bestiary-family-ability-glossary.db",
             "type": "Item",
             "private": true
@@ -613,13 +611,12 @@
         {
             "name": "adventure-specific-actions",
             "label": "Adventure Specific Actions",
-            "system": "pf2e",
+            "system": "ordem-paranormal",
             "path": "packs/adventure-specific-actions.db",
             "type": "Item",
             "folder": "character-building",
             "private": true
         }
-
     ],
     "languages": [
         {

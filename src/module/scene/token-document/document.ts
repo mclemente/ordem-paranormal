@@ -19,7 +19,7 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
     /** Check actor for effects found in `CONFIG.specialStatusEffects` */
     override hasStatusEffect(statusId: string): boolean {
         const { actor } = this;
-        if (!actor || !game.settings.get("pf2e", "automation.rulesBasedVision")) {
+        if (!actor || !game.settings.get("ordem-paranormal", "automation.rulesBasedVision")) {
             return false;
         }
 
@@ -161,14 +161,14 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
         const linkDefault = !["hazard", "loot"].includes(this.actor.type ?? "");
         const linkToActorSize = this.flags.pf2e?.linkToActorSize ?? linkDefault;
 
-        const autoscaleDefault = game.settings.get("pf2e", "tokens.autoscale");
+        const autoscaleDefault = game.settings.get("ordem-paranormal", "tokens.autoscale");
         // Autoscaling is a secondary feature of linking to actor size
         const autoscale = linkToActorSize ? this.flags.pf2e?.autoscale ?? autoscaleDefault : false;
         this.flags.pf2e = mergeObject(this.flags.pf2e ?? {}, { linkToActorSize, autoscale });
 
         // Nath mode
         const defaultIcons = [ActorPF2e.DEFAULT_ICON, `systems/pf2e/icons/default-icons/${this.actor.type}.svg`];
-        if (game.settings.get("pf2e", "nathMode") && defaultIcons.includes(this.texture.src)) {
+        if (game.settings.get("ordem-paranormal", "nathMode") && defaultIcons.includes(this.texture.src)) {
             this.texture.src = ((): VideoPath => {
                 switch (this.actor.alliance) {
                     case "party":
@@ -279,7 +279,7 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
             token.width = size;
             token.height = size;
 
-            if (game.settings.get("pf2e", "tokens.autoscale") && token.flags.pf2e.autoscale !== false) {
+            if (game.settings.get("ordem-paranormal", "tokens.autoscale") && token.flags.pf2e.autoscale !== false) {
                 token.texture.scaleX = token.texture.scaleY = actor.size === "sm" ? 0.8 : 1;
             }
         }
@@ -345,7 +345,7 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
         userId: string
     ): void {
         // Possibly re-render encounter tracker if token's `displayName` property has changed
-        const tokenSetsNameVisibility = game.settings.get("pf2e", "metagame.tokenSetsNameVisibility");
+        const tokenSetsNameVisibility = game.settings.get("ordem-paranormal", "metagame.tokenSetsNameVisibility");
         if ("displayName" in changed && tokenSetsNameVisibility && this.combatant) {
             ui.combat.render();
         }

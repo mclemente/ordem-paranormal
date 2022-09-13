@@ -132,7 +132,7 @@ class CharacterSheetPF2e extends CreatureSheetPF2e<CharacterPF2e> {
         sheetData.data.details.keyability.singleOption = this.actor.class?.system.keyAbility.value.length === 1;
 
         // Is the stamina variant rule enabled?
-        sheetData.hasStamina = game.settings.get("pf2e", "staminaVariant") > 0;
+        sheetData.hasStamina = game.settings.get("ordem-paranormal", "staminaVariant") > 0;
         sheetData.spellcastingEntries = await this.prepareSpellcasting();
         sheetData.feats = this.prepareFeats();
 
@@ -156,7 +156,7 @@ class CharacterSheetPF2e extends CreatureSheetPF2e<CharacterPF2e> {
                 return result;
             }, {});
 
-        sheetData.abpEnabled = game.settings.get("pf2e", "automaticBonusVariant") !== "noABP";
+        sheetData.abpEnabled = game.settings.get("ordem-paranormal", "automaticBonusVariant") !== "noABP";
 
         // Sort attack/defense proficiencies
         const combatProficiencies: MartialProficiencies = sheetData.data.martial;
@@ -427,7 +427,7 @@ class CharacterSheetPF2e extends CreatureSheetPF2e<CharacterPF2e> {
 
         // Filter strikes
         $actions.find(".toggle-unready-strikes").on("click", () => {
-            this.actor.setFlag("pf2e", "showUnreadyStrikes", !this.actor.flags.pf2e.showUnreadyStrikes);
+            this.actor.setFlag("ordem-paranormal", "showUnreadyStrikes", !this.actor.flags.pf2e.showUnreadyStrikes);
         });
 
         const $strikesList = $actions.find(".strikes-list");
@@ -575,7 +575,7 @@ class CharacterSheetPF2e extends CreatureSheetPF2e<CharacterPF2e> {
                 }
             });
             flags.forEach(async (flag) => {
-                await this.actor.setFlag("pf2e", flag, false);
+                await this.actor.setFlag("ordem-paranormal", flag, false);
             });
         });
 

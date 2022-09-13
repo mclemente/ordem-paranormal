@@ -17,7 +17,7 @@ export const Ready = {
             console.debug(`PF2e System | Build mode: ${BUILD_MODE}`);
 
             // Determine whether a system migration is required and feasible
-            const currentVersion = game.settings.get("pf2e", "worldSchemaVersion");
+            const currentVersion = game.settings.get("ordem-paranormal", "worldSchemaVersion");
 
             // Save the current world schema version if hasn't before.
             storeInitialWorldVersions().then(async () => {
@@ -38,10 +38,10 @@ export const Ready = {
                 }
 
                 // Update the world system version
-                const previous = game.settings.get("pf2e", "worldSystemVersion");
+                const previous = game.settings.get("ordem-paranormal", "worldSystemVersion");
                 const current = game.system.version;
                 if (foundry.utils.isNewerVersion(current, previous)) {
-                    await game.settings.set("pf2e", "worldSystemVersion", current);
+                    await game.settings.set("ordem-paranormal", "worldSystemVersion", current);
                 }
 
                 // These modules claim compatibility with all of V9 but are abandoned

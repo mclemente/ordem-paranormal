@@ -95,7 +95,7 @@ const packsPath = (() => {
     try {
         const content = fs.readFileSync(args.foundryConfig ?? "", { encoding: "utf-8" });
         const config = JSON.parse(content) ?? {};
-        return path.join(config.dataPath, "Data", "systems", config.systemName ?? "pf2e", "packs");
+        return path.join(config.dataPath, "Data", "systems", config.systemName ?? "ordem-paranormal", "packs");
     } catch (_error) {
         return path.join(process.cwd(), "dist", "packs");
     }
@@ -230,7 +230,7 @@ function pruneTree(docSource: PackEntry, topLevel: PackEntry): void {
 function sanitizeDocument<T extends PackEntry>(docSource: T, { isEmbedded } = { isEmbedded: false }): T {
     // Clear non-core/pf2e flags
     for (const flagScope in docSource.flags) {
-        if (!["core", "pf2e"].includes(flagScope) || !isEmbedded) {
+        if (!["core", "ordem-paranormal"].includes(flagScope) || !isEmbedded) {
             delete docSource.flags[flagScope];
         }
     }

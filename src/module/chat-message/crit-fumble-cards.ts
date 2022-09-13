@@ -51,7 +51,7 @@ export class CriticalHitAndFumbleCards {
     }
 
     static appendButtons(message: ChatMessagePF2e, $html: JQuery): void {
-        this.appendButtonsOption ??= game.settings.get("pf2e", "critFumbleButtons");
+        this.appendButtonsOption ??= game.settings.get("ordem-paranormal", "critFumbleButtons");
         if (this.appendButtonsOption && (message.isAuthor || game.user.isGM) && message.isContentVisible) {
             const type = message.flags.pf2e.context?.type ?? "";
             if (this.rollTypes.includes(type)) {

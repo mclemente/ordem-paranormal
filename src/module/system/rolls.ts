@@ -630,7 +630,8 @@ class CheckPF2e {
 
             const canSeeTokenName = (token ?? new TokenDocumentPF2e(targetActor?.prototypeToken.toObject() ?? {}))
                 .playersCanSeeName;
-            const canSeeName = canSeeTokenName || !game.settings.get("pf2e", "metagame.tokenSetsNameVisibility");
+            const canSeeName =
+                canSeeTokenName || !game.settings.get("ordem-paranormal", "metagame.tokenSetsNameVisibility");
 
             return {
                 name: token?.name ?? targetActor?.name ?? "",
@@ -661,7 +662,7 @@ class CheckPF2e {
 
             const visibility = targetActor?.hasPlayerOwner
                 ? "all"
-                : dc.visibility ?? game.settings.get("pf2e", "metagame.showDC");
+                : dc.visibility ?? game.settings.get("ordem-paranormal", "metagame.showDC");
 
             if (typeof preadjustedDC !== "number" || circumstances.length === 0) {
                 const labelKey = targetData
@@ -728,7 +729,7 @@ class CheckPF2e {
 
             const resultKey = adjustment ? "PF2E.Check.Result.AdjustedLabel" : "PF2E.Check.Result.Label";
             const markup = game.i18n.format(resultKey, { degree: degreeLabel, offset: offset.value, adjustment });
-            const visibility = game.settings.get("pf2e", "metagame.showResults");
+            const visibility = game.settings.get("ordem-paranormal", "metagame.showResults");
 
             return { markup, visibility };
         })();

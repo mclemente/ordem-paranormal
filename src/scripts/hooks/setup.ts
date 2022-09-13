@@ -12,7 +12,7 @@ export const Setup = {
             // Register actor and item sheets
             registerSheets();
 
-            CONFIG.controlIcons.defeated = game.settings.get("pf2e", "deathIcon");
+            CONFIG.controlIcons.defeated = game.settings.get("ordem-paranormal", "deathIcon");
             game.pf2e.StatusEffects.initialize();
 
             // Assign the homebrew elements to their respective `CONFIG.PF2E` objects

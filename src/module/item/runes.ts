@@ -15,7 +15,7 @@ export function getPropertySlots(item: WeaponPF2e | ArmorPF2e): ZeroToFour {
         slots += 1;
     }
     let potencyRune = item.system.potencyRune.value ?? 0;
-    if (game.settings.get("pf2e", "automaticBonusVariant") !== "noABP") {
+    if (game.settings.get("ordem-paranormal", "automaticBonusVariant") !== "noABP") {
         potencyRune = 0;
         slots += getPropertyRunes(item, 4).length;
         slots += 1;

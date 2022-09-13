@@ -24,7 +24,7 @@ export class WeaponSheetPF2e extends PhysicalItemSheetPF2e<WeaponPF2e> {
         // Show source damage in case of modification during data preparation
         sheetData.data.damage = deepClone(this.item._source.system.damage);
 
-        const ABPVariant = game.settings.get("pf2e", "automaticBonusVariant");
+        const ABPVariant = game.settings.get("ordem-paranormal", "automaticBonusVariant");
         // Limit shown property-rune slots by potency rune level and a material composition of orichalcum
         const potencyRuneValue = ABPVariant === "ABPFundamentalPotency" ? 4 : sheetData.data.potencyRune.value ?? 0;
         const propertyRuneSlots = [
@@ -115,7 +115,7 @@ export class WeaponSheetPF2e extends PhysicalItemSheetPF2e<WeaponPF2e> {
             damage: { type: "piercing", die: "d4" },
             traits: [],
         };
-        const abpEnabled = game.settings.get("pf2e", "automaticBonusVariant") !== "noABP";
+        const abpEnabled = game.settings.get("ordem-paranormal", "automaticBonusVariant") !== "noABP";
 
         return {
             ...sheetData,

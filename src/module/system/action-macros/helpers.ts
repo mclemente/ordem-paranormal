@@ -53,7 +53,7 @@ export class ActionMacroHelpers {
         outcome: DegreeOfSuccessString,
         translationKey?: string
     ): RollNotePF2e {
-        const visibility = game.settings.get("pf2e", "metagame.showResults");
+        const visibility = game.settings.get("ordem-paranormal", "metagame.showResults");
         const outcomes = visibility === "all" ? [outcome] : [];
         return new RollNotePF2e({
             selector,
@@ -234,7 +234,7 @@ export class ActionMacroHelpers {
     private static getWeaponPotencyModifier(item: Embedded<WeaponPF2e>, selector: string): ModifierPF2e | null {
         const itemBonus = item.system.runes.potency;
         const slug = "potency";
-        if (game.settings.get("pf2e", "automaticBonusVariant") !== "noABP") {
+        if (game.settings.get("ordem-paranormal", "automaticBonusVariant") !== "noABP") {
             return new ModifierPF2e({
                 slug,
                 type: MODIFIER_TYPE.POTENCY,

@@ -113,7 +113,7 @@ export async function restForTheNight(options: ActionDefaultOptions): Promise<Ch
         }
 
         // Stamina points
-        const staminaEnabled = !!game.settings.get("pf2e", "staminaVariant");
+        const staminaEnabled = !!game.settings.get("ordem-paranormal", "staminaVariant");
         const stamina = attributes.sp;
         const resolve = attributes.resolve;
 
