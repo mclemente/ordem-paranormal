@@ -9,7 +9,7 @@ const MAGIC_SCHOOLS = new Set([
     "transmutation",
 ] as const);
 
-const MAGIC_TRADITIONS = new Set(["arcane", "divine", "occult", "primal"] as const);
+const MAGIC_TRADITIONS = new Set(["ocultismo"] as const);
 
 const SPELL_COMPONENTS = ["focus", "material", "somatic", "verbal"] as const;
 

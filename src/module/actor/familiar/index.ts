@@ -104,7 +104,7 @@ export class FamiliarPF2e extends CreaturePF2e {
                 ? 0
                 : master.level;
 
-        systemData.master.ability ||= "cha";
+        systemData.master.ability ||= "wis";
         const spellcastingAbilityModifier = master.system.abilities[systemData.master.ability].mod;
 
         const { synthetics } = this;

@@ -3,7 +3,7 @@ import { AbilityString, SkillLongForm } from "@actor/types";
 import { MAGIC_SCHOOLS } from "@item/spell/values";
 import { ATTACK_TYPES, DAMAGE_CATEGORIES, DAMAGE_TRAITS, DAMAGE_TYPES } from "@system/damage/calculation";
 
-export const ABILITY_ABBREVIATIONS = new Set(["str", "dex", "con", "int", "wis", "cha"] as const);
+export const ABILITY_ABBREVIATIONS = new Set(["str", "dex", "con", "int", "wis"] as const);
 
 export const CREATURE_ACTOR_TYPES = ["character", "npc", "familiar"] as const;
 
@@ -119,40 +119,75 @@ export const RESISTANCE_TYPES = new Set([
 
 export const SKILL_ABBREVIATIONS = new Set([
     "acr",
-    "arc",
     "ath",
-    "cra",
-    "dec",
     "dip",
-    "itm",
     "med",
-    "nat",
-    "occ",
-    "prf",
     "rel",
-    "soc",
-    "ste",
-    "sur",
-    "thi",
+    "ade",
+    "atu",
+    "cie",
+    "cri",
+    "eng",
+    "frt",
+    "fur",
+    "ini",
+    "itm",
+    "itu",
+    "inv",
+    "lut",
+    "ocu",
+    "per",
+    "pil",
+    "pon",
+    "pro",
+    "ref",
+    "sob",
+    "tat",
+    "tec",
+    "von",
 ] as const);
 
 export const SKILL_DICTIONARY = {
+    // Mudar
     acr: "acrobatics",
-    arc: "arcana",
     ath: "athletics",
-    cra: "crafting",
-    dec: "deception",
     dip: "diplomacy",
-    itm: "intimidation",
     med: "medicine",
-    nat: "nature",
-    occ: "occultism",
-    prf: "performance",
     rel: "religion",
-    soc: "society",
-    ste: "stealth",
-    sur: "survival",
-    thi: "thievery",
+    itm: "intimidation",
+
+    ade: "adestramento",
+    atu: "atualidades",
+    cie: "ciências",
+    cri: "crime",
+    eng: "enganação",
+    frt: "fortitude",
+    fur: "furtividade",
+    ini: "iniciativa",
+    itu: "intuição",
+    inv: "investigação",
+    lut: "luta",
+    ocu: "ocultismo",
+    per: "percepção",
+    pil: "pilotagem",
+    pon: "pontaria",
+    pro: "profissão",
+    ref: "reflexos",
+    sob: "sobrevivência",
+    tat: "tática",
+    tec: "tecnologia",
+    von: "vontade",
+
+    // arc: "arcana",
+    // cra: "crafting",
+    // dec: "deception",
+    // nat: "nature",
+    // occ: "occultism",
+    // prf: "performance",
+    // soc: "society",
+    // ste: "stealth",
+    // sur: "survival",
+    // thi: "thievery",
 } as const;
 export const SKILL_LONG_FORMS = new Set(Object.values(SKILL_DICTIONARY));
 
@@ -169,21 +204,106 @@ interface SkillExpanded {
 
 export const SKILL_EXPANDED: Record<SkillLongForm, SkillExpanded> = {
     acrobatics: { ability: "dex", shortform: "acr" },
-    arcana: { ability: "int", shortform: "arc" },
+    // arcana: { ability: "int", shortform: "arc" },
     athletics: { ability: "str", shortform: "ath" },
-    crafting: { ability: "int", shortform: "cra" },
-    deception: { ability: "cha", shortform: "dec" },
-    diplomacy: { ability: "cha", shortform: "dip" },
-    intimidation: { ability: "cha", shortform: "itm" },
+    // crafting: { ability: "int", shortform: "cra" },
+    // deception: { ability: "wis", shortform: "dec" },
+    diplomacy: { ability: "wis", shortform: "dip" },
+    intimidation: { ability: "wis", shortform: "itm" },
     medicine: { ability: "wis", shortform: "med" },
-    nature: { ability: "wis", shortform: "nat" },
-    occultism: { ability: "int", shortform: "occ" },
-    performance: { ability: "cha", shortform: "prf" },
+    // nature: { ability: "wis", shortform: "nat" },
+    // occultism: { ability: "int", shortform: "ocu" },
+    // performance: { ability: "wis", shortform: "prf" }, //Artes
     religion: { ability: "wis", shortform: "rel" },
-    society: { ability: "int", shortform: "soc" },
-    stealth: { ability: "dex", shortform: "ste" },
-    survival: { ability: "wis", shortform: "sur" },
-    thievery: { ability: "dex", shortform: "thi" },
+    // society: { ability: "int", shortform: "soc" }, //Atualidades
+    // stealth: { ability: "dex", shortform: "ste" },
+    // survival: { ability: "wis", shortform: "sur" },
+    // thievery: { ability: "dex", shortform: "thi" },
+
+    adestramento: {
+        ability: "wis",
+        shortform: "ade",
+    },
+    atualidades: {
+        ability: "wis",
+        shortform: "atu",
+    },
+    ciências: {
+        ability: "wis",
+        shortform: "cie",
+    },
+    crime: {
+        ability: "wis",
+        shortform: "cri",
+    },
+    enganação: {
+        ability: "wis",
+        shortform: "eng",
+    },
+    fortitude: {
+        ability: "wis",
+        shortform: "frt",
+    },
+    furtividade: {
+        ability: "wis",
+        shortform: "fur",
+    },
+    iniciativa: {
+        ability: "wis",
+        shortform: "ini",
+    },
+    intuição: {
+        ability: "wis",
+        shortform: "itu",
+    },
+    investigação: {
+        ability: "wis",
+        shortform: "inv",
+    },
+    luta: {
+        ability: "wis",
+        shortform: "lut",
+    },
+    ocultismo: {
+        ability: "wis",
+        shortform: "ocu",
+    },
+    percepção: {
+        ability: "wis",
+        shortform: "per",
+    },
+    pilotagem: {
+        ability: "wis",
+        shortform: "pil",
+    },
+    pontaria: {
+        ability: "wis",
+        shortform: "pon",
+    },
+    profissão: {
+        ability: "wis",
+        shortform: "pro",
+    },
+    reflexos: {
+        ability: "wis",
+        shortform: "ref",
+    },
+    sobrevivência: {
+        ability: "wis",
+        shortform: "sob",
+    },
+    tática: {
+        ability: "wis",
+        shortform: "tat",
+    },
+    tecnologia: {
+        ability: "wis",
+        shortform: "tec",
+    },
+    vontade: {
+        ability: "wis",
+        shortform: "von",
+    },
 };
 
 export const MOVEMENT_TYPES = ["land", "burrow", "climb", "fly", "swim"] as const;

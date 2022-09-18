@@ -9,9 +9,9 @@ function createEmptySpellcastingEntry(actor: ActorPF2e): Embedded<SpellcastingEn
             name: "Untitled",
             type: "spellcastingEntry",
             system: {
-                ability: { value: "cha" },
+                ability: { value: "wis" },
                 spelldc: { value: 0, dc: 0 },
-                tradition: { value: "arcane" },
+                tradition: { value: "ocultismo" },
                 prepared: { value: "innate" },
             },
         },
@@ -62,7 +62,7 @@ class SpellcastingCreateAndEditDialog extends FormApplication<Embedded<Spellcast
 
         // When swapping to innate, convert to cha, but don't force it
         if (inputData.system?.prepared?.value === "innate" && !wasInnate && inputData.system?.ability) {
-            inputData.system.ability.value = "cha";
+            inputData.system.ability.value = "wis";
         }
 
         if (inputData.system?.autoHeightenLevel) {

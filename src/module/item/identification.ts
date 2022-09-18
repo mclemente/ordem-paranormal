@@ -28,10 +28,11 @@ function getDcRarity(item: PhysicalItemPF2e): Rarity {
 }
 
 export interface IdentifyMagicDCs {
-    arc: number;
-    nat: number;
-    rel: number;
-    occ: number;
+    // arc: number;
+    // nat: number;
+    // rel: number;
+    // occ: number;
+    ocu: number;
 }
 
 export interface IdentifyAlchemyDCs {
@@ -44,10 +45,11 @@ export interface GenericIdentifyDCs {
 
 function identifyMagic(item: PhysicalItemPF2e, baseDc: number, notMatchingTraditionModifier: number) {
     const result = {
-        occult: baseDc,
-        primal: baseDc,
-        divine: baseDc,
-        arcane: baseDc,
+        // occult: baseDc,
+        // primal: baseDc,
+        // divine: baseDc,
+        // arcane: baseDc,
+        ocultismo: baseDc,
     };
     const traditions = getMagicTraditions(item);
     for (const key of MAGIC_TRADITIONS) {
@@ -57,7 +59,7 @@ function identifyMagic(item: PhysicalItemPF2e, baseDc: number, notMatchingTradit
             result[key] = baseDc + notMatchingTraditionModifier;
         }
     }
-    return { arc: result.arcane, nat: result.primal, rel: result.divine, occ: result.occult };
+    return { ocu: result.ocultismo };
 }
 
 export function isMagical(item: PhysicalItemPF2e): boolean {

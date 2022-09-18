@@ -5,21 +5,22 @@ import { extractModifiers } from "@module/rules/util";
 import { Statistic } from "@system/statistic";
 import { BaseSpellcastingEntry } from "./data";
 
-export const TRICK_MAGIC_SKILLS = ["arc", "nat", "occ", "rel"] as const;
+export const TRICK_MAGIC_SKILLS = ["ocu"] as const;
 export type TrickMagicItemSkill = typeof TRICK_MAGIC_SKILLS[number];
 
 const TrickMagicTradition = {
-    arc: "arcane",
-    nat: "primal",
-    occ: "occult",
-    rel: "divine",
+    // arc: "arcane",
+    // nat: "primal",
+    ocu: "ocultismo",
+    // rel: "divine",
 } as const;
 
 export const traditionSkills = {
-    arcane: "arc",
-    divine: "rel",
-    occult: "occ",
-    primal: "nat",
+    // arcane: "arc",
+    // divine: "rel",
+    // occult: "ocu",
+    // primal: "nat",
+    ocultismo: "ocu",
 } as const;
 
 /** A pseudo spellcasting entry used to trick magic item for a single skill */
@@ -34,7 +35,7 @@ export class TrickMagicItemEntry implements BaseSpellcastingEntry {
 
     constructor(public actor: CharacterPF2e, public skill: TrickMagicItemSkill) {
         const { abilities } = actor;
-        const { ability } = (["int", "wis", "cha"] as const)
+        const { ability } = (["int", "wis"] as const)
             .map((ability) => {
                 return { ability, value: abilities[ability].value };
             })

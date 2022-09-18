@@ -1020,7 +1020,7 @@ class CharacterPF2e extends CreaturePF2e {
                         "self:armor:strength-requirement-met",
                         "self:armor:trait:flexible"
                     );
-                } else if (longForm === "stealth" && wornArmor.traits.has("noisy")) {
+                } else if (longForm === "furtividade" && wornArmor.traits.has("noisy")) {
                     armorCheckPenalty.predicate.not.push({
                         and: ["self:armor:strength-requirement-met", "armor:ignore-noisy-penalty"],
                     });

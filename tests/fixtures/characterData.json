@@ -263,7 +263,7 @@
                 "mod": 0,
                 "breakdown": "wis modifier(0) + proficiency(0) + item bonus(0)"
             },
-            "occ": {
+            "ocu": {
                 "value": 0,
                 "ability": "int",
                 "rank": 0,

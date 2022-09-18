@@ -21,23 +21,23 @@ import {
 } from "./dc";
 
 const identifySkills = new Map<string, SkillAbbreviation[]>();
-identifySkills.set("aberration", ["occ"]);
-identifySkills.set("animal", ["nat"]);
-identifySkills.set("astral", ["occ"]);
-identifySkills.set("beast", ["arc", "nat"]);
+identifySkills.set("aberration", ["ocu"]);
+identifySkills.set("animal", ["cie"]);
+identifySkills.set("astral", ["ocu"]);
+identifySkills.set("beast", ["cie"]);
 identifySkills.set("celestial", ["rel"]);
-identifySkills.set("construct", ["arc", "cra"]);
-identifySkills.set("dragon", ["arc"]);
-identifySkills.set("elemental", ["arc", "nat"]);
-identifySkills.set("ethereal", ["occ"]);
-identifySkills.set("fey", ["nat"]);
+// identifySkills.set("construct", ["arc", "cra"]);
+// identifySkills.set("dragon", ["arc"]);
+// identifySkills.set("elemental", ["arc", "nat"]);
+identifySkills.set("ethereal", ["ocu"]);
+// identifySkills.set("fey", ["nat"]);
 identifySkills.set("fiend", ["rel"]);
-identifySkills.set("fungus", ["nat"]);
-identifySkills.set("humanoid", ["soc"]);
+identifySkills.set("fungus", ["cie"]);
+identifySkills.set("humanoid", ["atu"]);
 identifySkills.set("monitor", ["rel"]);
-identifySkills.set("ooze", ["occ"]);
-identifySkills.set("plant", ["nat"]);
-identifySkills.set("spirit", ["occ"]);
+identifySkills.set("ooze", ["ocu"]);
+identifySkills.set("plant", ["cie"]);
+identifySkills.set("spirit", ["ocu"]);
 identifySkills.set("undead", ["rel"]);
 
 export interface RecallKnowledgeDC {

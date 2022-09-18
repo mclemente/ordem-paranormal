@@ -89,10 +89,11 @@ const energyDamageTypes = {
 };
 
 const magicTraditions: Record<MagicTradition, string> = {
-    arcane: "PF2E.TraitArcane",
-    divine: "PF2E.TraitDivine",
-    occult: "PF2E.TraitOccult",
-    primal: "PF2E.TraitPrimal",
+    // arcane: "PF2E.TraitArcane",
+    // divine: "PF2E.TraitDivine",
+    // occult: "PF2E.TraitOccult",
+    // primal: "PF2E.TraitPrimal",
+    ocultismo: "OP.TraitOcultismo",
 };
 
 const creatureTraits = {

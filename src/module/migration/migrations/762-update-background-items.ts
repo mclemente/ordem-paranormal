@@ -12,7 +12,7 @@ export class Migration762UpdateBackgroundItems extends MigrationBase {
         ) {
             if (Object.values(source.system.boosts).length !== 3) {
                 source.system.boosts["2"] = {
-                    value: ["cha", "con", "dex", "int", "str", "wis"],
+                    value: ["con", "dex", "int", "str", "wis"],
                     selected: null,
                 };
             }

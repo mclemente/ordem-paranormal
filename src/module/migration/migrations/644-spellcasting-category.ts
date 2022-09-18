@@ -4,16 +4,16 @@ import { sluggify, tupleHasValue } from "@util";
 import { SpellcastingEntrySource, SpellcastingEntrySystemData } from "@item/spellcasting-entry/data";
 import { MigrationBase } from "../base";
 
-const oldTraditions = ["arcane", "occult", "primal", "divine", "focus", "ritual", "halcyon", ""] as const;
+const oldTraditions = ["ocultismo", "focus", "ritual", "halcyon", ""] as const;
 
 const defaultTraditionByClass: Record<string, keyof ConfigPF2e["PF2E"]["magicTraditions"]> = {
-    wizard: "arcane",
-    cleric: "divine",
-    druid: "primal",
-    bard: "occult",
-    ranger: "primal",
-    champion: "divine",
-    monk: "divine",
+    wizard: "ocultismo",
+    cleric: "ocultismo",
+    druid: "ocultismo",
+    bard: "ocultismo",
+    ranger: "ocultismo",
+    champion: "ocultismo",
+    monk: "ocultismo",
 };
 
 export class Migration644SpellcastingCategory extends MigrationBase {
@@ -55,7 +55,7 @@ export class Migration644SpellcastingCategory extends MigrationBase {
                 // Users can always edit their tradition in the actual spellcasting entry.
                 const classItem = actor.items.find((testItem): testItem is ClassSource => testItem.type === "class");
                 const className = classItem?.system.slug || sluggify(classItem?.name ?? "");
-                spellcasting.tradition.value = defaultTraditionByClass[className] ?? "arcane";
+                spellcasting.tradition.value = defaultTraditionByClass[className] ?? "ocultismo";
             }
         }
     }

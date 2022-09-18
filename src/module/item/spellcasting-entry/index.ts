@@ -22,8 +22,8 @@ class SpellcastingEntryPF2e extends ItemPF2e implements SpellcastingEntry {
 
     /** This entry's magic tradition, defaulting to arcane if unset or invalid */
     get tradition(): MagicTradition {
-        const tradition = this.system.tradition.value || "arcane";
-        return MAGIC_TRADITIONS.has(tradition) ? tradition : "arcane";
+        const tradition = this.system.tradition.value || "ocultismo";
+        return MAGIC_TRADITIONS.has(tradition) ? tradition : "ocultismo";
     }
 
     /**

@@ -4,7 +4,8 @@ import { SpellcastingEntrySource } from "@item/spellcasting-entry/data";
 import { tupleHasValue } from "@util";
 import { MigrationBase } from "../base";
 
-const LEGIT_TRADITIONS = ["arcane", "divine", "occult", "primal", "focus", "ritual", "halcyon", ""] as const;
+// const LEGIT_TRADITIONS = ["arcane", "divine", "occult", "primal", "focus", "ritual", "halcyon", ""] as const;
+const LEGIT_TRADITIONS = ["ocultismo", ""] as const;
 
 interface HighestTradition {
     name: typeof LEGIT_TRADITIONS[number];
@@ -61,7 +62,7 @@ export class Migration619TraditionLowercaseAndRemoveWandScroll extends Migration
 
                 return prev;
             },
-            { name: "arcane", value: 0 }
+            { name: "ocultismo", value: 0 }
         );
 
         tradition.value = highestTradition.name;

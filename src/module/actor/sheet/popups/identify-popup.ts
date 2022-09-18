@@ -32,8 +32,9 @@ export class IdentifyItemPopup extends FormApplication<PhysicalItemPF2e> {
 
         return {
             ...(await super.getData()),
-            isMagic: ["arc", "nat", "rel", "occ"].some((s) => s in dcs),
-            isAlchemical: "cra" in dcs,
+            isMagic: ["ocu"].some((s) => s in dcs),
+            // isAlchemical: "cra" in dcs, // TODO rever
+            isAlchemical: "cie" in dcs,
             dcs,
         };
     }

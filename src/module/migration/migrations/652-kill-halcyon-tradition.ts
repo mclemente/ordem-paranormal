@@ -10,9 +10,9 @@ interface TraditionDataOld {
 }
 
 const defaultTraditionByClass: Record<string, keyof ConfigPF2e["PF2E"]["magicTraditions"]> = {
-    wizard: "arcane",
-    druid: "primal",
-    ranger: "primal",
+    wizard: "ocultismo",
+    druid: "ocultismo",
+    ranger: "ocultismo",
 };
 
 /** Halcyon is not a tradition, as it did nothing it was removed without replacement. */
