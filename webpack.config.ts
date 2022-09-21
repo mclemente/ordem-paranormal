@@ -167,7 +167,7 @@ const config: Configuration = {
         ],
     },
     optimization: optimization,
-    devtool: isProductionBuild ? undefined : "inline-source-map",
+    devtool: isProductionBuild ? "source-map" : "inline-source-map",
     bail: isProductionBuild,
     watch: !isProductionBuild,
     devServer: {
