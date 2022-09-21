@@ -2,6 +2,7 @@ import { ActorPF2e } from "@actor";
 import { HitPointsSummary } from "@actor/base";
 import { CreatureData } from "@actor/data";
 import { StrikeData } from "@actor/data/base";
+import { calculateRangePenalty, getRangeIncrement } from "@actor/helpers";
 import {
     CheckModifier,
     ensureProficiencyOption,
@@ -78,7 +79,6 @@ export abstract class CreaturePF2e extends ActorPF2e {
                 check: { adjustments: skill.adjustments, type: "skill-check" },
                 dc: {},
                 modifiers: [...skill.modifiers],
-                notes: skill.notes,
             });
 
             if (shortForm !== longForm) {
@@ -749,13 +749,6 @@ export abstract class CreaturePF2e extends ActorPF2e {
         }
     }
 
-    /** Create a deep copy of a synthetics record of the form Record<string, object[]> */
-    protected cloneSyntheticsRecord<T extends { clone(): T }>(record: Record<string, T[]>): Record<string, T[]> {
-        return Object.fromEntries(
-            Object.entries(record).map(([key, synthetics]) => [key, synthetics.map((s) => s.clone())])
-        );
-    }
-
     /* -------------------------------------------- */
     /*  Rolls                                       */
     /* -------------------------------------------- */
@@ -766,10 +759,12 @@ export abstract class CreaturePF2e extends ActorPF2e {
      * but more can be added via the options.
      */
     getAttackRollContext<I extends AttackItem>(params: StrikeRollContextParams<I>): AttackRollContext<this, I> {
-        params.domains ??= [];
-        const rollDomains = ["all", "attack-roll", params.domains ?? []].flat();
-        const context = this.getStrikeRollContext({ ...params, domains: rollDomains });
+        const context = this.getStrikeRollContext(params);
         const targetActor = context.target?.actor;
+        const rangeIncrement = context.target?.rangeIncrement ?? null;
+
+        const rangePenalty = calculateRangePenalty(this, rangeIncrement, params.domains, context.options);
+        if (rangePenalty) context.self.modifiers.push(rangePenalty);
 
         return {
             ...context,
@@ -786,7 +781,7 @@ export abstract class CreaturePF2e extends ActorPF2e {
     protected getDamageRollContext<I extends AttackItem>(
         params: StrikeRollContextParams<I>
     ): StrikeRollContext<this, I> {
-        return this.getStrikeRollContext({ ...params, domains: ["all", "strike-damage", "damage-roll"] });
+        return this.getStrikeRollContext(params);
     }
 
     protected getStrikeRollContext<I extends AttackItem>(
@@ -848,14 +843,20 @@ export abstract class CreaturePF2e extends ActorPF2e {
         // Target roll options
         const targetOptions = targetActor?.getSelfRollOptions("target") ?? [];
         const rollOptions = new Set([
+            ...params.options,
             ...selfOptions,
             ...targetOptions,
+            ...selfItem.getRollOptions("weapon"),
             // Backward compatibility for predication looking for an "attack" trait by its lonesome
             "attack",
         ]);
-        // Calculate distance and set as a roll option
+
+        // Calculate distance and range increment, set as a roll option
         const distance = selfToken && targetToken && !!canvas.grid ? selfToken.distanceTo(targetToken) : null;
         rollOptions.add(`target:distance:${distance}`);
+
+        const rangeIncrement = getRangeIncrement(selfItem, distance);
+        if (rangeIncrement) rollOptions.add(`target:range-increment:${rangeIncrement}`);
 
         const self = {
             actor: selfActor,
@@ -866,7 +867,7 @@ export abstract class CreaturePF2e extends ActorPF2e {
 
         const target =
             targetActor && targetToken && distance !== null
-                ? { actor: targetActor, token: targetToken.document, distance }
+                ? { actor: targetActor, token: targetToken.document, distance, rangeIncrement }
                 : null;
 
         return {

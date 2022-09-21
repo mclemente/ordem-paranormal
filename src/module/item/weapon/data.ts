@@ -1,17 +1,18 @@
 import { ItemFlagsPF2e } from "@item/data/base";
 import {
+    BaseMaterial,
     BasePhysicalItemData,
     BasePhysicalItemSource,
     Investable,
     PhysicalItemTraits,
     PhysicalSystemData,
     PhysicalSystemSource,
-} from "@item/physical/data";
-import { BaseMaterial, PreciousMaterialGrade } from "@item/physical/types";
-import { UsageDetails } from "@item/physical/usage";
+    PreciousMaterialGrade,
+    UsageDetails,
+} from "@item/physical";
 import { OneToFour, ZeroToThree } from "@module/data";
 import { DamageDieSize, DamageType } from "@system/damage";
-import type { WeaponPF2e } from "..";
+import { type WeaponPF2e } from "./document";
 import {
     BaseWeaponType,
     MeleeWeaponGroup,
@@ -24,7 +25,7 @@ import {
     WeaponRangeIncrement,
     WeaponReloadTime,
     WeaponTrait,
-} from "../types";
+} from "./types";
 
 type WeaponSource = BasePhysicalItemSource<"weapon", WeaponSystemSource> & {
     flags: DeepPartial<WeaponFlags>;

@@ -11,7 +11,7 @@ import {
 import { AbilityString } from "@actor/types";
 import { ItemPF2e } from "@item";
 import { ZeroToFour } from "@module/data";
-import { extractRollSubstitutions, extractRollTwice } from "@module/rules/util";
+import { extractNotes, extractRollSubstitutions, extractRollTwice } from "@module/rules/util";
 import { eventToRollParams } from "@scripts/sheet-util";
 import { CheckRoll } from "@system/check/roll";
 import { CheckDC } from "@system/degree-of-success";
@@ -133,7 +133,6 @@ export class Statistic<T extends BaseStatisticData = StatisticData> {
             check: { adjustments: stat.adjustments, type },
             dc: {},
             modifiers: [...stat.modifiers],
-            notes: stat.notes,
         });
     }
 
@@ -299,7 +298,7 @@ class StatisticCheck {
             const isCreature = actor.isOfType("creature");
             const isAttackItem = item?.isOfType("weapon", "melee", "spell");
             if (isCreature && isAttackItem && ["attack-roll", "spell-attack-roll"].includes(data.check.type)) {
-                return actor.getAttackRollContext({ domains, item });
+                return actor.getAttackRollContext({ item, domains, options: new Set() });
             }
 
             return null;
@@ -317,8 +316,9 @@ class StatisticCheck {
                 .flatMap((t) => t.actor ?? [])
                 .find((a) => a.isOfType("creature"));
 
-        const extraModifiers = [...(args?.modifiers ?? [])];
-        const options = this.createRollOptions({ ...args, target });
+        const extraModifiers = [...(args.modifiers ?? [])];
+        const extraRollOptions = [...(args.extraRollOptions ?? []), ...(rollContext?.options ?? [])];
+        const options = this.createRollOptions({ ...args, target, extraRollOptions });
 
         // Get just-in-time roll options from rule elements
         for (const rule of actor.rules.filter((r) => !r.ignored)) {
@@ -344,7 +344,7 @@ class StatisticCheck {
             domains,
             target: rollContext?.target ?? null,
             dc: args.dc ?? rollContext?.dc,
-            notes: data.notes,
+            notes: extractNotes(actor.synthetics.rollNotes, this.domains),
             options,
             type: data.check.type,
             secret,
