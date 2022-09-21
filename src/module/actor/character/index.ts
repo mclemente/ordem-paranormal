@@ -297,7 +297,7 @@ class CharacterPF2e extends CreaturePF2e {
 
         // Base ability scores
         for (const abbrev of ABILITY_ABBREVIATIONS) {
-            systemData.abilities[abbrev] = mergeObject({ value: 10 }, systemData.abilities[abbrev] ?? {});
+            systemData.abilities[abbrev] = mergeObject({ value: 1 }, systemData.abilities[abbrev] ?? {});
         }
 
         // Actor document and data properties from items
@@ -421,7 +421,7 @@ class CharacterPF2e extends CreaturePF2e {
         super.prepareEmbeddedDocuments();
 
         for (const ability of Object.values(this.system.abilities)) {
-            ability.mod = Math.floor((ability.value - 10) / 2);
+            ability.mod = Math.floor(ability.value);
         }
 
         this.setNumericRollOptions();

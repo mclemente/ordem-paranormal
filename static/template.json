@@ -1,6 +1,6 @@
 {
     "Actor": {
-        "types": ["character", "npc"],
+        "types": ["character", "npc", "loot"],
         "templates": {
             "common": {
                 "attributes": {
@@ -114,49 +114,82 @@
                 "acr": {
                     "rank": 0
                 },
-                "arc": {
+                "ade": {
                     "rank": 0
                 },
                 "ath": {
                     "rank": 0
                 },
-                "cra": {
+                "atu": {
                     "rank": 0
                 },
-                "dec": {
+                "cie": {
+                    "rank": 0
+                },
+                "cri": {
                     "rank": 0
                 },
                 "dip": {
                     "rank": 0
                 },
+                "eng": {
+                    "rank": 0
+                },
+                "frt": {
+                    "rank": 0
+                },
+                "fur": {
+                    "rank": 0
+                },
+                "ini": {
+                    "rank": 0
+                },
                 "itm": {
+                    "rank": 0
+                },
+                "itu": {
+                    "rank": 0
+                },
+                "inv": {
+                    "rank": 0
+                },
+                "lut": {
                     "rank": 0
                 },
                 "med": {
                     "rank": 0
                 },
-                "nat": {
-                    "rank": 0
-                },
                 "ocu": {
                     "rank": 0
                 },
-                "prf": {
+                "per": {
+                    "rank": 0
+                },
+                "pil": {
+                    "rank": 0
+                },
+                "pon": {
+                    "rank": 0
+                },
+                "pro": {
+                    "rank": 0
+                },
+                "ref": {
                     "rank": 0
                 },
                 "rel": {
                     "rank": 0
                 },
-                "soc": {
+                "sob": {
                     "rank": 0
                 },
-                "ste": {
+                "tat": {
                     "rank": 0
                 },
-                "sur": {
+                "tec": {
                     "rank": 0
                 },
-                "thi": {
+                "von": {
                     "rank": 0
                 }
             },
