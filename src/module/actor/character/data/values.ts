@@ -3,10 +3,10 @@ export const CHARACTER_SHEET_TABS = [
     "actions",
     "inventory",
     "spellcasting",
-    "crafting",
+    // "crafting",
     "proficiencies",
     "feats",
     "effects",
     "biography",
-    "pfs",
+    // "pfs",
 ] as const;

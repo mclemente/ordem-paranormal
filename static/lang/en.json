@@ -864,8 +864,8 @@
         "ArmorCheckLabel": "Check Penalty",
         "ArmorCheckPenalty": "Armor Check Penalty",
         "ArmorClassBase": "Base Armor Class 10",
-        "ArmorClassLabel": "Armor Class",
-        "ArmorClassShortLabel": "AC",
+        "ArmorClassLabel": "Defesa",
+        "ArmorClassShortLabel": "DT",
         "ArmorDexLabel": "Dex Modifier Cap",
         "ArmorGreaterResilientRune": "Greater Resilient",
         "ArmorGreaterStrikingRune": "Greater Striking",
@@ -1071,7 +1071,7 @@
                     "WithTarget": "<target>Target: {target}</target> <dc>({dcType} {dc})</dc>"
                 },
                 "Specific": {
-                    "ac": "AC",
+                    "ac": "DT",
                     "athletics": "Athletics DC",
                     "deception": "Deception DC",
                     "fortitude": "Fortitude DC",

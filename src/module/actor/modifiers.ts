@@ -265,7 +265,7 @@ function createAbilityModifier({ actor, ability, domains }: CreateAbilityModifie
     return new ModifierPF2e({
         slug: ability,
         label: `PF2E.Ability${sluggify(ability, { camel: "bactrian" })}`,
-        modifier: Math.floor((actor.abilities[ability].value - 10) / 2),
+        modifier: Math.floor(actor.abilities[ability].value),
         type: "ability",
         ability,
         adjustments: extractModifierAdjustments(actor.synthetics.modifierAdjustments, withAbilityBased, ability),
@@ -400,7 +400,8 @@ class StatisticModifier {
     /** The display label of this statistic */
     label?: string;
     /** The list of modifiers which affect the statistic. */
-    protected _modifiers: ModifierPF2e[];
+    // protected _modifiers: ModifierPF2e[];
+    _modifiers: ModifierPF2e[];
     /** The total modifier for the statistic, after applying stacking rules. */
     totalModifier!: number;
     /** A textual breakdown of the modifiers factoring into this statistic */

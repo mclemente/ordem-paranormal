@@ -13,6 +13,7 @@ export function registerTemplates(): void {
         "systems/ordem-paranormal/templates/actors/character/sidebar/armor-class.html",
         "systems/ordem-paranormal/templates/actors/character/sidebar/class-dc.html",
         "systems/ordem-paranormal/templates/actors/character/sidebar/health.html",
+        "systems/ordem-paranormal/templates/actors/character/sidebar/esforço.html",
         "systems/ordem-paranormal/templates/actors/character/sidebar/stamina.html",
         "systems/ordem-paranormal/templates/actors/character/sidebar/resistances.html",
         "systems/ordem-paranormal/templates/actors/character/sidebar/perception.html",

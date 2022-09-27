@@ -201,6 +201,7 @@ class CheckPF2e {
         const substitutions = context.substitutions ?? [];
 
         // Acquire the d20 roll expression and resolve fortune/misfortune effects
+        const ability = check._modifiers.find((e) => e.type === "ability") ?? { modifier: 0 };
         const [dice, tagsFromDice] = ((): [string, string[]] => {
             const substitutions =
                 context.substitutions?.filter((s) => (!s.ignored && s.predicate?.test(rollOptions)) ?? true) ?? [];
@@ -235,8 +236,10 @@ class CheckPF2e {
                 return ["2d20kl", ["PF2E.TraitMisfortune"]];
             } else if (context.rollTwice === "keep-higher") {
                 return ["2d20kh", ["PF2E.TraitFortune"]];
+            } else if (ability.modifier === 0) {
+                return [`2d20kl`, []];
             } else {
-                return ["1d20", []];
+                return [`${ability.modifier}d20kh`, []];
             }
         })();
 
@@ -246,7 +249,11 @@ class CheckPF2e {
         const RollCls = isStrike ? Check.StrikeAttackRoll : Check.Roll;
 
         const rollData: RollDataPF2e = (() => {
-            const data: RollDataPF2e = { rollerId: game.userId, isReroll, totalModifier: check.totalModifier };
+            const data: RollDataPF2e = {
+                rollerId: game.userId,
+                isReroll,
+                totalModifier: check.totalModifier - ability.modifier, // FIXME
+            };
 
             const contextItem = context.item;
             if (isStrike && contextItem && context.actor?.isOfType("character", "npc")) {
@@ -269,7 +276,8 @@ class CheckPF2e {
             return data;
         })();
 
-        const totalModifierPart = check.totalModifier === 0 ? "" : `+${check.totalModifier}`;
+        const totalModifier = check.totalModifier - ability.modifier; // FIXME
+        const totalModifierPart = totalModifier === 0 ? "" : `+${totalModifier}`;
         const roll = await new RollCls(`${dice}${totalModifierPart}`, rollData).evaluate({ async: true });
 
         const degree = context.dc ? new DegreeOfSuccess(roll, context.dc) : null;
