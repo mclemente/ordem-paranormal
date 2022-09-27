@@ -49,7 +49,8 @@ export class TokenConfigPF2e<TDocument extends TokenDocumentPF2e> extends TokenC
             const dimensionInputs = sizeInputs.filter((i) => ["width", "height"].includes(i.name));
 
             const autoscale =
-                game.settings.get("pf2e", "tokens.autoscale") && this.token._source.flags.pf2e?.autoscale !== false;
+                game.settings.get("ordem-paranormal", "tokens.autoscale") &&
+                this.token._source.flags.pf2e?.autoscale !== false;
 
             if (linkToActorSize.checked && autoscale) {
                 if (this.actor instanceof VehiclePF2e) {

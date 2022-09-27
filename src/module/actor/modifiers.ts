@@ -286,7 +286,7 @@ const ProficiencyModifier = {
      * @returns The modifier for the given proficiency rank and character level.
      */
     fromLevelAndRank: (level: number, rank: number, options: { addLevel?: boolean } = {}): ModifierPF2e => {
-        const rule = game.settings.get("pf2e", "proficiencyVariant") ?? "ProficiencyWithLevel";
+        const rule = game.settings.get("ordem-paranormal", "proficiencyVariant") ?? "ProficiencyWithLevel";
         const addLevel = (options.addLevel ?? rank > 0) && rule === "ProficiencyWithLevel";
         rank = Math.clamped(rank, 0, 4);
 

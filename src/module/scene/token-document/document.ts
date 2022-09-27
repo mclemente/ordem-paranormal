@@ -289,10 +289,7 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
             token.width = size;
             token.height = size;
 
-            if (
-                game.settings.get("ordem-paranormal", "tokens.autoscale") &&
-                token.flags["ordem-paranormal"].autoscale !== false
-            ) {
+            if (game.settings.get("ordem-paranormal", "tokens.autoscale") && token.flags.pf2e.autoscale !== false) {
                 const absoluteScale = actor.size === "sm" ? 0.8 : 1;
                 const mirrorX = token.texture.scaleX < 0 ? -1 : 1;
                 token.texture.scaleX = mirrorX * absoluteScale;

@@ -291,7 +291,7 @@ class WeaponPF2e extends PhysicalItemPF2e {
             const hasPropertyRunes = ([1, 2, 3, 4] as const)
                 .map((n) => this.system[`propertyRune${n}` as const])
                 .some((r) => !!r.value);
-            const abpSetting = game.settings.get("pf2e", "automaticBonusVariant");
+            const abpSetting = game.settings.get("ordem-paranormal", "automaticBonusVariant");
             return hasFundamentalRunes || (hasPropertyRunes && abpSetting === "ABPFundamentalPotency");
         })();
         const magicTraits: ("evocation" | "magical")[] = hasRunes ? ["evocation", "magical"] : [];

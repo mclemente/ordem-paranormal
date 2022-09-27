@@ -20,7 +20,7 @@ export const traditionSkills = {
     // arcane: "arcana",
     // divine: "religion",
     // occult: "occultism",
-    ocu: "ocultismo",
+    ocultismo: "ocultismo",
     // primal: "nature",
 } as const;
 

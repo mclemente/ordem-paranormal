@@ -71,7 +71,7 @@
                 cursor: pointer;
                 @include brown-border;
             }
-            [data-action=show-image] {
+            [data-action="show-image"] {
                 position: absolute;
                 bottom: 5px;
                 right: 0;
@@ -129,8 +129,7 @@
                 width: 15px;
                 top: 0;
                 right: -11px;
-                background: url("../assets/sheet/banner-bg2.webp") no-repeat
-                            right;
+                background: url("../assets/sheet/banner-bg2.webp") no-repeat right;
             }
         }
 
@@ -179,7 +178,9 @@
             margin-top: 8px;
 
             .pc {
-                &_heritage, &_background, &_weight {
+                &_heritage,
+                &_background,
+                &_weight {
                     margin: 0;
                 }
             }
@@ -291,10 +292,10 @@
     .ability-scores {
         @include p-reset;
         display: grid;
-        grid: 1fr / repeat(6, 1fr);
+        grid: 1fr / repeat(5, 1fr);
         justify-content: center;
         list-style: none;
-        gap: 12px;
+        gap: 16px;
 
         .ability {
             display: grid;
@@ -313,11 +314,11 @@
             }
 
             &.key {
-                .ability-id, .ability-mod {
+                .ability-id,
+                .ability-mod {
                     color: var(--secondary);
                 }
             }
-
 
             .ability-name {
                 grid-area: label;
@@ -349,7 +350,7 @@
                 display: flex;
                 border-radius: 0;
                 font-size: 0;
-                border: 1px solid #D3CCBC;
+                border: 1px solid #d3ccbc;
                 background: rgba(211, 204, 188, 0.2);
                 margin-top: 4px;
                 height: 30px;

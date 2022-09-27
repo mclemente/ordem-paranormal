@@ -187,7 +187,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
     }
 
     get isDead(): boolean {
-        const deathIcon = game.settings.get("pf2e", "deathIcon");
+        const deathIcon = game.settings.get("ordem-paranormal", "deathIcon");
         if (this.token) return this.token.overlayEffect === deathIcon;
         const tokens = this.getActiveTokens(true, true);
         return tokens.length > 0 && tokens.every((t) => t.overlayEffect === deathIcon);

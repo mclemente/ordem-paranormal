@@ -33,7 +33,7 @@
 
     .row {
         display: grid;
-        grid-template-columns: 200px repeat(6, 84px);
+        grid-template-columns: 200px repeat(5, 84px);
         grid-template-rows: auto;
 
         &.not-eligible {
@@ -218,7 +218,8 @@
                 border: 1px solid $boost-color;
                 color: $boost-color;
 
-                &.locked, &.selected {
+                &.locked,
+                &.selected {
                     color: white;
                 }
 
@@ -250,7 +251,8 @@
                 border: 1px solid $flaw-color;
                 color: $flaw-color;
 
-                &.locked, &.selected {
+                &.locked,
+                &.selected {
                     color: white;
                 }
 
@@ -328,7 +330,7 @@
                 color: var(--text-dark);
                 font: 500 var(--font-size-24) var(--serif);
                 border: 0;
-                border-bottom: 1px solid #D3CCBC;
+                border-bottom: 1px solid #d3ccbc;
                 border-radius: 0;
                 background-color: transparent;
                 margin: 0 10px 10px 10px;
@@ -409,7 +411,6 @@
         text-decoration: underline dotted;
         text-underline-offset: 2px;
     }
-
 
     .description {
         font: 600 var(--font-size-16) var(--serif);
