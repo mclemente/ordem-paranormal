@@ -9,7 +9,13 @@ import { SAVE_TYPES, SKILL_DICTIONARY, SKILL_EXPANDED, SKILL_LONG_FORMS } from "
 import { ItemPF2e, MeleePF2e } from "@item";
 import { ItemType } from "@item/data";
 import { RollNotePF2e } from "@module/notes";
-import { extractModifierAdjustments, extractModifiers, extractNotes, extractRollTwice } from "@module/rules/util";
+import {
+    extractDegreeOfSuccessAdjustments,
+    extractModifierAdjustments,
+    extractModifiers,
+    extractNotes,
+    extractRollTwice,
+} from "@module/rules/util";
 import { WeaponDamagePF2e } from "@module/system/damage";
 import { CheckPF2e, CheckRollContext, DamageRollPF2e } from "@module/system/rolls";
 import { CheckRoll } from "@system/check/roll";
@@ -273,6 +279,7 @@ class NPCPF2e extends CreaturePF2e {
                 system.attributes.perception,
                 { overwrite: false }
             );
+            stat.adjustments = extractDegreeOfSuccessAdjustments(synthetics, domains);
             stat.base = base;
             stat.notes = extractNotes(rollNotes, domains);
             stat.value = stat.totalModifier;
@@ -367,6 +374,7 @@ class NPCPF2e extends CreaturePF2e {
                 },
                 { overwrite: false }
             );
+            stat.adjustments = extractDegreeOfSuccessAdjustments(synthetics, domains);
             stat.value = stat.totalModifier;
             stat.breakdown = stat.modifiers
                 .filter((m) => m.enabled)
@@ -411,6 +419,7 @@ class NPCPF2e extends CreaturePF2e {
                     system.skills[shortform],
                     { overwrite: false }
                 );
+                stat.adjustments = extractDegreeOfSuccessAdjustments(synthetics, domains);
                 stat.notes = extractNotes(rollNotes, domains);
                 stat.itemID = item.id;
                 stat.base = base;
@@ -520,8 +529,8 @@ class NPCPF2e extends CreaturePF2e {
                     baseOptions.push("ranged");
                 }
 
-                const statistic = new StatisticModifier(item.name, modifiers, baseOptions);
-
+                const statistic = new StatisticModifier(`${slug}-strike`, modifiers, baseOptions);
+                statistic.adjustments = extractDegreeOfSuccessAdjustments(synthetics, domains);
                 const traitObjects = Array.from(traits).map(
                     (t): TraitViewData => ({
                         name: t,
@@ -531,6 +540,7 @@ class NPCPF2e extends CreaturePF2e {
                 );
 
                 const action: NPCStrike = mergeObject(statistic, {
+                    label: item.name,
                     type: "strike" as const,
                     glyph: actionGlyph,
                     description: item.description,
@@ -715,17 +725,11 @@ class NPCPF2e extends CreaturePF2e {
 
             // Check Modifiers, calculate using the user configured value
             const baseMod = Number(entry.system?.spelldc?.value ?? 0);
-            const attackModifiers = [
-                new ModifierPF2e("PF2E.ModifierTitle", baseMod, MODIFIER_TYPE.UNTYPED),
-                ...extractModifiers(this.synthetics, [...baseSelectors, ...attackSelectors]),
-            ];
+            const attackModifiers = [new ModifierPF2e("PF2E.ModifierTitle", baseMod, MODIFIER_TYPE.UNTYPED)];
 
             // Save Modifiers, reverse engineer using the user configured value - 10
             const baseDC = Number(entry.system?.spelldc?.dc ?? 0);
-            const saveModifiers = [
-                new ModifierPF2e("PF2E.ModifierTitle", baseDC - 10, MODIFIER_TYPE.UNTYPED),
-                ...extractModifiers(this.synthetics, [...baseSelectors, ...saveSelectors]),
-            ];
+            const saveModifiers = [new ModifierPF2e("PF2E.ModifierTitle", baseDC - 10, MODIFIER_TYPE.UNTYPED)];
 
             // Assign statistic data to the spellcasting entry
             entry.statistic = new Statistic(this, {
@@ -788,11 +792,10 @@ class NPCPF2e extends CreaturePF2e {
                 check: {
                     type: "saving-throw",
                 },
-                dc: {},
             });
 
             saves[saveType] = stat;
-            mergeObject(this.system.saves[saveType], stat.getCompatData());
+            mergeObject(this.system.saves[saveType], stat.getTraceData());
             systemData.saves[saveType].base = base;
         }
 

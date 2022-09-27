@@ -73,11 +73,10 @@ async function createConsumableFromSpell(
 }
 
 interface TrickMagicItemDifficultyData {
-    // arc?: number;
-    // rel?: number;
-    // occ?: number;
-    // nat?: number;
-    ocu?: number;
+    arcana?: number;
+    religion?: number;
+    occultism?: number;
+    nature?: number;
 }
 
 function calculateTrickMagicItemCheckDC(

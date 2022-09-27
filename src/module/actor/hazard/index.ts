@@ -26,6 +26,13 @@ export class HazardPF2e extends ActorPF2e {
         return this.itemTypes.melee.length > 0;
     }
 
+    override get emitsSound(): boolean {
+        const { emitsSound } = this.system.attributes;
+        return !this.isDead && typeof emitsSound === "boolean"
+            ? emitsSound
+            : !!game.combats.active?.started && game.combats.active.combatants.some((c) => c.actor === this);
+    }
+
     override prepareBaseData(): void {
         super.prepareBaseData();
 
@@ -96,10 +103,9 @@ export class HazardPF2e extends ActorPF2e {
                 check: {
                     type: "saving-throw",
                 },
-                dc: {},
             });
 
-            mergeObject(this.system.saves[saveType], stat.getCompatData());
+            mergeObject(this.system.saves[saveType], stat.getTraceData());
 
             saves[saveType] = stat;
             return saves;

@@ -4,7 +4,6 @@ import {
     DamageDiceOverride,
     DamageDicePF2e,
     DiceModifierPF2e,
-    ModifierAdjustment,
     ModifierPF2e,
     MODIFIER_TYPE,
     PROFICIENCY_RANK_OPTION,
@@ -17,8 +16,9 @@ import { getPropertyRuneModifiers } from "@item/physical";
 import { WeaponDamage, WeaponMaterialEffect, WEAPON_MATERIAL_EFFECTS } from "@item/weapon";
 import { RollNotePF2e } from "@module/notes";
 import {
-    DeferredDamageDice,
-    DeferredModifier,
+    DamageDiceSynthetics,
+    ModifierAdjustmentSynthetics,
+    ModifierSynthetics,
     PotencySynthetic,
     StrikeAdjustment,
     StrikingSynthetic,
@@ -33,9 +33,9 @@ class WeaponDamagePF2e {
         attack: MeleePF2e,
         actor: NPCPF2e,
         traits: TraitViewData[] = [],
-        statisticsModifiers: Record<string, DeferredModifier[]>,
-        modifierAdjustments: Record<string, ModifierAdjustment[]>,
-        damageDice: Record<string, DeferredDamageDice[]>,
+        statisticsModifiers: ModifierSynthetics,
+        modifierAdjustments: ModifierAdjustmentSynthetics,
+        damageDice: DamageDiceSynthetics,
         proficiencyRank = 0,
         options: Set<string> = new Set(),
         rollNotes: Record<string, RollNotePF2e[]>,
@@ -88,9 +88,9 @@ class WeaponDamagePF2e {
         weapon: WeaponPF2e | MeleePF2e,
         actor: CharacterPF2e | NPCPF2e,
         traits: TraitViewData[] = [],
-        statisticsModifiers: Record<string, DeferredModifier[]>,
-        modifierAdjustments: Record<string, ModifierAdjustment[]>,
-        damageDice: Record<string, DeferredDamageDice[]>,
+        statisticsModifiers: ModifierSynthetics,
+        modifierAdjustments: ModifierAdjustmentSynthetics,
+        damageDice: DamageDiceSynthetics,
         proficiencyRank = -1,
         options: Set<string> = new Set(),
         rollNotes: Record<string, RollNotePF2e[]>,
@@ -272,7 +272,7 @@ class WeaponDamagePF2e {
 
         // Ghost touch
         if (propertyRunes.includes("ghostTouch")) {
-            diceModifiers.push(new DiceModifierPF2e({ label: "PF2E.WeaponPropertyRuneGhostTouch" }));
+            diceModifiers.push(new DiceModifierPF2e({ label: CONFIG.PF2E.weaponPropertyRunes.ghostTouch }));
         }
 
         // Backstabber trait
@@ -396,7 +396,11 @@ class WeaponDamagePF2e {
 
         // Damage dice from synthetics
         diceModifiers.push(
-            ...extractDamageDice(damageDice, selectors, { resolvables: { weapon }, injectables: { weapon } })
+            ...extractDamageDice(damageDice, selectors, {
+                test: options,
+                resolvables: { weapon },
+                injectables: { weapon },
+            })
         );
 
         // include dice number and size in damage tag
@@ -455,7 +459,7 @@ class WeaponDamagePF2e {
             (dm): dm is DiceModifierPF2e & { override: DamageDiceOverride } => !!(dm.enabled && dm.override)
         );
         for (const override of damageOverrides) {
-            if ((critical && override.critical) || !override.critical) {
+            if ((critical && override.critical !== false) || (!critical && !override.critical)) {
                 base.dieSize = override.override.dieSize ?? base.dieSize;
                 base.damageType = override.override.damageType ?? base.damageType;
                 base.diceNumber = override.override.diceNumber ?? base.diceNumber;

@@ -165,12 +165,18 @@ function pruneTree(docSource: PackEntry, topLevel: PackEntry): void {
                 if (isActorSource(docSource)) {
                     lastActor = docSource;
 
-                    if (docSource.prototypeToken.name === docSource.name) {
+                    if (docSource.prototypeToken?.name === docSource.name) {
                         delete (docSource as { prototypeToken?: unknown }).prototypeToken;
-                    } else {
-                        (docSource.prototypeToken as DeepPartial<foundry.data.PrototypeTokenSource>) = {
-                            name: docSource.prototypeToken.name,
-                        };
+                    } else if (docSource.prototypeToken) {
+                        const withToken: {
+                            img: ImagePath;
+                            prototypeToken: DeepPartial<foundry.data.PrototypeTokenSource>;
+                        } = docSource;
+                        withToken.prototypeToken = { name: docSource.prototypeToken.name };
+                        // Iconics have special tokens
+                        if (withToken.img?.includes("iconics")) {
+                            withToken.prototypeToken.texture = { src: withToken.img.replace("Full", "") as ImagePath };
+                        }
                     }
 
                     if (docSource.type === "npc") {
@@ -193,6 +199,9 @@ function pruneTree(docSource: PackEntry, topLevel: PackEntry): void {
                     docSource.system.description = { value: docSource.system.description.value };
                     if (isPhysicalData(docSource)) {
                         delete (docSource.system as { identification?: unknown }).identification;
+                        if (docSource.system.traits.otherTags?.length === 0) {
+                            delete (docSource.system.traits as { otherTags?: unknown }).otherTags;
+                        }
                         if (docSource.type === "consumable" && !docSource.system.spell) {
                             delete (docSource.system as { spell?: unknown }).spell;
                         }

@@ -693,6 +693,10 @@
                     "Complete": "Complete"
                 },
                 "AncestryClass": "{ancestry} {class}",
+                "ClassDC": {
+                    "Label": "Class DC",
+                    "Plural": "Class DCs"
+                },
                 "Configure": {
                     "Title": "Configure Character",
                     "ShowBasicUnarmed": {
@@ -719,7 +723,8 @@
                 },
                 "CriticalSpecialization": "Critical Specialization",
                 "Spellcasting": {
-                    "Cantrips": "Cantrips"
+                    "Cantrips": "Cantrips",
+                    "InvalidProficiency": "Invalid"
                 },
                 "SpellPreparation": {
                     "Title": "{actor}: Spell Preparation",
@@ -746,6 +751,7 @@
                         "Motionsense": "Motionsense",
                         "Scent": "Scent",
                         "SeeInvisibility": "See Invisibility",
+                        "Spiritsense": "Spiritsense",
                         "Tremorsense": "Tremorsense",
                         "Wavesense": "Wavesense"
                     },
@@ -756,7 +762,14 @@
             "Dead": "Dead",
             "Hazard": {
                 "TitleEdit": "{name} (Edit Mode)",
-                "Level": "Hazard {level}"
+                "Level": "Hazard {level}",
+                "EmitsSound": {
+                    "Title": "Emits Sound?",
+                    "Hint": "Whether this hazard emits sound and can be sensed via hearing",
+                    "True": "Always",
+                    "False": "Never",
+                    "Encounter": "During Encounters"
+                }
             },
             "NPC": {
                 "Configure": {
@@ -1021,6 +1034,7 @@
         "BrowserSortyByLevelLabel": "Level",
         "BrowserSortyByPriceLabel": "Price",
         "BrowserSortyByNameLabel": "Name",
+        "BrowserWarnPackNotLoaded": "Compendium \"{pack}\" could not be loaded.",
         "BulkCapacityLabel": "Holds Bulk Amount",
         "BulkLabel": "Carried Bulk",
         "BulkMaxLabel": "Max Bulk",
@@ -1098,9 +1112,6 @@
         "CircumstanceBonusShortLabel": "Circumstance",
         "CircumstanceBonusTitle": "Circumstance Bonus",
         "Class": "Class",
-        "ClassDCBase": "Base Class DC 10",
-        "ClassDCHeader": "Class DC",
-        "ClassDCLabel": "Class DC",
         "ClassFeatLevels": "Class Feat Levels",
         "ClassFeatures": "Class Features",
         "ClassHP": "Class HP",
