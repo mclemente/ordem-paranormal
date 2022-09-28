@@ -32,7 +32,7 @@ jobs:
 
       - name: Zip Files
         working-directory: ./dist
-        run: zip -r ./pf2e.zip ./*
+        run: zip -r ./ordem-paranormal.zip ./*
 
       - name: Create Version Release
         id: create_version_release
@@ -43,5 +43,5 @@ jobs:
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './dist/system.json,./dist/pf2e.zip'
+          artifacts: './dist/system.json,./dist/ordem-paranormal.zip'
           tag: ${{ env.systemVersion }}
