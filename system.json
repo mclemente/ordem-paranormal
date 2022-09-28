@@ -48,7 +48,7 @@
     "secondaryTokenAttribute": "attributes.pe",
     "url": "https://github.com/foundryvtt/pf2e",
     "bugs": "https://github.com/foundryvtt/pf2e/issues",
-    "changelog": "https://github.com/foundryvtt/pf2e/blob/release/CHANGELOG.md",
-    "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json",
-    "download": "https://github.com/foundryvtt/pf2e/releases/latest/download/pf2e.zip"
+    "changelog": "https://github.com/mclemente/ordem-paranormal/blob/master/CHANGELOG.md",
+    "manifest": "https://github.com/mclemente/ordem-paranormal/releases/latest/download/system.json",
+    "download": "https://github.com/mclemente/ordem-paranormal/releases/latest/download/pf2e.zip"
 }
