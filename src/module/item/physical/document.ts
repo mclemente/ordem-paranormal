@@ -76,7 +76,7 @@ abstract class PhysicalItemPF2e extends ItemPF2e {
 
     get isMagical(): boolean {
         const traits: Set<string> = this.traits;
-        const magicTraits = ["magical", "arcane", "primal", "divine", "occult"] as const;
+        const magicTraits = ["magical", "arcane", "primal", "divine", "occult", "ocultismo"] as const;
         return magicTraits.some((trait) => traits.has(trait));
     }
 
