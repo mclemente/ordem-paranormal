@@ -215,6 +215,11 @@ export class Statistic {
         return new StatisticDifficultyClass(this, this.#data, this.options);
     }
 
+    /** Shortcut to `this#check#roll` */
+    roll(args: StatisticRollParameters = {}): Promise<Rolled<CheckRoll> | null> {
+        return this.check.roll(args);
+    }
+
     /** Creates view data for sheets and chat messages */
     getChatData(options: RollOptionParameters = {}): StatisticChatData {
         const { check, dc } = this.withRollOptions(options);
@@ -238,15 +243,17 @@ export class Statistic {
     }
 
     /** Returns data intended to be merged back into actor data */
-    getTraceData(this: Statistic, options: RollOptionParameters = {}): StatisticTraceData {
-        const { check } = this.withRollOptions(options);
+    getTraceData(this: Statistic, options: { value?: "dc" | "mod" } = {}): StatisticTraceData {
+        const { check, dc } = this;
+        const valueProp = options.value ?? "mod";
 
         return {
             slug: this.slug,
             label: this.label,
-            value: check?.mod ?? 0,
-            totalModifier: check?.mod ?? 0,
-            breakdown: check?.breakdown ?? "",
+            value: valueProp === "mod" ? check.mod : dc.value,
+            totalModifier: check.mod ?? 0,
+            dc: dc.value,
+            breakdown: check.breakdown ?? "",
             _modifiers: check.modifiers.map((m) => m.toObject()),
         };
     }

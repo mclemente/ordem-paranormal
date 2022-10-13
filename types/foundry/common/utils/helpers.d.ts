@@ -10,10 +10,10 @@ declare global {
              * @param delay An amount of time in milliseconds to delay
              * @return A wrapped function which can be called to debounce execution
              */
-            function debounce<T extends (...args: any[]) => unknown>(
-                callback: T,
+            function debounce<T extends unknown[]>(
+                callback: (...args: T) => unknown,
                 delay: number
-            ): (...args: Parameters<T>) => void;
+            ): (...args: T) => void;
 
             /**
              * Quickly clone a simple piece of data, returning a copy which can be mutated safely.
@@ -163,7 +163,7 @@ declare global {
              *
              * @return         The value of the found property
              */
-            function getProperty(object: object, key: string): any;
+            function getProperty(object: object, key: string): unknown;
 
             /**
              * A helper function which searches through an object to assign a value using a string key

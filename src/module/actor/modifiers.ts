@@ -185,7 +185,7 @@ class ModifierPF2e implements RawModifier {
         this.custom = params.custom ?? false;
         this.critical = params.critical ?? null;
         this.source = params.source ?? null;
-        this.predicate = new PredicatePF2e(params.predicate);
+        this.predicate = PredicatePF2e.create(params.predicate ?? []);
         this.notes = params.notes ?? "";
         this.traits = deepClone(params.traits ?? []);
         this.hideIfDisabled = params.hideIfDisabled ?? false;
@@ -410,8 +410,6 @@ class StatisticModifier {
     notes?: RollNotePF2e[];
 
     adjustments?: DegreeOfSuccessAdjustment[];
-    /** Allow decorating this object with any needed extra fields. <-- ಠ_ಠ */
-    [key: string]: any;
 
     /**
      * @param slug The name of this collection of statistic modifiers.
@@ -624,7 +622,7 @@ class DiceModifierPF2e implements BaseRawModifier {
             this.category ??= DamageCategorization.fromDamageType(this.damageType);
         }
 
-        this.predicate = new PredicatePF2e(param.predicate);
+        this.predicate = new PredicatePF2e(param.predicate ?? []);
         this.enabled = this.predicate.test([]);
         this.ignored = !this.enabled;
     }
@@ -641,7 +639,7 @@ class DamageDicePF2e extends DiceModifierPF2e {
 
     constructor(params: DamageDiceParameters) {
         const predicate =
-            params.predicate instanceof PredicatePF2e ? params.predicate : new PredicatePF2e(params.predicate);
+            params.predicate instanceof PredicatePF2e ? params.predicate : new PredicatePF2e(params.predicate ?? []);
         super({ ...params, predicate });
 
         if (params.selector) {

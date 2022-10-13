@@ -5,7 +5,7 @@ export class TemplateLayerPF2e<
 > extends TemplateLayer<TTemplate> {
     /** Originally by Furyspark for the PF1e system */
     protected override _onDragLeftMove(event: PlaceablesLayerEvent<TTemplate>): void {
-        if (!canvas.dimensions) return;
+        if (!canvas.scene || !canvas.dimensions) return;
 
         // From PlaceablesLayer#_onDragLeftMove
         const preview = event.data.preview;
@@ -33,8 +33,9 @@ export class TemplateLayerPF2e<
             // Update the shape data
             if (["cone", "circle"].includes(template.type)) {
                 const direction = ray.angle;
+                const snapAngle = Math.PI / (canvas.scene.hasHexGrid ? 6 : 4);
                 template.document.direction = Math.toDegrees(
-                    Math.floor((direction + Math.PI * 0.125) / (Math.PI * 0.25)) * (Math.PI * 0.25)
+                    Math.floor((direction + Math.PI * 0.125) / snapAngle) * snapAngle
                 );
                 const distance = Math.max(ray.distance / ratio, canvas.dimensions.distance);
                 template.document.distance =
@@ -53,11 +54,14 @@ export class TemplateLayerPF2e<
     protected override _onMouseWheel(event: WheelEvent): Promise<TTemplate["document"] | undefined> | void {
         // Abort if there's no hovered template
         const template = this.hover;
-        if (!template) return;
+        if (!(template && canvas.scene)) return;
 
         // Determine the incremental angle of rotation from event data
-        const snap = template.type === "cone" ? (event.shiftKey ? 45 : 15) : event.shiftKey ? 15 : 5;
+        const increment = event.shiftKey ? 15 : 5;
+        const coneMultiplier = Number(template.type === "cone") * (canvas.scene.hasHexGrid ? 2 : 3);
+        const snap = increment * coneMultiplier;
         const delta = snap * Math.sign(event.deltaY);
+
         return template.rotate(template.document.direction + delta, snap);
     }
 }

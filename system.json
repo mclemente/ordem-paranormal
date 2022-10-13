@@ -11,8 +11,10 @@
     },
     "authors": [
         {
-            "name": "The PF2e System Developers",
-            "url": "https://github.com/foundryvtt/pf2e"
+            "name": "Matheus Clemente",
+            "discord": "mclemente#5524",
+            "url": "https://github.com/mclemente",
+            "flags": {}
         }
     ],
     "esmodules": ["vendor.bundle.js", "main.bundle.js"],
@@ -24,19 +26,23 @@
             "label": "Macros",
             "system": "ordem-paranormal",
             "path": "packs/macros.db",
-            "type": "Macro"
+            "type": "Macro",
+            "private": false,
+            "flags": {}
         }
     ],
     "languages": [
         {
             "lang": "en",
             "name": "Main (English)",
-            "path": "lang/en.json"
+            "path": "lang/en.json",
+            "flags": {}
         },
         {
             "lang": "en",
             "name": "Rules Elements (English)",
-            "path": "lang/re-en.json"
+            "path": "lang/re-en.json",
+            "flags": {}
         }
     ],
     "socket": true,
@@ -46,8 +52,8 @@
     "gridUnits": "m",
     "primaryTokenAttribute": "attributes.hp",
     "secondaryTokenAttribute": "attributes.pe",
-    "url": "https://github.com/foundryvtt/pf2e",
-    "bugs": "https://github.com/foundryvtt/pf2e/issues",
+    "url": "https://github.com/mclemente/ordem-paranormal",
+    "bugs": "https://github.com/mclemente/ordem-paranormal/issues",
     "changelog": "https://github.com/mclemente/ordem-paranormal/blob/master/CHANGELOG.md",
     "manifest": "https://github.com/mclemente/ordem-paranormal/releases/latest/download/system.json",
     "download": "https://github.com/mclemente/ordem-paranormal/releases/latest/download/pf2e.zip"

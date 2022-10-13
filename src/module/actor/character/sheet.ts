@@ -22,6 +22,7 @@ import { PCSheetTabManager } from "./tab-manager";
 import { AbilityBuilderPopup } from "../sheet/popups/ability-builder";
 import { CharacterConfig } from "./config";
 import { DropCanvasItemDataPF2e } from "@module/canvas/drop-canvas-data";
+import { PROFICIENCY_RANKS } from "@module/data";
 
 class CharacterSheetPF2e extends CreatureSheetPF2e<CharacterPF2e> {
     protected readonly actorConfigClass = CharacterConfig;
@@ -99,12 +100,15 @@ class CharacterSheetPF2e extends CreatureSheetPF2e<CharacterPF2e> {
 
         // Class DCs
         const classDCs = Object.values(sheetData.data.proficiencies.classDCs)
-            .map((classDC): ClassDCSheetData => {
-                classDC.icon = this.getProficiencyIcon(classDC.rank);
-                classDC.hover = CONFIG.PF2E.proficiencyLevels[classDC.rank];
-                classDC.rankName = game.i18n.format(`PF2E.ProficiencyLevel${classDC.rank}`);
-                return classDC;
-            })
+            .map(
+                (classDC): ClassDCSheetData => ({
+                    ...classDC,
+                    icon: this.getProficiencyIcon(classDC.rank),
+                    hover: CONFIG.PF2E.proficiencyLevels[classDC.rank],
+                    rankSlug: PROFICIENCY_RANKS[classDC.rank],
+                    rankName: game.i18n.format(`PF2E.ProficiencyLevel${classDC.rank}`),
+                })
+            )
             .sort((a, b) => (a.primary ? -1 : b.primary ? 1 : a.slug.localeCompare(b.slug)));
         const primaryClassDC = sheetData.data.attributes.classDC?.slug ?? null;
 
@@ -129,12 +133,12 @@ class CharacterSheetPF2e extends CreatureSheetPF2e<CharacterPF2e> {
             reflex: sheetData.data.saves.reflex,
             will: sheetData.data.saves.will,
         };
-        for (const save of Object.values(sheetData.data.saves as Record<any, any>)) {
+        for (const save of Object.values(sheetData.data.saves)) {
             save.rankName = game.i18n.format(`PF2E.ProficiencyLevel${save.rank}`);
         }
 
         // limiting the amount of characters for the save labels
-        for (const save of Object.values(sheetData.data.saves as Record<any, any>)) {
+        for (const save of Object.values(sheetData.data.saves)) {
             save.short = game.i18n.format(`PF2E.Saves${save.label}Short`);
         }
 

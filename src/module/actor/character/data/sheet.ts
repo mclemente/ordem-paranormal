@@ -7,11 +7,17 @@ import { FlattenedCondition } from "@system/conditions";
 import { BonusFeat, CharacterSystemData, SlottedFeat } from ".";
 import { CreatureSheetData, SpellcastingSheetData } from "@actor/creature/types";
 import { CHARACTER_SHEET_TABS } from "./values";
-import { ClassDCData } from "./types";
+import { CharacterSaveData, ClassDCData } from "./types";
+import { SaveType } from "@actor/types";
 
 type CharacterSheetOptions = ActorSheetOptions;
 
 type CharacterSystemSheetData = CharacterSystemData & {
+    attributes: {
+        perception: {
+            rankName: string;
+        };
+    };
     details: CharacterSystemData["details"] & {
         keyability: {
             value: keyof typeof CONFIG.PF2E.abilities;
@@ -27,6 +33,13 @@ type CharacterSystemSheetData = CharacterSystemData & {
             hover: string;
         };
     };
+    saves: Record<
+        SaveType,
+        CharacterSaveData & {
+            rankName?: string;
+            short?: string;
+        }
+    >;
 };
 
 export interface CraftingEntriesSheetData {
@@ -82,9 +95,10 @@ interface CharacterSheetData extends CreatureSheetData<CharacterPF2e> {
 }
 
 interface ClassDCSheetData extends ClassDCData {
-    icon?: string;
-    hover?: string;
-    rankName?: string;
+    icon: string;
+    hover: string;
+    rankSlug: string;
+    rankName: string;
 }
 
 interface FeatCategorySheetData {

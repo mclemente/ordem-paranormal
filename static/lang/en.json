@@ -724,7 +724,12 @@
                 "CriticalSpecialization": "Critical Specialization",
                 "Spellcasting": {
                     "Cantrips": "Cantrips",
-                    "InvalidProficiency": "Invalid"
+                    "InvalidProficiency": "Invalid",
+                    "MagicItemTypesLabel": "Magic Item Types",
+                    "ValidItemTypes": {
+                        "All": "All Magic Items",
+                        "Scroll": "Scrolls Only"
+                    }
                 },
                 "SpellPreparation": {
                     "Title": "{actor}: Spell Preparation",
@@ -2312,6 +2317,7 @@
         "MacroActionNoActorError": "This actor no longer exists!",
         "MacroActionNoActionError": "This action no longer exists!",
         "MagicTraditionLabel": "Magic Tradition",
+        "MagicTraditionUseSpellLabel": "Use Spell Tradition",
         "MAPAbbreviationLabel": "MAP {penalty}",
         "MartialAdvanced": "Advanced Weapons",
         "MartialHeavy": "Heavy Armor",
@@ -2514,6 +2520,7 @@
         "PreparationTypeInnate": "Innate",
         "PreparationTypePrepared": "Prepared",
         "PreparationTypeSpontaneous": "Spontaneous",
+        "PreparationTypeItems": "Items Only",
         "Prerequisite1": "Prerequisite 1",
         "Prerequisite2": "Prerequisite 2",
         "Prerequisite3": "Prerequisite 3",
@@ -3320,6 +3327,8 @@
         "TraitArtifact": "Artifact",
         "TraitAstral": "Astral",
         "TraitAsura": "Asura",
+        "TraitAttached": "Attached",
+        "TraitAttachedToAThrownWeapon": "Attached to a Thrown Weapon",
         "TraitAttachedToShield": "Attached to Shield",
         "TraitAttachedToCrossbowOrFirearm": "Attached to Crossbow or Firearm",
         "TraitAttachedToCrossbowOrFirearmFiringMechanism": "Attached to Crossbow or Firearm (Firing Mechanism)",
@@ -3327,7 +3336,6 @@
         "TraitAttachedToFirearm": "Attached To Firearm",
         "TraitAttachedToFirearmFiringMechanism": "Attached To Firearm (Firing Mechanism)",
         "TraitAttachedToFirearmScope": "Attached To Firearm (Scope)",
-        "TraitAttachedToAThrownWeapon": "Attached to a Thrown Weapon",
         "TraitAttack": "Attack",
         "TraitAuditory": "Auditory",
         "TraitAutomaton": "Automaton",
@@ -4401,6 +4409,7 @@
                 "ranseur": "Ranseur",
                 "rapier": "Rapier",
                 "rapier-pistol": "Rapier Pistol",
+                "reinforced-wheels": "Reinforced Wheels",
                 "repeating-crossbow": "Repeating Crossbow",
                 "repeating-hand-crossbow": "Repeating Hand Crossbow",
                 "repeating-heavy-crossbow": "Repeating Heavy Crossbow",
@@ -4457,6 +4466,8 @@
                 "war-lance": "War Lance",
                 "war-razor": "War Razor",
                 "warhammer": "Warhammer",
+                "wheel-blades": "Wheel Blades",
+                "wheel-spikes": "Wheel Spikes",
                 "whip": "Whip",
                 "whip-claw": "Whip Claw",
                 "wind-and-fire-wheel": "Wind and Fire Wheel",

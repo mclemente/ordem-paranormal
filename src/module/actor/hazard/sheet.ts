@@ -186,7 +186,7 @@ export class HazardSheetPF2e extends ActorSheetPF2e<HazardPF2e> {
         $html.find<HTMLInputElement>("input[data-property]").on("focus", (event) => {
             const $input = $(event.target);
             const propertyPath = $input.attr("data-property") ?? "";
-            const baseValue: number = getProperty(this.actor._source, propertyPath);
+            const baseValue = Number(getProperty(this.actor._source, propertyPath));
             $input.val(baseValue).attr({ name: propertyPath });
         });
 
@@ -198,7 +198,7 @@ export class HazardSheetPF2e extends ActorSheetPF2e<HazardPF2e> {
             if (valueAttr) {
                 $input.val(valueAttr);
             } else {
-                const preparedValue = getProperty(this.actor.data, propertyPath);
+                const preparedValue = Number(getProperty(this.actor, propertyPath));
                 $input.val(preparedValue !== null && preparedValue >= 0 ? `+${preparedValue}` : preparedValue);
             }
         });
@@ -330,7 +330,6 @@ export class HazardSheetPF2e extends ActorSheetPF2e<HazardPF2e> {
 
     protected override async _updateObject(event: Event, formData: Record<string, unknown>): Promise<void> {
         // Change emitsSound values of "true" and "false" to booleans
-        this.actor.system.attributes.emitsSound;
         const emitsSound = formData["system.attributes.emitsSound"];
         if (emitsSound !== "encounter") {
             formData["system.attributes.emitsSound"] = emitsSound === "true";

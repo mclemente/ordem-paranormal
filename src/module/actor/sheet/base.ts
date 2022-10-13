@@ -897,7 +897,7 @@ export abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorShee
     private onClickCreateItem(event: JQuery.ClickEvent) {
         event.preventDefault();
         const header = event.currentTarget;
-        const data: any = duplicate(header.dataset);
+        const data = duplicate(header.dataset);
         data.img = `systems/ordem-paranormal/icons/default-icons/${data.type}.svg`;
 
         if (data.type === "action") {
@@ -1055,7 +1055,7 @@ export abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorShee
                 const strValue = el.value.trim();
                 const value = Number(strValue);
                 if ((strValue.startsWith("+") || strValue.startsWith("-")) && !Number.isNaN(value))
-                    data[el.name] = getProperty(this.actor, el.name) + value;
+                    data[el.name] = Number(getProperty(this.actor, el.name)) + value;
             }
         }
 

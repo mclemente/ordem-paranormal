@@ -7,7 +7,6 @@ import { ItemSourcePF2e, ItemType, PhysicalItemSource } from "@item/data";
 import { hasInvestedProperty } from "@item/data/helpers";
 import { EffectFlags, EffectSource } from "@item/effect/data";
 import type { ActiveEffectPF2e } from "@module/active-effect";
-import { TokenPF2e } from "@module/canvas";
 import { ChatMessagePF2e } from "@module/chat-message";
 import { Size } from "@module/data";
 import { preImportJSON } from "@module/doc-helpers";
@@ -375,11 +374,15 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
      * As of Foundry 0.8: All subclasses of ActorPF2e need to use this factory method rather than having their own
      * overrides, since Foundry itself will call `ActorPF2e.create` when a new actor is created from the sidebar.
      */
-    static override async createDocuments<A extends ActorPF2e>(
-        this: ConstructorOf<A>,
-        data: PreCreate<A["_source"]>[] = [],
-        context: DocumentModificationContext<A> = {}
-    ): Promise<A[]> {
+    static override async createDocuments<T extends foundry.abstract.Document>(
+        this: ConstructorOf<T>,
+        data?: PreCreate<T["_source"]>[],
+        context?: DocumentModificationContext<T>
+    ): Promise<T[]>;
+    static override async createDocuments(
+        data: PreCreate<ActorSourcePF2e>[] = [],
+        context: DocumentModificationContext<ActorPF2e> = {}
+    ): Promise<Actor[]> {
         // Set additional defaults, some according to actor type
         for (const datum of data) {
             const { linkToActorSize } = datum.prototypeToken?.flags?.pf2e ?? {};
@@ -416,7 +419,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
             }
         }
 
-        return super.createDocuments(data, context) as Promise<A[]>;
+        return super.createDocuments(data, context);
     }
 
     protected override _initialize(): void {
@@ -560,14 +563,6 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
 
     /** Set defaults for this actor's prototype token */
     private preparePrototypeToken(): void {
-        // Disable manually-configured vision settings on the prototype token
-        /* if (canvas.lighting?.rulesBasedVision && ["character", "familiar"].includes(this.type)) {
-            for (const property of ["brightSight", "dimSight"] as const) {
-                this.prototypeToken[property] = this.prototypeToken._source[property] = 0;
-            }
-            this.prototypeToken.sight.angle = this.prototypeToken._source.sight.angle = 360;
-        }*/
-
         this.prototypeToken.flags = mergeObject(
             { pf2e: { linkToActorSize: !["hazard", "loot"].includes(this.type) } },
             this.prototypeToken.flags
@@ -612,7 +607,6 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
     /**
      * Roll a Attribute Check
      * Prompt the user for input regarding Advantage/Disadvantage and any Situational Bonus
-     * @param skill {String}    The skill id
      */
     rollAttribute(event: JQuery.Event, attributeName: string) {
         if (!objectHasKey(this.system.attributes, attributeName)) {
@@ -681,10 +675,11 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
         isDelta = false,
         isBar = true
     ): Promise<this> {
-        const tokens = this.getActiveTokens();
-        if (attribute === "attributes.hp" && isDelta && tokens.length) {
-            await this.applyDamage(-value, tokens[0]);
-            return this;
+        const token = this.getActiveTokens(false, true).shift();
+        const isDamage = isDelta || (value === 0 && !!token?.combatant);
+        if (token && attribute === "attributes.hp" && isDamage) {
+            const damage = value === 0 ? this.hitPoints?.value ?? 0 : -value;
+            return this.applyDamage(damage, token);
         }
         return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
     }
@@ -696,9 +691,9 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
      * @param token The applicable token for this actor
      * @param shieldBlockRequest Whether the user has toggled the Shield Block button
      */
-    async applyDamage(damage: number, token: TokenPF2e, shieldBlockRequest = false): Promise<void> {
+    async applyDamage(damage: number, token: TokenDocumentPF2e, shieldBlockRequest = false): Promise<this> {
         const { hitPoints } = this;
-        if (!hitPoints) return;
+        if (!hitPoints) return this;
         damage = Math.trunc(damage); // Round damage and healing (negative values) toward zero
 
         // Calculate damage to hit points and shield
@@ -758,8 +753,8 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
         }
         if (this.hitPoints?.value === 0) {
             const deadAtZero = game.settings.get("ordem-paranormal", "automation.actorsDeadAtZero");
-            if (this.type === "npc" && ["npcsOnly", "both"].includes(deadAtZero)) {
-                await game.combat?.combatants.find((c) => c.actor === this && !c.defeated)?.toggleDefeated();
+            if (this.type === "npc" && ["npcsOnly", "both"].includes(deadAtZero) && !token.combatant?.isDefeated) {
+                token.combatant?.toggleDefeated();
             }
         }
 
@@ -802,6 +797,8 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
                     ? ChatMessagePF2e.getWhisperRecipients("GM").map((u) => u.id)
                     : [],
         });
+
+        return this;
     }
 
     isLootableBy(user: UserPF2e) {
@@ -924,12 +921,7 @@ class ActorPF2e extends Actor<TokenDocumentPF2e, ItemTypeMap> {
         }
     }
 
-    /**
-     * Moves an item into the inventory into or out of a container.
-     * @param actor       Actor whose inventory should be edited.
-     * @param getItem     Lambda returning the item.
-     * @param containerId Id of the container that will contain the item.
-     */
+    /** Move an item into the inventory into or out of a container */
     async stowOrUnstow(item: Embedded<PhysicalItemPF2e>, container?: Embedded<ContainerPF2e>): Promise<void> {
         if (!container) {
             await item.update({

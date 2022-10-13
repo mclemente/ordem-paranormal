@@ -22,7 +22,6 @@ import {
 } from "@util";
 import { ActorSheetPF2e } from "../sheet/base";
 import { CreatureConfig } from "./config";
-import { SkillData } from "./data";
 import { SpellPreparationSheet } from "./spell-preparation-sheet";
 import { CreatureSheetData, SpellcastingSheetData } from "./types";
 
@@ -37,7 +36,7 @@ export abstract class CreatureSheetPF2e<TActor extends CreaturePF2e> extends Act
     protected abstract readonly actorConfigClass: ConstructorOf<CreatureConfig<CreaturePF2e>> | null;
 
     override async getData(options?: ActorSheetOptions): Promise<CreatureSheetData<TActor>> {
-        const sheetData = await super.getData(options);
+        const sheetData = (await super.getData(options)) as CreatureSheetData<TActor>;
         const { actor } = this;
 
         // Update save labels
@@ -68,13 +67,12 @@ export abstract class CreatureSheetPF2e<TActor extends CreaturePF2e> extends Act
 
         // Update skill labels
         if (sheetData.data.skills) {
-            const skills: Record<string, SkillData & Record<string, string>> = sheetData.data.skills;
-            const mainSkills: Record<string, string> = CONFIG.PF2E.skills;
-            for (const key in skills) {
-                const skill = skills[key];
+            const skills = sheetData.data.skills;
+            for (const [key, skill] of Object.entries(skills)) {
+                const label = objectHasKey(CONFIG.PF2E.skills, key) ? CONFIG.PF2E.skills[key] : null;
                 skill.icon = this.getProficiencyIcon(skill.rank);
                 skill.hover = CONFIG.PF2E.proficiencyLevels[skill.rank];
-                skill.label = skill.label ?? mainSkills[key];
+                skill.label = skill.label ?? label ?? "";
             }
         }
 
@@ -186,7 +184,7 @@ export abstract class CreatureSheetPF2e<TActor extends CreaturePF2e> extends Act
         $html.find<HTMLInputElement>("input[data-property]").on("focus", (event) => {
             const $input = $(event.target);
             const propertyPath = $input.attr("data-property") ?? "";
-            const baseValue: number = getProperty(this.actor._source, propertyPath);
+            const baseValue = Number(getProperty(this.actor._source, propertyPath));
             $input.val(baseValue).attr({ name: propertyPath });
         });
 
@@ -194,7 +192,7 @@ export abstract class CreatureSheetPF2e<TActor extends CreaturePF2e> extends Act
             const $input = $(event.target);
             $input.removeAttr("name").removeAttr("style").attr({ type: "text" });
             const propertyPath = $input.attr("data-property") ?? "";
-            const preparedValue: number = getProperty(this.actor, propertyPath);
+            const preparedValue = Number(getProperty(this.actor, propertyPath));
             $input.val(preparedValue >= 0 && $input.hasClass("modifier") ? `+${preparedValue}` : preparedValue);
         });
 
@@ -313,7 +311,7 @@ export abstract class CreatureSheetPF2e<TActor extends CreaturePF2e> extends Act
 
             for (const element of htmlQueryAll(section, "[data-action=spellcasting-edit]") ?? []) {
                 element.addEventListener("click", (event) => {
-                    const containerId = htmlClosest(event.target, "[data-container-id]")?.dataset.containerId;
+                    const containerId = htmlClosest(event.target, "[data-item-id]")?.dataset.itemId;
                     const entry = this.actor.spellcasting.get(containerId, { strict: true });
                     createSpellcastingDialog(event, entry as Embedded<SpellcastingEntryPF2e>);
                 });
@@ -321,7 +319,7 @@ export abstract class CreatureSheetPF2e<TActor extends CreaturePF2e> extends Act
 
             for (const element of htmlQueryAll(section, "[data-action=spellcasting-remove]") ?? []) {
                 element.addEventListener("click", (event) => {
-                    const itemId = htmlClosest(event.currentTarget, "[data-container-id]")?.dataset.itemId;
+                    const itemId = htmlClosest(event.currentTarget, "[data-item-id]")?.dataset.itemId;
                     const item = this.actor.items.get(itemId, { strict: true });
 
                     // Render confirmation modal dialog

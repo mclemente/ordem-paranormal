@@ -645,7 +645,7 @@ class CharacterPF2e extends CreaturePF2e {
         this.classDCs = {};
         for (const [slug, classDC] of Object.entries(systemData.proficiencies.classDCs)) {
             const statistic = this.prepareClassDC(slug, classDC);
-            systemData.proficiencies.classDCs[slug] = mergeObject(classDC, statistic.getTraceData());
+            systemData.proficiencies.classDCs[slug] = mergeObject(classDC, statistic.getTraceData({ value: "dc" }));
             this.classDCs[slug] = statistic;
             if (classDC.primary) {
                 this.classDC = statistic;
@@ -733,7 +733,7 @@ class CharacterPF2e extends CreaturePF2e {
         // Apply the speed penalty from this character's held shield
         if (heldShield?.speedPenalty) {
             const speedPenalty = new ModifierPF2e(heldShield.name, heldShield.speedPenalty, MODIFIER_TYPE.UNTYPED);
-            speedPenalty.predicate.not = ["self:shield:ignore-speed-penalty"];
+            speedPenalty.predicate.push({ not: "self:shield:ignore-speed-penalty" });
             statisticsModifiers.speed ??= [];
             statisticsModifiers.speed.push(() => speedPenalty);
         }
@@ -955,7 +955,7 @@ class CharacterPF2e extends CreaturePF2e {
                     type: MODIFIER_TYPE.UNTYPED,
                     label: CONFIG.PF2E.armorTraits.bulwark,
                     modifier: 3,
-                    predicate: { all: ["damaging-effect"] },
+                    predicate: ["damaging-effect"],
                     adjustments: extractModifierAdjustments(this.synthetics.modifierAdjustments, selectors, slug),
                 });
                 modifiers.push(bulwarkModifier);
@@ -964,7 +964,7 @@ class CharacterPF2e extends CreaturePF2e {
                 const reflexAdjustments = (this.synthetics.modifierAdjustments[saveType] ??= []);
                 reflexAdjustments.push({
                     slug: "dex",
-                    predicate: new PredicatePF2e({ all: ["damaging-effect"] }),
+                    predicate: new PredicatePF2e("damaging-effect"),
                     suppress: true,
                 });
             }
@@ -1034,18 +1034,17 @@ class CharacterPF2e extends CreaturePF2e {
                 });
 
                 // Set requirements for ignoring the check penalty according to skill
-                armorCheckPenalty.predicate.not = ["attack", "armor:ignore-check-penalty"];
+                armorCheckPenalty.predicate.push({ nor: ["attack", "armor:ignore-check-penalty"] });
                 if (["acrobatics", "athletics"].includes(longForm)) {
-                    armorCheckPenalty.predicate.not.push(
-                        "self:armor:strength-requirement-met",
-                        "self:armor:trait:flexible"
-                    );
+                    armorCheckPenalty.predicate.push({
+                        nor: ["self:armor:strength-requirement-met", "self:armor:trait:flexible"],
+                    });
                 } else if (longForm === "furtividade" && wornArmor.traits.has("noisy")) {
-                    armorCheckPenalty.predicate.not.push({
-                        and: ["self:armor:strength-requirement-met", "armor:ignore-noisy-penalty"],
+                    armorCheckPenalty.predicate.push({
+                        nand: ["self:armor:strength-requirement-met", "armor:ignore-noisy-penalty"],
                     });
                 } else {
-                    armorCheckPenalty.predicate.not.push("self:armor:strength-requirement-met");
+                    armorCheckPenalty.predicate.push({ not: "self:armor:strength-requirement-met" });
                 }
 
                 modifiers.push(armorCheckPenalty);
@@ -1144,16 +1143,19 @@ class CharacterPF2e extends CreaturePF2e {
                 loreSkill,
                 { overwrite: false }
             );
+            const additionalData = {
+                itemID: loreItem.id,
+                shortform: shortForm,
+                expanded: loreItem,
+                lore: true,
+            };
+
             stat.adjustments = extractDegreeOfSuccessAdjustments(synthetics, domains);
             stat.label = loreItem.name;
             stat.ability = "int";
-            stat.itemID = loreItem.id;
             stat.notes = extractNotes(synthetics.rollNotes, domains);
             stat.rank = rank ?? 0;
-            stat.shortform = shortForm;
-            stat.expanded = loreItem;
             stat.value = stat.totalModifier;
-            stat.lore = true;
             stat.breakdown = stat.modifiers
                 .filter((m) => m.enabled)
                 .map((m) => `${m.label} ${m.modifier < 0 ? "" : "+"}${m.modifier}`)
@@ -1197,7 +1199,7 @@ class CharacterPF2e extends CreaturePF2e {
                 return roll;
             };
 
-            skills[shortForm] = stat;
+            skills[shortForm] = mergeObject(stat, additionalData);
         }
 
         return skills;
@@ -1230,7 +1232,7 @@ class CharacterPF2e extends CreaturePF2e {
             : null;
         if (armorPenalty) {
             const speedModifiers = (this.synthetics.statisticsModifiers["speed"] ??= []);
-            armorPenalty.predicate.not = ["armor:ignore-speed-penalty"];
+            armorPenalty.predicate.push({ not: "armor:ignore-speed-penalty" });
             armorPenalty.test(this.getRollOptions(["speed", `${movementType}-speed`]));
             speedModifiers.push(() => armorPenalty);
         }
@@ -1565,7 +1567,13 @@ class CharacterPF2e extends CreaturePF2e {
                 const property = getPropertyRunes(weapon, getPropertySlots(weapon)).filter(
                     (r): r is WeaponPropertyRuneType => setHasElement(WEAPON_PROPERTY_RUNE_TYPES, r)
                 );
-                potency.push({ label: "PF2E.PotencyRuneLabel", bonus: potencyRune, type: "item", property });
+                potency.push({
+                    label: "PF2E.PotencyRuneLabel",
+                    bonus: potencyRune,
+                    type: "item",
+                    property,
+                    predicate: new PredicatePF2e(),
+                });
             }
             return potency.length > 0
                 ? potency.reduce((highest, current) => (highest.bonus > current.bonus ? highest : current))
